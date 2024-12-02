@@ -1,0 +1,68 @@
+# Site parameters
+site_name: Chatrix.One
+site_url: https://chatrix.one
+
+# Theme
+theme:
+  name: material
+  logo: assets/logo.png
+  favicon: images/favicon.png
+  font: false
+    # text: Roboto
+  features:
+    - navigation.top
+  palette:
+    # Palette toggle for light mode
+    - scheme: default
+      primary: blue grey
+      accent: teal
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to dark mode
+    # Palette toggle for dark mode
+    - scheme: slate
+      primary: blue grey
+      accent: teal
+      toggle:
+        icon: material/weather-night
+        name: Switch to light mode
+
+# Plugins
+plugins:
+  - privacy
+  - search
+  - i18n:
+      docs_structure: suffix
+      languages:
+        - locale: en
+          default: true
+          name: English
+          build: true
+        - locale: bg
+          name: Български
+          build: true
+
+# Extra Settings
+extra:
+  generator: false
+
+# Extensions
+markdown_extensions:
+  - attr_list
+  - md_in_html
+  - tables
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.blocks.caption
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+# Extra CSS
+extra_css:
+  - stylesheets/extra.css
+
+# Footer
+copyright: |
+  &copy; 2018 - <script>document.write(new Date().getFullYear())</script> <a href="https://github.com/ChatrixOne"  target="_blank" rel="noopener"><b>Chatrix.One </b></a>This website does not use any cookies or tracking mechanisms and is made with ❤️ in <a href="https://en.wikipedia.org/wiki/Sofia"  target="_blank" rel="noopener"><b>Sofia</b></a>.
