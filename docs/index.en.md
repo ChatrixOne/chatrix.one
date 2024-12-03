@@ -17,7 +17,7 @@ hide:
 
 Connect with family, friends, loved ones, and colleagues. Enjoy free, privacy-friendly communication with no telemetry, unnecessary conditions, or compromises on security. Make high-quality voice and video calls. Register without the need to provide personal data. Compatible with various devices and operating systems. A decentralized service based in Switzerland :flag_ch:, accessible from anywhere in the world :earth_africa:.
 
-[Documentation](https://docs.chatrix.one/en){ .md-button .md-button--primary } <tab>[Learn more](http://chatrix.one/#everything-you-would-expect){ .md-button .md-button }
+[Documentation](https://docs.chatrix.one/en){ .md-button .md-button--primary } ![Padding 10px](/resources/img/padding10x10.png) [Learn more](http://chatrix.one/#everything-you-would-expect){ .md-button .md-button }
 
 ![Padding](resources/img/padding.png){ width=20%}
 
