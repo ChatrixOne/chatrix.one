@@ -195,7 +195,7 @@ hide:
 
     ---
     
-    <a href='https://compliance.conversations.im/server/chatrix.one/'><img src='https://img.shields.io/badge/XMPP_Specifications_Compliance-100%25-green?logo=xmpp'></a>
+    <a href='https://compliance.conversations.im/server/chatrix.one'><img src='https://compliance.conversations.im/badge/chatrix.one'></a>
     <a href='https://providers.xmpp.net/provider/chatrix.one/'><img src='https://img.shields.io/badge/XMPP_Providers-A-green?logo=xmpp'></a>
 
     * * *
