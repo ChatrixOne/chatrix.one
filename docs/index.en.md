@@ -210,8 +210,8 @@ Connect with family, friends, loved ones, and colleagues. Enjoy free, privacy-fr
 
     When contacting me via XMPP, do not send a subscription request. Send your message directly, as I do not accept subscription requests from strangers.
 
-    :material-email-edit-outline: Email: admin:simple-maildotru:chatrix.one<br>
-    :simple-xmpp: XMPP: admin:simple-maildotru:chatrix.one<br>
-    :simple-github: GitHub: [ChatrixOne](https://github.com/ChatrixOne)
+    :material-email-edit-outline: admin:simple-maildotru:chatrix.one<br>
+    :simple-xmpp: admin:simple-maildotru:chatrix.one<br>
+    :simple-github: [ChatrixOne](https://github.com/ChatrixOne)
 
 </div>

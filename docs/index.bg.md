@@ -210,8 +210,8 @@ hide:
 
     Когато се свързвате с мен чрез XMPP, не изпращайте заявка за абонамент. Изпратете директно Вашето съобщение, т.к. не приемам заявки за абонамент от непознати.
 
-    :material-email-edit-outline: Поща: admin:simple-maildotru:chatrix.one<br>
-    :simple-xmpp: XMPP: admin:simple-maildotru:chatrix.one<br>
-    :simple-github: GitHub: [ChatrixOne](https://github.com/ChatrixOne)
+    :material-email-edit-outline: admin:simple-maildotru:chatrix.one<br>
+    :simple-xmpp: admin:simple-maildotru:chatrix.one<br>
+    :simple-github: [ChatrixOne](https://github.com/ChatrixOne)
 
 </div>
