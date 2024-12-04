@@ -17,7 +17,7 @@ hide:
 
 Connect with family, friends, loved ones, and colleagues. Enjoy free, privacy-friendly communication with no telemetry, unnecessary conditions, or compromises on security. Make high-quality voice and video calls. Register without the need to provide personal data. Compatible with various devices and operating systems. A decentralized service based in Switzerland :flag_ch:, accessible from anywhere in the world :earth_africa:.
 
-[Documentation](https://docs.chatrix.one/en){ .md-button .md-button--primary } ![Padding 10px](/resources/img/padding10x10.png) [Learn more](http://chatrix.one/#everything-you-would-expect){ .md-button .md-button }
+[Documentation](https://docs.chatrix.one/en){ .md-button .md-button--primary } [Learn more](http://chatrix.one/#everything-you-would-expect){ .md-button .md-button }
 
 ![Padding](resources/img/padding.png){ width=20%}
 
@@ -45,7 +45,7 @@ Connect with family, friends, loved ones, and colleagues. Enjoy free, privacy-fr
 
     [:octicons-arrow-right-24: Learn more](https://en.wikipedia.org/wiki/OMEMO)
 
--   :simple-adblockplus:{ .lg .middle } __No Adds and No Telemetry__
+-   :simple-adblock:{ .lg .middle } __No Adds and No Telemetry__
 
     ---
 
@@ -199,8 +199,8 @@ Connect with family, friends, loved ones, and colleagues. Enjoy free, privacy-fr
 
     * * *
     
-    <a href='https://compliance.conversations.im/server/chatrix.one'><img src='https://compliance.conversations.im/badge/chatrix.one'></a>
     <a href='https://providers.xmpp.net/provider/chatrix.one/'><img src='https://img.shields.io/badge/XMPP_Providers-A-4da050?logo=xmpp'></a>
+    <a href='https://compliance.conversations.im/server/chatrix.one'><img src='https://compliance.conversations.im/badge/chatrix.one'></a>
 
     [:octicons-arrow-right-24: Show more](https://docs.chatrix.one/en/status/)
 

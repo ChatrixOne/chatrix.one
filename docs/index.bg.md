@@ -17,7 +17,7 @@ hide:
 
 Общувайте със семейство, близки, приятели и колеги. Безплатна комуникация уважаваща личното пространство. Без телеметрия, без излишни условия и без компромиси в сигурността. Провеждайте гласови и видео обаждания с високо качество. Регистрирайте се без да предоставяте лични данни. Съвместимост с различни устройства и операционни системи. Децентрализирана услуга базирана в Швейцария :flag_ch:, достъпна от всяка точка на света :earth_africa:.
 
-[Документация](https://docs.chatrix.one/){ .md-button .md-button--primary } ![Padding 10px](/resources/img/padding10x10.png){ width=5} [Научете повече](  http://chatrix.one/bg/#_3){ .md-button .md-button }
+[Документация](https://docs.chatrix.one/){ .md-button .md-button--primary } [Научете повече](  http://chatrix.one/bg/#_3){ .md-button .md-button }
 
 ![Padding](resources/img/padding.png){ width=20%}
 
@@ -45,7 +45,7 @@ hide:
 
     [:octicons-arrow-right-24: Научете повече](https://en.wikipedia.org/wiki/OMEMO)
 
--   :simple-adblockplus:{ .lg .middle } __Без Реклами и телеметрия__
+-   :simple-adblock:{ .lg .middle } __Без Реклами и телеметрия__
 
     ---
 
@@ -199,9 +199,9 @@ hide:
 
     * * *
     
-    <a href='https://compliance.conversations.im/server/chatrix.one'><img src='https://compliance.conversations.im/badge/chatrix.one'></a>
     <a href='https://providers.xmpp.net/provider/chatrix.one/'><img src='https://img.shields.io/badge/XMPP_Providers-A-4da050?logo=xmpp'></a>
-
+    <a href='https://compliance.conversations.im/server/chatrix.one'><img src='https://compliance.conversations.im/badge/chatrix.one'></a>
+    
     [:octicons-arrow-right-24: Вижте повече](https://docs.chatrix.one/status/)
 
 -   :fontawesome-solid-address-book:{ .lg .middle } __Контакти__
