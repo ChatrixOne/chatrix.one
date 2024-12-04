@@ -31,7 +31,7 @@ Connect with family, friends, loved ones, and colleagues. Enjoy free, privacy-fr
 
 <div class="grid cards" markdown>
 
--   :material-check-all:{ .lg .middle } __Instant messaging__
+-   :fontawesome-solid-paper-plane:{ .lg .middle } __Instant messaging__
 
     ---
 
@@ -170,7 +170,7 @@ Connect with family, friends, loved ones, and colleagues. Enjoy free, privacy-fr
 <div class="grid cards" markdown>
 
 
--   :material-eye-off:{ .lg .middle } __Privacy__
+-   :material-eye-off-outline:{ .lg .middle } __Privacy__
 
     ---
 
@@ -178,7 +178,7 @@ Connect with family, friends, loved ones, and colleagues. Enjoy free, privacy-fr
 
     [:octicons-arrow-right-24: Learn more](https://docs.chatrix.one/en/privacy/)
     
-  - :material-exclamation-thick:{ .lg .middle } __Terms__
+  - :material-file-document-check-outline:{ .lg .middle } __Terms__
 
     ---
 
@@ -204,7 +204,7 @@ Connect with family, friends, loved ones, and colleagues. Enjoy free, privacy-fr
 
     [:octicons-arrow-right-24: Show more](https://docs.chatrix.one/en/status/)
 
--   :fontawesome-solid-address-book:{ .lg .middle } __Contacts__
+-   :fontawesome-regular-address-book:{ .lg .middle } __Contacts__
 
     ---
 

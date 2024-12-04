@@ -31,7 +31,7 @@ hide:
 
 <div class="grid cards" markdown>
 
--   :material-check-all:{ .lg .middle } __Незабавни съобщения__
+-   :fontawesome-solid-paper-plane:{ .lg .middle } __Незабавни съобщения__
 
     ---
 
@@ -170,7 +170,7 @@ hide:
 <div class="grid cards" markdown>
 
 
--   :material-eye-off:{ .lg .middle } __Поверителност__
+-   :material-eye-off-outline:{ .lg .middle } __Поверителност__
 
     ---
 
@@ -178,7 +178,7 @@ hide:
 
     [:octicons-arrow-right-24: Научете повече](https://docs.chatrix.one/privacy/)
     
-  - :material-exclamation-thick:{ .lg .middle } __Правила__
+  - :material-file-document-check-outline:{ .lg .middle } __Правила__
 
     ---
 
@@ -204,7 +204,7 @@ hide:
     
     [:octicons-arrow-right-24: Вижте повече](https://docs.chatrix.one/status/)
 
--   :fontawesome-solid-address-book:{ .lg .middle } __Контакти__
+-   :fontawesome-regular-address-book:{ .lg .middle } __Контакти__
 
     ---
 
