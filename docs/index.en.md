@@ -76,7 +76,7 @@ Connect with family, friends, loved ones, and colleagues. Enjoy free, privacy-fr
 ![Padding](resources/img/padding.png){ width=20%}
 
 <figure markdown>
-  ![Call](resources/img/privacy-call.png){ width=80%}
+  ![Call](resources/img/call.png){ width=80%}
 </figure>
 
 ![Padding](resources/img/padding.png){ width=20%}
@@ -142,7 +142,7 @@ Connect with family, friends, loved ones, and colleagues. Enjoy free, privacy-fr
   ![Gajim](resources/img/gajim.png){ width=90%}
 </figure>
 
-## Technology behind the service
+## Technologies behind the service
 
 <div class="grid cards" markdown>
 
@@ -161,11 +161,12 @@ Connect with family, friends, loved ones, and colleagues. Enjoy free, privacy-fr
 ![Padding](resources/img/padding.png){ width=20%}
 
 <figure markdown>
-  ![XMPP](resources/img/xmpp-light.png#only-dark){ width=40%}
-  ![XMPP](resources/img/xmpp-dark.png#only-light){ width=40%}
+  ![Call](resources/img/privacy.png){ width=80%}
 </figure>
 
 ![Padding](resources/img/padding.png){ width=20%}
+
+## Know Before You Go
 
 <div class="grid cards" markdown>
 
@@ -187,6 +188,17 @@ Connect with family, friends, loved ones, and colleagues. Enjoy free, privacy-fr
     [:octicons-arrow-right-24: Learn more](https://docs.chatrix.one/en/terms/)
 
 </div>
+
+![Padding](resources/img/padding.png){ width=20%}
+
+<figure markdown>
+  ![XMPP](resources/img/xmpp-light.png#only-dark){ width=40%}
+  ![XMPP](resources/img/xmpp-dark.png#only-light){ width=40%}
+</figure>
+
+![Padding](resources/img/padding.png){ width=20%}
+
+## Status and Contacts
 
 <div class="grid cards" markdown>
 

@@ -76,7 +76,7 @@ hide:
 ![Padding](resources/img/padding.png){ width=20%}
 
 <figure markdown>
-  ![Call](resources/img/privacy-call.png){ width=80%}
+  ![Call](resources/img/call.png){ width=80%}
 </figure>
 
 ![Padding](resources/img/padding.png){ width=20%}
@@ -146,8 +146,8 @@ hide:
 
 <div class="grid cards" markdown>
 
-- :simple-ubuntu: __Ubuntu__ - ОС Главен сървър
-- :simple-debian: __Debian__ - ОС Резервен сървър
+- :simple-ubuntu: __Ubuntu__ - Операционна система
+- :simple-debian: __Debian__ - Операционна система
 - :material-git: __Git__ - Контрол на версиите
 - :simple-xmpp: __XMPP__ - Протокол за комуникация
 - :fontawesome-brands-erlang: __EJabberd__ - XMPP комуникация
@@ -161,11 +161,12 @@ hide:
 ![Padding](resources/img/padding.png){ width=20%}
 
 <figure markdown>
-  ![XMPP](resources/img/xmpp-light.png#only-dark){ width=40%}
-  ![XMPP](resources/img/xmpp-dark.png#only-light){ width=40%}
+  ![Call](resources/img/privacy.png){ width=80%}
 </figure>
 
 ![Padding](resources/img/padding.png){ width=20%}
+
+## Преди да се впуснете
 
 <div class="grid cards" markdown>
 
@@ -187,6 +188,17 @@ hide:
     [:octicons-arrow-right-24: Научете повече](https://docs.chatrix.one/terms/)
 
 </div>
+
+![Padding](resources/img/padding.png){ width=20%}
+
+<figure markdown>
+  ![XMPP](resources/img/xmpp-light.png#only-dark){ width=40%}
+  ![XMPP](resources/img/xmpp-dark.png#only-light){ width=40%}
+</figure>
+
+![Padding](resources/img/padding.png){ width=20%}
+
+## Статус и контакти
 
 <div class="grid cards" markdown>
 
