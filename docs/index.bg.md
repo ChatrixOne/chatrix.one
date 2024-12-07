@@ -117,7 +117,7 @@ hide:
 
     **Gajim** - пълноценен десктоп клиент за комуникация. Разработва се активно. Поддържа всички нови технологии, предлагани от XMPP протокола.
 
-    [:fontawesome-brands-gitlab: Инструкции в GitLab](https://dev.gajim.org/gajim/gajim/-/wikis/help/Gajim-on-macOS) 
+    [:fontawesome-brands-gitlab: Инструкции](https://dev.gajim.org/gajim/gajim/-/wikis/help/Gajim-on-macOS) 
 
 -   :fontawesome-brands-firefox-browser:{ .lg .middle } __Уеб браузър__
 
