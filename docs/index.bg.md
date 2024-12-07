@@ -85,7 +85,6 @@ hide:
 
 <div class="grid cards" markdown>
 
-
 -   :simple-android:{ .lg .middle } __Android__
 
     ---
@@ -138,6 +137,56 @@ hide:
 
 </div>
 
+![Padding](resources/img/padding.png){ width=20%}
+
+<figure markdown>
+  ![Call](resources/img/privacy.png){ width=80%}
+</figure>
+
+![Padding](resources/img/padding.png){ width=20%}
+
+## Преди да се впуснете
+
+<div class="grid cards" markdown>
+
+- :material-account-cog:{ .lg .middle } __Управление на профил__
+
+    ---
+
+    Регистриране на нов профил, актуализиране на  парола и премахване на профил. Всичко това в лесни и ясни стъпки. Премахването на профил води до изтриване на всички данни, свързани с него. Това гарантира, че поверителността Ви е напълно защитена.
+
+    [:octicons-arrow-right-24: Управление](https://docs.chatrix.one/account/registration/)
+
+  - :octicons-question-16:{ .lg .middle } __Често задавани въпроси__
+
+    ---
+
+    Разполагате с ресурс от 80+ въпроса и отговори към тях, възникващи при използване на услугата. Нашата мощна функция за търсене улеснява намирането на точно това, което търсите.
+
+    [:octicons-arrow-right-24: Открийте отговори](https://docs.chatrix.one/faq/)
+
+</div>
+
+<div class="grid cards" markdown>
+
+-   :material-eye-off-outline:{ .lg .middle } __Поверителност__
+
+    ---
+
+    Като оператор на услуга, представляваща алтернатива на наличните методи за Интернет комуникация, се стремя към минимум данни и защитата на на личните данни.
+
+    [:octicons-arrow-right-24: Прочетете внимателно](https://docs.chatrix.one/privacy/)
+    
+  - :material-file-document-check-outline:{ .lg .middle } __Правила__
+
+    ---
+
+    Препоръчвам Ви да се запознаете с правилата, които всеки потребител, модератор или администратор е длъжен да спазва. Chatrix.One не носи отговорност за действията на регистрираните потребители.
+
+    [:octicons-arrow-right-24: Прочетете внимателно](https://docs.chatrix.one/terms/)
+
+</div>
+
 <figure markdown>
   ![Gajim](resources/img/gajim.png){ width=90%}
 </figure>
@@ -161,37 +210,6 @@ hide:
 ![Padding](resources/img/padding.png){ width=20%}
 
 <figure markdown>
-  ![Call](resources/img/privacy.png){ width=80%}
-</figure>
-
-![Padding](resources/img/padding.png){ width=20%}
-
-## Преди да се впуснете
-
-<div class="grid cards" markdown>
-
-
--   :material-eye-off-outline:{ .lg .middle } __Поверителност__
-
-    ---
-
-    Като оператор на услуга, представляваща алтернатива на наличните методи за Интернет комуникация, се стремя към минимум данни и защитата на на личните данни.
-
-    [:octicons-arrow-right-24: Научете повече](https://docs.chatrix.one/privacy/)
-    
-  - :material-file-document-check-outline:{ .lg .middle } __Правила__
-
-    ---
-
-    Препоръчвам Ви да се запознаете с правилата, които всеки потребител, модератор или администратор е длъжен да спазва. Chatrix.One не носи отговорност за действията на регистрираните потребители.
-
-    [:octicons-arrow-right-24: Научете повече](https://docs.chatrix.one/terms/)
-
-</div>
-
-![Padding](resources/img/padding.png){ width=20%}
-
-<figure markdown>
   ![XMPP](resources/img/xmpp-light.png#only-dark){ width=40%}
   ![XMPP](resources/img/xmpp-dark.png#only-light){ width=40%}
 </figure>
@@ -201,7 +219,6 @@ hide:
 ## Статус и контакти
 
 <div class="grid cards" markdown>
-
 
 - :octicons-shield-check-16:{ .lg .middle } __Сигурност и съвместимост__
 
@@ -214,7 +231,9 @@ hide:
     <a href='https://providers.xmpp.net/provider/chatrix.one/'><img src='https://img.shields.io/badge/XMPP_Providers-A-4da050?logo=xmpp'></a>
     <a href='https://compliance.conversations.im/server/chatrix.one'><img src='https://compliance.conversations.im/badge/chatrix.one'></a>
     
-    [:octicons-arrow-right-24: Вижте повече](https://docs.chatrix.one/status/)
+    [:octicons-arrow-right-24: Статус на услугите](https://docs.chatrix.one/status/)
+
+    [:octicons-alert-16: Информация за инциденти](https://docs.chatrix.one/status/#%D0%B8%D0%BD%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%86%D0%B8%D1%8F-%D0%B7%D0%B0-%D0%BD%D0%B0%D1%81%D1%82%D1%8A%D0%BF%D0%B8%D0%BB%D0%B8-%D0%B8%D0%BD%D1%86%D0%B8%D0%B4%D0%B5%D0%BD%D1%82%D0%B8)
 
 -   :fontawesome-regular-address-book:{ .lg .middle } __Контакти__
 

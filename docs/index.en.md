@@ -85,7 +85,6 @@ Connect with family, friends, loved ones, and colleagues. Enjoy free, privacy-fr
 
 <div class="grid cards" markdown>
 
-
 -   :simple-android:{ .lg .middle } __Android__
 
     ---
@@ -118,7 +117,7 @@ Connect with family, friends, loved ones, and colleagues. Enjoy free, privacy-fr
 
     **Gajim** - a full-fledged desktop communication client. It is actively being developed. It supports all new technologies offered by the XMPP protocol.
 
-    [:fontawesome-brands-gitlab: Instructions from GitLab](https://dev.gajim.org/gajim/gajim/-/wikis/help/Gajim-on-macOS) 
+    [:fontawesome-brands-gitlab: Instructions](https://dev.gajim.org/gajim/gajim/-/wikis/help/Gajim-on-macOS) 
 
 -   :fontawesome-brands-firefox-browser:{ .lg .middle } __Web Browser__
 
@@ -135,6 +134,56 @@ Connect with family, friends, loved ones, and colleagues. Enjoy free, privacy-fr
     **Profanity** - XMPP client for enthusiasts! Works in terminal mode. Available for almost every operating system. 
 
     [:material-web: Download](https://profanity-im.github.io/)
+
+</div>
+
+![Padding](resources/img/padding.png){ width=20%}
+
+<figure markdown>
+  ![Call](resources/img/privacy.png){ width=80%}
+</figure>
+
+![Padding](resources/img/padding.png){ width=20%}
+
+## Know Before You Go
+
+<div class="grid cards" markdown>
+
+-   :material-account-cog:{ .lg .middle } __Account Management__
+
+    ---
+
+    Register for a new account, update your password, or completely remove your account with simple, straightforward steps. Removing your account will also erase all your data, ensuring your privacy is fully protected.
+
+    [:octicons-arrow-right-24: Manage](https://docs.chatrix.one/en/account/registration/)
+
+-   :octicons-question-16:{ .lg .middle } __FAQ__
+
+    ---
+
+    Find answers to 80+ common questions and get quick solutions to common issues you may encounter. Our powerful search feature makes it easy to find exactly what you're looking for.
+
+    [:octicons-arrow-right-24: Find Answers](https://docs.chatrix.one/en/faq/)
+
+</div>
+
+<div class="grid cards" markdown>
+
+-   :material-eye-off-outline:{ .lg .middle } __Privacy__
+
+    ---
+
+    As an operator of a service that represents an alternative to the available methods of Internet communication, I strive for a minimum of data and the protection of personal data.
+
+    [:octicons-arrow-right-24: Read Carefully](https://docs.chatrix.one/en/privacy/)
+    
+-   :material-file-document-check-outline:{ .lg .middle } __Terms__
+
+    ---
+
+    I recommend that you familiarize yourself with the rules that every user, moderator or administrator must follow. Chatrix.One is not responsible for the actions of registered users.
+
+    [:octicons-arrow-right-24: Read Carefully](https://docs.chatrix.one/en/terms/)
 
 </div>
 
@@ -161,37 +210,6 @@ Connect with family, friends, loved ones, and colleagues. Enjoy free, privacy-fr
 ![Padding](resources/img/padding.png){ width=20%}
 
 <figure markdown>
-  ![Call](resources/img/privacy.png){ width=80%}
-</figure>
-
-![Padding](resources/img/padding.png){ width=20%}
-
-## Know Before You Go
-
-<div class="grid cards" markdown>
-
-
--   :material-eye-off-outline:{ .lg .middle } __Privacy__
-
-    ---
-
-    As an operator of a service that represents an alternative to the available methods of Internet communication, I strive for a minimum of data and the protection of personal data.
-
-    [:octicons-arrow-right-24: Learn more](https://docs.chatrix.one/en/privacy/)
-    
-  - :material-file-document-check-outline:{ .lg .middle } __Terms__
-
-    ---
-
-    I recommend that you familiarize yourself with the rules that every user, moderator or administrator must follow. Chatrix.One is not responsible for the actions of registered users.
-
-    [:octicons-arrow-right-24: Learn more](https://docs.chatrix.one/en/terms/)
-
-</div>
-
-![Padding](resources/img/padding.png){ width=20%}
-
-<figure markdown>
   ![XMPP](resources/img/xmpp-light.png#only-dark){ width=40%}
   ![XMPP](resources/img/xmpp-dark.png#only-light){ width=40%}
 </figure>
@@ -201,7 +219,6 @@ Connect with family, friends, loved ones, and colleagues. Enjoy free, privacy-fr
 ## Status and Contacts
 
 <div class="grid cards" markdown>
-
 
 - :octicons-shield-check-16:{ .lg .middle } __Security and Compliance__
 
@@ -214,7 +231,9 @@ Connect with family, friends, loved ones, and colleagues. Enjoy free, privacy-fr
     <a href='https://providers.xmpp.net/provider/chatrix.one/'><img src='https://img.shields.io/badge/XMPP_Providers-A-4da050?logo=xmpp'></a>
     <a href='https://compliance.conversations.im/server/chatrix.one'><img src='https://compliance.conversations.im/badge/chatrix.one'></a>
 
-    [:octicons-arrow-right-24: Show more](https://docs.chatrix.one/en/status/)
+    [:octicons-arrow-right-24: Service Status](https://docs.chatrix.one/en/status/)
+
+    [:octicons-alert-16: Incident Information](https://docs.chatrix.one/en/status/#information-about-occurred-incidents)
 
 -   :fontawesome-regular-address-book:{ .lg .middle } __Contacts__
 
