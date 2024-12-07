@@ -125,7 +125,7 @@ Connect with family, friends, loved ones, and colleagues. Enjoy free, privacy-fr
 
     **ConverseJS** - In cases where you do not have the ability to install an application, but you have a web browser and Internet access. 
 
-    [:material-web: Launch](https://conversejs.org/fullscreen.html)
+    [:material-rocket-launch: Launch](https://conversejs.org/fullscreen.html)
 
 -   :fontawesome-solid-terminal:{ .lg .middle } __CLI__
 
@@ -133,7 +133,7 @@ Connect with family, friends, loved ones, and colleagues. Enjoy free, privacy-fr
 
     **Profanity** - XMPP client for enthusiasts! Works in terminal mode. Available for almost every operating system. 
 
-    [:material-web: Download](https://profanity-im.github.io/)
+    [:material-download: Download](https://profanity-im.github.io/)
 
 </div>
 
