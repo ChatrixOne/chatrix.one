@@ -125,7 +125,7 @@ hide:
 
     **ConverseJS** - В случаите, когато нямате възможност да инсталирате приложение, но разполагате с уеб браузър и достъп до Интернет. 
 
-    [:material-web: Стартирайте](https://conversejs.org/fullscreen.html)
+    [:material-rocket-launch: Стартирайте](https://conversejs.org/fullscreen.html)
 
 -   :fontawesome-solid-terminal:{ .lg .middle } __Терминал__
 
@@ -133,7 +133,7 @@ hide:
 
     **Profanity** - XMPP клиент за ентусиасти! Работи в терминален режим. Наличен за почти всички операционни системи. 
 
-    [:material-web: Свалете от уебсайта](https://profanity-im.github.io/)
+    [:material-download: Свалете от уебсайта](https://profanity-im.github.io/)
 
 </div>
 
