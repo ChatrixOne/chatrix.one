@@ -165,9 +165,13 @@ Connect with family, friends, loved ones, and colleagues. Enjoy free, privacy-fr
 
     [:octicons-arrow-right-24: Find Answers](https://docs.chatrix.one/en/faq/)
 
-</div>
+-   :octicons-arrow-switch-16:{ .lg .middle } __Alternatives__
+ 
+    ---
 
-<div class="grid cards" markdown>
+    There are tons of free XMPP servers. If you're unsure Chatrix.One is the right solution for you, this section should help you choose alternative service.
+
+    [:octicons-arrow-right-24: Find Server](https://docs.chatrix.one/en/faq/?h=lists#lists-of-free-xmpp-servers)
 
 -   :material-eye-off-outline:{ .lg .middle } __Privacy__
 
@@ -184,6 +188,14 @@ Connect with family, friends, loved ones, and colleagues. Enjoy free, privacy-fr
     I recommend that you familiarize yourself with the rules that every user, moderator or administrator must follow. Chatrix.One is not responsible for the actions of registered users.
 
     [:octicons-arrow-right-24: Read Carefully](https://docs.chatrix.one/en/terms/)
+
+-   :octicons-alert-16:{: .red .lg .middle} __Incidents__
+
+    ---
+
+    Detailed information about any incidents that have occurred. Users can review the context and impact of incidents, along with any actions taken.
+
+    [:octicons-arrow-right-24: Log](https://docs.chatrix.one/en/status/#information-about-occurred-incidents)
 
 </div>
 
@@ -232,8 +244,6 @@ Connect with family, friends, loved ones, and colleagues. Enjoy free, privacy-fr
     <a href='https://compliance.conversations.im/server/chatrix.one'><img src='https://compliance.conversations.im/badge/chatrix.one'></a>
 
     [:octicons-arrow-right-24: Service Status](https://docs.chatrix.one/en/status/)
-
-    [:octicons-alert-16:{: .red} Incident Information](https://docs.chatrix.one/en/status/#information-about-occurred-incidents)
 
 -   :fontawesome-regular-address-book:{ .lg .middle } __Contacts__
 

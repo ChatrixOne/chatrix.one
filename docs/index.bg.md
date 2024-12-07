@@ -165,9 +165,13 @@ hide:
 
     [:octicons-arrow-right-24: Открийте отговори](https://docs.chatrix.one/faq/)
 
-</div>
+-   :octicons-arrow-switch-16:{ .lg .middle } __Алтернативи__
+ 
+    ---
 
-<div class="grid cards" markdown>
+    Има много безплатни XMPP сървъри. Ако не сте сигурни, че Chatrix.One е правилното решение за Вас, този раздел трябва да ви помогне с избора на алтернативна услуга.
+
+    [:octicons-arrow-right-24: Изберете сървър](https://docs.chatrix.one/faq/?h=%D1%81%D0%BF%D0%B8%D1%81#%D1%81%D0%BF%D0%B8%D1%81%D1%8A%D1%86%D0%B8-%D1%81-%D0%B1%D0%B5%D0%B7%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D0%B8-xmpp-%D1%81%D1%8A%D1%80%D0%B2%D1%8A%D1%80%D0%B8)
 
 -   :material-eye-off-outline:{ .lg .middle } __Поверителност__
 
@@ -184,6 +188,14 @@ hide:
     Препоръчвам Ви да се запознаете с правилата, които всеки потребител, модератор или администратор е длъжен да спазва. Chatrix.One не носи отговорност за действията на регистрираните потребители.
 
     [:octicons-arrow-right-24: Прочетете внимателно](https://docs.chatrix.one/terms/)
+
+-   :octicons-alert-16:{: .red .lg .middle} __Инциденти__
+
+    ---
+
+    Подробна информация за всички възникнали инциденти." и сега генерирайте още един. Потребителите могат да прегледат контекста и въздействието на инцидентите, заедно с всички предприети действия.
+
+    [:octicons-arrow-right-24: Дневник](https://docs.chatrix.one/status/?h=%D0%B8%D0%BD%D1%86%D0%B8%D0%B4%D0%B5#%D0%B8%D0%BD%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%86%D0%B8%D1%8F-%D0%B7%D0%B0-%D0%BD%D0%B0%D1%81%D1%82%D1%8A%D0%BF%D0%B8%D0%BB%D0%B8-%D0%B8%D0%BD%D1%86%D0%B8%D0%B4%D0%B5%D0%BD%D1%82%D0%B8)
 
 </div>
 
@@ -232,8 +244,6 @@ hide:
     <a href='https://compliance.conversations.im/server/chatrix.one'><img src='https://compliance.conversations.im/badge/chatrix.one'></a>
     
     [:octicons-arrow-right-24: Статус на услугите](https://docs.chatrix.one/status/)
-
-    [:octicons-alert-16:{: .red} Информация за инциденти](https://docs.chatrix.one/status/#%D0%B8%D0%BD%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%86%D0%B8%D1%8F-%D0%B7%D0%B0-%D0%BD%D0%B0%D1%81%D1%82%D1%8A%D0%BF%D0%B8%D0%BB%D0%B8-%D0%B8%D0%BD%D1%86%D0%B8%D0%B4%D0%B5%D0%BD%D1%82%D0%B8)
 
 -   :fontawesome-regular-address-book:{ .lg .middle } __Контакти__
 
