@@ -233,7 +233,7 @@ Connect with family, friends, loved ones, and colleagues. Enjoy free, privacy-fr
 
     [:octicons-arrow-right-24: Service Status](https://docs.chatrix.one/en/status/)
 
-    [:octicons-alert-16: Incident Information](https://docs.chatrix.one/en/status/#information-about-occurred-incidents)
+    [:octicons-alert-16:{: .red} Incident Information](https://docs.chatrix.one/en/status/#information-about-occurred-incidents)
 
 -   :fontawesome-regular-address-book:{ .lg .middle } __Contacts__
 

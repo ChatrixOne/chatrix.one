@@ -233,7 +233,7 @@ hide:
     
     [:octicons-arrow-right-24: Статус на услугите](https://docs.chatrix.one/status/)
 
-    [:octicons-alert-16: Информация за инциденти](https://docs.chatrix.one/status/#%D0%B8%D0%BD%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%86%D0%B8%D1%8F-%D0%B7%D0%B0-%D0%BD%D0%B0%D1%81%D1%82%D1%8A%D0%BF%D0%B8%D0%BB%D0%B8-%D0%B8%D0%BD%D1%86%D0%B8%D0%B4%D0%B5%D0%BD%D1%82%D0%B8)
+    [:octicons-alert-16:{: .red} Информация за инциденти](https://docs.chatrix.one/status/#%D0%B8%D0%BD%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%86%D0%B8%D1%8F-%D0%B7%D0%B0-%D0%BD%D0%B0%D1%81%D1%82%D1%8A%D0%BF%D0%B8%D0%BB%D0%B8-%D0%B8%D0%BD%D1%86%D0%B8%D0%B4%D0%B5%D0%BD%D1%82%D0%B8)
 
 -   :fontawesome-regular-address-book:{ .lg .middle } __Контакти__
 
