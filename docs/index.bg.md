@@ -256,3 +256,6 @@ hide:
     :simple-github: [ChatrixOne](https://github.com/ChatrixOne)
 
 </div>
+
+[^1]: **Изображения:** Екранни снимки на мобилно приложение ([Conversations](https://conversations.im/) на [Daniel Gultsch](https://gultsch.de/)); Програма за настолен компютър ([Gajim](https://gajim.org/screenshots/) от екипа зад [Gajim](https://dev.gajim.org/gajim/gajim) project); XMPP лого ([SVGREPO](https://www.svgrepo.com/svg/443576/brand-xmpp) на [SVG Repo LLC](https://www.svgrepo.com/page/contact/)).
+

@@ -256,3 +256,5 @@ Connect with family, friends, loved ones, and colleagues. Enjoy free, privacy-fr
     :simple-github: [ChatrixOne](https://github.com/ChatrixOne)
 
 </div>
+
+[^1]: **Images:** Mobile app screenshots ([Conversations](https://conversations.im/) by [Daniel Gultsch](https://gultsch.de/)); Desktop app ([Gajim](https://gajim.org/screenshots/) by the [Gajim](https://dev.gajim.org/gajim/gajim) project); XMPP Logo ([SVGREPO](https://www.svgrepo.com/svg/443576/brand-xmpp) by [SVG Repo LLC](https://www.svgrepo.com/page/contact/)).

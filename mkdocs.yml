@@ -50,6 +50,7 @@ extra:
 markdown_extensions:
   - attr_list
   - md_in_html
+  - footnotes
   - tables
   - pymdownx.superfences
   - pymdownx.tabbed:
