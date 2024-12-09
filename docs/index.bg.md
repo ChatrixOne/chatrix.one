@@ -89,7 +89,7 @@ hide:
 
     ---
 
-    **Conversations** е Jabber/XMPP клиент за смартфони с Android 5.0+, който е оптимизиран да осигури уникално мобилно изживяване.
+    **Conversations** е Jabber/XMPP клиент за смартфони с Android 5.0+, който е оптимизиран да осигури уникално мобилно изживяване.[^1]
 
     [:simple-fdroid: Свалете от F-Droid](https://f-droid.org/packages/eu.siacs.conversations/)
     
@@ -107,7 +107,7 @@ hide:
 
     ---
 
-    **Gajim** - пълноценен десктоп клиент за комуникация. Разработва се активно. Поддържа всички нови технологии, предлагани от XMPP протокола.
+    **Gajim** - пълноценен десктоп клиент за комуникация. Разработва се активно. Поддържа всички нови технологии, предлагани от XMPP протокола.[^1]
 
     [:material-download: Свалете от уебсайта](https://gajim.org/download/)
 
@@ -257,5 +257,4 @@ hide:
 
 </div>
 
-[^1]: **Изображения:** Екранни снимки на мобилно приложение ([Conversations](https://conversations.im/) на [Daniel Gultsch](https://gultsch.de/)); Програма за настолен компютър ([Gajim](https://gajim.org/screenshots/) от екипа зад [проекта Gajim](https://dev.gajim.org/gajim/gajim)); XMPP лого ([SVGREPO](https://www.svgrepo.com/svg/443576/brand-xmpp) на [SVG Repo LLC](https://www.svgrepo.com/page/contact/)).
-
+[^1]: **Изображения:** Екранни снимки на мобилно приложение ([Conversations](https://conversations.im/)); Програма за настолен компютър ([Gajim](https://gajim.org/screenshots/)); XMPP лого ([SVGREPO](https://www.svgrepo.com/svg/443576/brand-xmpp)); Баджове ([XMPP Compliance Tester](https://compliance.conversations.im/)) и ([Shields.io](https://shields.io/)).
