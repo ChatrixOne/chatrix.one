@@ -89,7 +89,7 @@ Connect with family, friends, loved ones, and colleagues. Enjoy free, privacy-fr
 
     ---
 
-    **Conversations** is a Jabber/XMPP client for smartphones running Android 5.0+ that is optimized to provide a unique mobile experience.[^1]
+    **Conversations** is a Jabber/XMPP client for smartphones running Android 5.0+ that is optimized to provide a unique mobile experience.
 
     [:simple-fdroid: Download from F-Droid](https://f-droid.org/packages/eu.siacs.conversations/)
     
@@ -256,5 +256,3 @@ Connect with family, friends, loved ones, and colleagues. Enjoy free, privacy-fr
     :simple-github: [ChatrixOne](https://github.com/ChatrixOne)
 
 </div>
-
-[^1]: **Images:** Mobile app screenshots ([Conversations](https://conversations.im/)); Desktop app images ([Gajim](https://gajim.org/screenshots/)); XMPP Logo ([SVGREPO](https://www.svgrepo.com/svg/443576/brand-xmpp)); Badges ([XMPP Compliance Tester](https://compliance.conversations.im/)) and ([Shields.io](https://shields.io/)).

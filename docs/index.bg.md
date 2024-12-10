@@ -89,7 +89,7 @@ hide:
 
     ---
 
-    **Conversations** е Jabber/XMPP клиент за смартфони с Android 5.0+, който е оптимизиран да осигури уникално мобилно изживяване.[^1]
+    **Conversations** е Jabber/XMPP клиент за смартфони с Android 5.0+, който е оптимизиран да осигури уникално мобилно изживяване.
 
     [:simple-fdroid: Свалете от F-Droid](https://f-droid.org/packages/eu.siacs.conversations/)
     
@@ -256,5 +256,3 @@ hide:
     :simple-github: [ChatrixOne](https://github.com/ChatrixOne)
 
 </div>
-
-[^1]: **Изображения:** Екранни снимки на мобилно приложение ([Conversations](https://conversations.im/)); Програма за настолен компютър ([Gajim](https://gajim.org/screenshots/)); XMPP лого ([SVGREPO](https://www.svgrepo.com/svg/443576/brand-xmpp)); Баджове ([XMPP Compliance Tester](https://compliance.conversations.im/)) и ([Shields.io](https://shields.io/)).
