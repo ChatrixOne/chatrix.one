@@ -15,7 +15,7 @@ hide:
 
 ## Communication that simply works
 
-Connect with family, friends, loved ones, and colleagues. Enjoy free, privacy-friendly communication with no telemetry, unnecessary conditions, or compromises on security. Make high-quality voice and video calls. Register without the need to provide personal data. Compatible with various devices and operating systems. A decentralized service based in Switzerland :flag_ch:, accessible from anywhere in the world :earth_africa:.
+Connect with family, friends, loved ones, and colleagues. Enjoy free, privacy-friendly communication with no telemetry, unnecessary conditions, or compromises on security. Make high-quality voice and video calls. Register without the need to provide personal data. Compatible with various devices and operating systems. A decentralized service based in :flag_ch: Switzerland, accessible from :earth_africa: anywhere in the world.
 
 [Documentation](https://docs.chatrix.one/en){ .md-button .md-button--primary } [Learn more](http://chatrix.one/#everything-you-would-expect){ .md-button .md-button }
 
