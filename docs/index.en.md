@@ -107,7 +107,7 @@ Connect with family, friends, loved ones, and colleagues. Enjoy free, privacy-fr
 
     ---
 
-    **Gajim** - a full-fledged desktop communication client. It is actively being developed. It supports all new technologies offered by the XMPP protocol.[^1]
+    **Gajim** - a full-fledged desktop communication client. It is actively being developed. It supports all new technologies offered by the XMPP protocol.
 
     [:material-download: Download](https://gajim.org/download/)
 
