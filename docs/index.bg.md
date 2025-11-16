@@ -111,6 +111,14 @@ hide:
 
     [:material-download: Свалете от уебсайта](https://gajim.org/download/)
 
+-   :material-linux:{ .lg .middle } __Linux__
+
+    ---
+
+    **Dino** - модерен чат клиент с отворен код. Фокусът е върху предоставянето на чисто и надеждно Jabber/XMPP изживяване, а поверителността е приоритет.
+
+    [:material-download: Download](https://dino.im/#download)
+
 -   :simple-apple:{ .lg .middle } __MacOS__
 
     ---
@@ -118,14 +126,6 @@ hide:
     **Gajim** - пълноценен десктоп клиент за комуникация. Разработва се активно. Поддържа всички нови технологии, предлагани от XMPP протокола.
 
     [:fontawesome-brands-gitlab: Инструкции](https://dev.gajim.org/gajim/gajim/-/wikis/help/Gajim-on-macOS) 
-
--   :fontawesome-brands-firefox-browser:{ .lg .middle } __Уеб браузър__
-
-    ---
-
-    **ConverseJS** - В случаите, когато нямате възможност да инсталирате приложение, но разполагате с уеб браузър и достъп до Интернет. 
-
-    [:material-rocket-launch: Стартирайте](https://conversejs.org/fullscreen.html)
 
 -   :fontawesome-solid-terminal:{ .lg .middle } __Терминал__
 

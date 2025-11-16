@@ -111,6 +111,14 @@ Connect with family, friends, loved ones, and colleagues. Enjoy free, privacy-fr
 
     [:material-download: Download](https://gajim.org/download/)
 
+-   :material-linux:{ .lg .middle } __Linux__
+
+    ---
+
+    **Dino** - a modern open-source chat client for the desktop. It focuses on providing a clean and reliable Jabber/XMPP experience while having your privacy in mind. 
+
+    [:material-download: Download](https://dino.im/#download)
+
 -   :simple-apple:{ .lg .middle } __MacOS__
 
     ---
@@ -118,14 +126,6 @@ Connect with family, friends, loved ones, and colleagues. Enjoy free, privacy-fr
     **Gajim** - a full-fledged desktop communication client. It is actively being developed. It supports all new technologies offered by the XMPP protocol.
 
     [:fontawesome-brands-gitlab: Instructions](https://dev.gajim.org/gajim/gajim/-/wikis/help/Gajim-on-macOS) 
-
--   :fontawesome-brands-firefox-browser:{ .lg .middle } __Web Browser__
-
-    ---
-
-    **ConverseJS** - In cases where you do not have the ability to install an application, but you have a web browser and Internet access. 
-
-    [:material-rocket-launch: Launch](https://conversejs.org/fullscreen.html)
 
 -   :fontawesome-solid-terminal:{ .lg .middle } __CLI__
 
