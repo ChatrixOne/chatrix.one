@@ -123,9 +123,9 @@ Connect with family, friends, loved ones, and colleagues. Enjoy free, privacy-fr
 
     ---
 
-    **Gajim** - a full-fledged desktop communication client. It is actively being developed. It supports all new technologies offered by the XMPP protocol.
+    **Monal** - Privacy like in 1999. Preferred client for the platform, just like the Conversations IM APP is for the Android ecosystem.
 
-    [:fontawesome-brands-gitlab: Instructions](https://dev.gajim.org/gajim/gajim/-/wikis/help/Gajim-on-macOS) 
+    [:fontawesome-brands-app-store-ios: Download from App Store](https://apps.apple.com/us/app/monal-xmpp-chatting/id1637078500?mt=12)
 
 -   :fontawesome-solid-terminal:{ .lg .middle } __CLI__
 

@@ -123,9 +123,9 @@ hide:
 
     ---
 
-    **Gajim** - пълноценен десктоп клиент за комуникация. Разработва се активно. Поддържа всички нови технологии, предлагани от XMPP протокола.
+    **Monal** - Поверителност като през 1999г. Предпочитан клиент за платформита, точно както приложението Conversations IM е за Android.
 
-    [:fontawesome-brands-gitlab: Инструкции](https://dev.gajim.org/gajim/gajim/-/wikis/help/Gajim-on-macOS) 
+    [:fontawesome-brands-app-store-ios: Свалете от App Store](https://apps.apple.com/us/app/monal-xmpp-chatting/id1637078500?mt=12)
 
 -   :fontawesome-solid-terminal:{ .lg .middle } __Терминал__
 
