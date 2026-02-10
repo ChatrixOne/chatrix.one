@@ -257,3 +257,7 @@ Connect with family, friends, loved ones, and colleagues. Enjoy free, privacy-fr
     :simple-github: [ChatrixOne](https://github.com/ChatrixOne)
 
 </div>
+
+!!! quote ""
+
+    **As of February 1, 2026, the only way to register a profile on Chatrix.One is by invitation. There are two available options: via a URL link or by scanning a QR code. This measure has been introduced to eliminate automated (bot) registrations that negatively affect the platform’s quality and user experience. To obtain an invitation, please contact an administrator.**
