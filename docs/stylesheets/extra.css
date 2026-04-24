@@ -16,3 +16,23 @@
     color: hsl(0, 100%, 50%);
   }
   
+  /* Hero logo - full width for desktop and fixed for mobile devices */
+.hero-logo {
+    display: block;
+    margin: 0 auto;
+}
+
+/* Mobile devices */
+@media only screen and (max-width: 767px) {
+    .hero-logo {
+        width: 300px; /* Нагласи според нуждите */
+    }
+}
+
+/* Desktop */
+@media only screen and (min-width: 768px) {
+    .hero-logo {
+        width: 100%;
+        max-width: 100%;
+    }
+}

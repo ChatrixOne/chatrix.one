@@ -6,9 +6,9 @@ hide:
 
 #
 
-<figure markdown>
-  ![Chatrix.One Logo](resources/img/chatrix.one-dark.png#only-dark){ width=85% }
-  ![Chatrix.One Logo](resources/img/chatrix.one-light.png#only-light){ width=85% }
+<figure markdown="span">
+  ![Chatrix.One Logo](resources/img/chatrix.one-dark.png#only-dark){ .hero-logo }
+  ![Chatrix.One Logo](resources/img/chatrix.one-light.png#only-light){ .hero-logo }
 </figure>
 
 ![Padding](resources/img/padding.png){ width=60%}
