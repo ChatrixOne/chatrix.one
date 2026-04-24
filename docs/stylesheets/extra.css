@@ -1,3 +1,4 @@
+/* Hide the default header logo on screen */
 @media screen {
     .md-header__button.md-logo {
       display: block;
@@ -8,31 +9,67 @@
     }
 }
 
+/* Green text color for status indicators */
 .green {
     color: hsl(121, 79%, 53%);
-  }
+}
 
-  .red {
+/* Red text color for status indicators */
+.red {
     color: hsl(0, 100%, 50%);
-  }
-  
-  /* Hero logo - full width for desktop and fixed for mobile devices */
-.hero-logo {
-    display: block;
-    margin: 0 auto;
 }
 
-/* Mobile devices */
-@media only screen and (max-width: 767px) {
-    .hero-logo {
-        width: 300px; /* Нагласи според нуждите */
-    }
-}
-
-/* Desktop */
+/* Desktop: Keep the original logo size at 80% width */
 @media only screen and (min-width: 768px) {
     .hero-logo {
-        width: 100%;
-        max-width: 100%;
+        width: 80%;
+        max-width: 85%;
     }
+}
+
+/* Mobile: Full-width centered logo that fills the entire screen */
+@media only screen and (max-width: 767px) {
+    .hero-logo {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 auto !important;
+        display: block !important;
+        float: none !important;
+    }
+    
+    /* Override Material for MkDocs figure margins to allow full-width display */
+    .md-typeset figure:has(.hero-logo) {
+        margin: 0 auto !important;
+        padding: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        left: 0 !important;
+        right: 0 !important;
+        float: none !important;
+    }
+    
+    /* Reset any left/right offsets on all figure elements */
+    .md-typeset figure {
+        margin-left: auto !important;
+        margin-right: auto !important;
+        left: auto !important;
+    }
+    
+    /* Remove content padding to allow edge-to-edge display */
+    .md-content__inner {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+}
+
+/* Hide dark logo version when using light theme */
+[data-md-color-scheme="default"] img[src$="#only-dark"],
+[data-md-color-scheme="default"] img[src*="#only-dark"] {
+    display: none !important;
+}
+
+/* Hide light logo version when using dark theme */
+[data-md-color-scheme="slate"] img[src$="#only-light"],
+[data-md-color-scheme="slate"] img[src*="#only-light"] {
+    display: none !important;
 }

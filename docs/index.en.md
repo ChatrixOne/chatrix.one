@@ -6,9 +6,21 @@ hide:
 
 #
 
-<figure markdown="span">
-  ![Chatrix.One Logo](resources/img/chatrix.one-dark.png#only-dark){ .hero-logo }
-  ![Chatrix.One Logo](resources/img/chatrix.one-light.png#only-light){ .hero-logo }
+<style>
+@media only screen and (max-width: 767px) {
+    .hero-logo-mobile {
+        width: 100vw !important;
+        max-width: 100vw !important;
+        margin-left: calc(-50vw + 50%) !important;
+        margin-right: calc(-50vw + 50%) !important;
+        display: block !important;
+    }
+}
+</style>
+
+<figure markdown>
+  ![Chatrix.One Logo](resources/img/chatrix.one-dark.png#only-dark){ width=85% .hero-logo-mobile }
+  ![Chatrix.One Logo](resources/img/chatrix.one-light.png#only-light){ width=85% .hero-logo-mobile }
 </figure>
 
 ![Padding](resources/img/padding.png){ width=60%}
