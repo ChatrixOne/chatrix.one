@@ -29,7 +29,7 @@ hide:
 
 Connect with family, friends, loved ones, and colleagues. Enjoy free, privacy-friendly communication with no telemetry, unnecessary conditions, or compromises on security. Make high-quality voice and video calls. Register without the need to provide personal data. Compatible with various devices and operating systems. A decentralized service based in :flag_ch: Switzerland, accessible from :earth_africa: anywhere in the world.
 
-[Documentation](https://docs.chatrix.one/en){ .md-button .md-button--primary } [Learn more](http://chatrix.one/#everything-you-would-expect){ .md-button .md-button }
+[Documentation](https://docs.chatrix.one/en){ .md-button .md-button--primary } [Join](http://chatrix.one/join){ .md-button .md-button }
 
 ![Padding](resources/img/padding.png){ width=20%}
 
@@ -269,7 +269,3 @@ Connect with family, friends, loved ones, and colleagues. Enjoy free, privacy-fr
     :simple-github: [ChatrixOne](https://github.com/ChatrixOne)
 
 </div>
-
-!!! quote ""
-
-    **As of February 1, 2026, the only way to register a profile on Chatrix.One is by invitation. There are two available options: via a URL link or by scanning a QR code. This measure has been introduced to eliminate automated (bot) registrations that negatively affect the platform’s quality and user experience. To obtain an invitation, please contact an administrator.**
