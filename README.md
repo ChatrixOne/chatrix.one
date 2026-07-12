@@ -1,9 +1,11 @@
 # Chatrix.One - Website
 
-![chatrix one-github-dark](https://github.com/user-attachments/assets/38cb7b1c-8884-4dee-b4de-888599228a63#gh-light-mode-only)
-![chatrix one-github-lightdark](https://github.com/user-attachments/assets/5930b8f5-9292-4125-9cc1-7e5396167281#gh-dark-mode-only)
+<p align="center">
+  <img alt="Chatrix One - Logo Dark Theme" src="https://github.com/user-attachments/assets/42da2af2-9485-435c-95a9-cda7fd61a3b8#gh-light-mode-only" alt="Logo" width="25%">
+  <img alt="Chatrix One - Logo Light Theme" src="https://github.com/user-attachments/assets/7fb89f3a-b5a3-4538-b854-ec2cd6368821#gh-dark-mode-only" alt="Logo" width="25%"">
+</p>
 
-Website For [**Chatrix.One**](https://chatrix.one) - *Keep the Chatting, Skip the Tracking!*
+Website For [**Chatrix.One**](https://chatrix.one) - *Free Private XMPP Chat Server*
 
 ### 🌐 Supported Languages
 
