@@ -21,7 +21,7 @@ jobs:
     env:
       HUGO_VERSION: 0.167.0
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Install Hugo
         run: |
