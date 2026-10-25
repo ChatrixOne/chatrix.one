@@ -2710,3 +2710,74 @@
   left: 1px;
   box-shadow: var(--shadow-sm);
 }
+
+/* =====================================================================
+   404 PAGE
+   ===================================================================== */
+.err404 {
+  padding: 140px 0 110px;
+  min-height: 70vh;
+}
+.err404-dot { background: #e5484d; }
+.err404-title {
+  font-size: clamp(36px, 6vw, 64px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: 20px;
+}
+.err404-lede {
+  max-width: 560px;
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  margin-bottom: 40px;
+}
+.err404-chat {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 560px;
+  margin-bottom: 44px;
+}
+.err404-msg {
+  padding: 14px 18px;
+  border-radius: 18px;
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-sm);
+  max-width: 90%;
+}
+.err404-out {
+  align-self: flex-end;
+  border-bottom-right-radius: 6px;
+  background: var(--accent-soft);
+}
+.err404-in {
+  align-self: flex-start;
+  border-bottom-left-radius: 6px;
+}
+.err404-who {
+  display: block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  margin-bottom: 6px;
+}
+.err404-msg p { margin: 0 0 8px; color: var(--ink); }
+.err404-msg code {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 13px;
+  color: var(--ink-soft);
+  word-break: break-all;
+}
+.err404-in code { color: #e5484d; }
+.err404-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 28px;
+}
+.err404-hint { color: var(--ink-mute); font-size: 15px; }
+.err404-hint a { color: var(--accent); text-decoration: underline; }

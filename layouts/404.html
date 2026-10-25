@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="{{ .Lang }}">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>{{ i18n "err_title" }}</title>
+<meta name="robots" content="noindex" />
+<link rel="stylesheet" href="{{ "fonts.css" | relURL }}">
+<link rel="icon" type="image/svg+xml" href="{{ "favicon-light.svg" | relURL }}" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/svg+xml" href="{{ "favicon-dark.svg" | relURL }}" media="(prefers-color-scheme: dark)">
+<link rel="apple-touch-icon" href="{{ "favicon-light.svg" | relURL }}">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#f0f4f8">
+<meta name="theme-color" media="(prefers-color-scheme: dark)"  content="#0a0e14">
+<link rel="stylesheet" href="{{ "styles.css" | relURL }}">
+</head>
+<body>
+
+{{ partial "nav.html" . }}
+
+<!-- 404 -->
+<section class="err404">
+  <div class="container">
+    <div class="eyebrow">
+      <span class="eyebrow-dot err404-dot"></span>
+      <span>{{ i18n "err_eyebrow" }}</span>
+    </div>
+
+    <h1 class="err404-title">{{ i18n "err_heading" }}</h1>
+    <p class="err404-lede">{{ i18n "err_lede" }}</p>
+
+    <div class="err404-chat" aria-hidden="true">
+      <div class="err404-msg err404-out">
+        <span class="err404-who">{{ i18n "err_you" }}</span>
+        <code>chatrix.one<span id="err404Path"></span></code>
+      </div>
+      <div class="err404-msg err404-in">
+        <span class="err404-who">chatrix.one</span>
+        <p>{{ i18n "err_reply" }}</p>
+        <code>&lt;error type="cancel"&gt;&lt;item-not-found/&gt;&lt;/error&gt;</code>
+      </div>
+    </div>
+
+    <div class="err404-cta">
+      <a href="{{ "/" | relLangURL }}" class="btn btn-primary">{{ i18n "err_home" }}</a>
+      <a href="{{ if eq .Lang "bg" }}https://docs.chatrix.one/{{ else }}https://docs.chatrix.one/en/{{ end }}" class="btn btn-secondary" rel="noopener noreferrer">{{ i18n "err_docs" }}</a>
+    </div>
+
+    <p class="err404-hint">
+      {{ i18n "err_hint" }}
+      <a href="{{ if eq .Lang "bg" }}https://docs.chatrix.one/status/{{ else }}https://docs.chatrix.one/en/status/{{ end }}" rel="noopener noreferrer">{{ i18n "err_hint_status" }}</a>
+    </p>
+  </div>
+</section>
+
+{{ partial "footer.html" . }}
+
+<script src="{{ "app.js" | relURL }}"></script>
+<script src="{{ "err404.js" | relURL }}"></script>
+</body>
+</html>

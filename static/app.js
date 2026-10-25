@@ -395,6 +395,7 @@
     clearInput();
 
     const body = document.getElementById('chatBody');
+    if (!body) return;  // pages without the chat demo (404)
     body.innerHTML = '';
     const script = makeChatScripts()[currentLang];
 
