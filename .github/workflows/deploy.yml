@@ -1,0 +1,53 @@
+# Builds the site on every push to main and publishes the output to the
+# "site" branch. chatrix.one pulls that branch every few minutes, so a failed
+# build or check never reaches the server.
+name: build
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: site
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      HUGO_VERSION: 0.167.0
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Hugo
+        run: |
+          base="https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}"
+          tgz="hugo_${HUGO_VERSION}_linux-amd64.tar.gz"
+          curl -fsSLO "${base}/${tgz}"
+          curl -fsSL "${base}/hugo_${HUGO_VERSION}_checksums.txt" | grep " ${tgz}\$" | sha256sum -c -
+          tar -xzf "$tgz" hugo
+          sudo install -m 755 hugo /usr/local/bin/hugo
+
+      - name: Build
+        env:
+          TZ: Europe/Sofia
+        run: hugo --minify --baseURL https://chatrix.one/
+
+      - name: Check the output
+        run: bash deploy/check-public.sh public
+
+      - name: Publish to the site branch
+        env:
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          cd public
+          git init -q -b site
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -q -m "Build of ${GITHUB_SHA::7}"
+          git push -q -f "https://x-access-token:${TOKEN}@github.com/${GITHUB_REPOSITORY}.git" site

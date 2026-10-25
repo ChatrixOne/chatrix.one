@@ -1,0 +1,15 @@
+[Unit]
+Description=Sync chatrix.one website from GitHub
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/chatrix-site-sync
+Environment=HOME=/var/lib/chatrix-site
+StateDirectory=chatrix-site
+ProtectSystem=strict
+ReadWritePaths=/var/www/chatrix.one/site
+ProtectHome=yes
+PrivateTmp=yes
+NoNewPrivileges=yes

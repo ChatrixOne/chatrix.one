@@ -1,0 +1,98 @@
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand-col">
+        <a href="{{ "/" | relLangURL }}" class="brand">
+          <span class="brand-mark" aria-hidden="true">
+            <svg width="35" height="35" viewBox="220 250 1080 1090" fill="none" xmlns="http://www.w3.org/2000/svg" style="overflow:visible">
+              <path d="M755.205 336.672C755.205 286.966 714.641 245.914 665.612 254.088C589.733 266.739 517.042 295.376 452.515 338.492C362.918 398.358 293.086 483.449 251.85 583.003C210.613 682.557 199.823 792.104 220.846 897.79C241.868 1003.48 293.758 1100.56 369.953 1176.75C446.149 1252.95 543.228 1304.84 648.914 1325.86C754.6 1346.88 864.147 1336.09 963.701 1294.86C1063.26 1253.62 1148.35 1183.79 1208.21 1094.19C1251.33 1029.66 1279.97 956.972 1292.62 881.092C1300.79 832.063 1259.74 791.5 1210.03 791.5H1090.38C1040.67 791.5 1001.88 833.099 984.043 879.493C977.559 896.356 969.198 912.535 959.058 927.71C932.118 968.029 893.828 999.453 849.028 1018.01C804.229 1036.57 754.933 1041.42 707.374 1031.96C659.815 1022.5 616.13 999.151 581.842 964.863C547.554 930.575 524.203 886.889 514.743 839.331C505.283 791.772 510.138 742.476 528.695 697.676C547.251 652.877 578.676 614.586 618.994 587.646C634.17 577.506 650.349 569.146 667.211 562.662C713.605 544.823 755.205 506.033 755.205 456.327V336.672Z" fill="var(--accent)"/>
+              <circle cx="1011.86" cy="516.054" r="175" fill="var(--accent)"/>
+            </svg>
+          </span>
+          <span>chatrix<span class="brand-dot">.</span>one</span>
+        </a>
+        <p class="footer-tagline">{{ i18n "foot_tag_pre" }}<svg class="footer-heart" aria-label="love" width="13" height="13" viewBox="0 0 24 24" fill="#00a87a" xmlns="http://www.w3.org/2000/svg"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>{{ if eq .Lang "bg" }} в <a href="https://bg.wikipedia.org/wiki/София" class="footer-city" rel="noopener noreferrer" target="_blank">София</a>. Хоствана в Швейцария.{{ else }} in <a href="https://en.wikipedia.org/wiki/Sofia" class="footer-city" rel="noopener noreferrer" target="_blank">Sofia</a>. Hosted in Switzerland.{{ end }}</p>
+        <div class="footer-badges">
+          <span class="footer-badge">DNSSEC · A</span>
+          <span class="footer-badge">CRYPT · A+</span>
+          <span class="footer-badge">XMPP · A</span>
+          <span class="footer-badge">100% COMPLIANT</span>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>{{ i18n "foot_product" }}</h4>
+        <ul>
+          <li><a href="{{ "/" | relLangURL }}#features">{{ i18n "nav_features" }}</a></li>
+          <li><a href="{{ "/" | relLangURL }}#downloads">{{ i18n "nav_download" }}</a></li>
+          <li><a href="{{ if eq .Lang "bg" }}https://blog.chatrix.one{{ else }}https://blog.chatrix.one/en/{{ end }}" rel="noopener noreferrer">{{ i18n "nav_blog" }}</a></li>
+          <li><a href="{{ if eq .Lang "bg" }}https://docs.chatrix.one/status/{{ else }}https://docs.chatrix.one/en/status/{{ end }}" rel="noopener noreferrer">{{ i18n "foot_status" }}</a></li>
+          <li><a href="{{ if eq .Lang "bg" }}https://docs.chatrix.one/{{ else }}https://docs.chatrix.one/en/{{ end }}" rel="noopener noreferrer">{{ i18n "nav_docs" }}</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>{{ i18n "foot_legal" }}</h4>
+        <ul>
+          <li><a href="{{ if eq .Lang "bg" }}https://docs.chatrix.one/privacy/{{ else }}https://docs.chatrix.one/en/privacy/{{ end }}" rel="noopener noreferrer">{{ i18n "nav_privacy" }}</a></li>
+          <li><a href="{{ if eq .Lang "bg" }}https://docs.chatrix.one/terms/{{ else }}https://docs.chatrix.one/en/terms/{{ end }}" rel="noopener noreferrer">{{ i18n "foot_terms" }}</a></li>
+          <li><a href="{{ if eq .Lang "bg" }}https://docs.chatrix.one/faq/{{ else }}https://docs.chatrix.one/en/faq/{{ end }}" rel="noopener noreferrer">{{ i18n "foot_faq" }}</a></li>
+        </ul>
+      </div>
+      <div class="footer-col footer-col-contact">
+        <h4>{{ i18n "foot_contact" }}</h4>
+        <ul>
+          <li class="contact-item">
+            <span class="contact-icon xmpp-icon" aria-hidden="true">
+              <img class="xmpp-icon-dark"  src="/images/xmpp-dark.png"  alt="" width="14" height="14">
+              <img class="xmpp-icon-light" src="/images/xmpp-light.png" alt="" width="14" height="14">
+            </span>
+            <span class="obf-email" data-u="admin" data-d="chatrix.one" data-s="xmpp" aria-label="XMPP contact"></span>
+          </li>
+          <li class="contact-item">
+            <svg class="contact-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <span class="obf-email" data-u="admin" data-d="chatrix.one" data-s="mailto" aria-label="Email contact"></span>
+          </li>
+          <li class="contact-item">
+            <svg class="contact-icon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.604-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836a9.59 9.59 0 012.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.744 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+            <a href="https://github.com/ChatrixOne" rel="noopener noreferrer">GitHub</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy-text">
+        <span class="footer-year">© 2018–{{ now.Year }} Chatrix.One · </span>{{ if eq .Lang "bg" }}<a href="https://www.cookieserve.com/scan-summary/?url=chatrix.one" class="footer-city" rel="noopener noreferrer" target="_blank">Без бисквитки</a>, без проследяване · Направено с {{ else }}<a href="https://www.cookieserve.com/scan-summary/?url=chatrix.one" class="footer-city" rel="noopener noreferrer" target="_blank">No cookies</a>, no tracking · Made with {{ end }}<svg class="footer-heart" aria-label="love" width="14" height="14" viewBox="0 0 24 24" fill="#00a87a" xmlns="http://www.w3.org/2000/svg"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>{{ i18n "foot_copy_post" }}
+      </span>
+      <div class="xmr-donate-wrap">
+        <span class="xmr-donate-trigger" id="xmrTrigger" tabindex="0" role="button" aria-label="{{ if eq .Lang "bg" }}Дарение с Monero{{ else }}Donate with Monero{{ end }}">
+{{ if eq .Lang "bg" }}Дарение с Monero{{ else }}Donate with Monero{{ end }}
+        </span>
+        <div class="xmr-donate-popup" id="xmrPopup" aria-hidden="true">
+          <div class="xmr-popup-inner">
+            <div class="xmr-popup-top-line"></div>
+            <div class="xmr-qr-wrap">
+              <img src="/images/xmr-qr.png" alt="Monero QR code" width="180" height="180" loading="lazy">
+            </div>
+            <div class="xmr-popup-label">{{ if eq .Lang "bg" }}Monero (XMR){{ else }}Monero (XMR){{ end }}</div>
+            <div class="xmr-popup-note">{{ if eq .Lang "bg" }}Анонимно. Без комисиона. Без трета страна.{{ else }}Anonymous. No fees. No third party.{{ end }}</div>
+            <div class="xmr-address-wrap">
+              <code class="xmr-address" id="xmrAddress">49r9YTbTKNP1ekK8EffAhvVCxEGo9dZqDYtGccGLS1GZNYsK1Wy2AQxB7k1gGhRNuHTTsAf9A8gWYej9ConhkteA72fSmJD</code>
+              <button type="button" class="xmr-copy-btn" id="xmrCopy" aria-label="{{ if eq .Lang "bg" }}Копирай адреса{{ else }}Copy address{{ end }}">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                <span id="xmrCopyLabel">{{ if eq .Lang "bg" }}Копирай{{ else }}Copy{{ end }}</span>
+              </button>
+            </div>
+          </div>
+          <div class="xmr-popup-arrow"></div>
+        </div>
+      </div>
+      <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px;">v3.0 · 2026 · {{ if eq .Lang "bg" }}Обновено: {{ else }}Updated: {{ end }}{{ now.Format "Jan 02, 2006" }}</span>
+    </div>
+  </div>
+</footer>
+
+<!-- SCROLL TO TOP -->
+<button type="button" class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M12 19V5M5 12l7-7 7 7"/>
+  </svg>
+</button>

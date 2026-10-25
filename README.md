@@ -1,17 +1,47 @@
 # Chatrix.One - Website
 
-<p align="center">
-  <img alt="Chatrix One - Logo Dark Theme" src="https://github.com/user-attachments/assets/42da2af2-9485-435c-95a9-cda7fd61a3b8#gh-light-mode-only" alt="Logo" width="25%">
-  <img alt="Chatrix One - Logo Light Theme" src="https://github.com/user-attachments/assets/7fb89f3a-b5a3-4538-b854-ec2cd6368821#gh-dark-mode-only" alt="Logo" width="25%"">
-</p>
+Hugo source of https://chatrix.one (English and Bulgarian).
 
-Website For [**Chatrix.One**](https://chatrix.one) - *Free Private XMPP Chat Server*
+## Edit and preview
 
-### 🌐 Supported Languages
+```
+hugo server
+```
+Then open http://localhost:1313. This preview is for your PC only: its
+output contains a livereload script and localhost links, so never upload it.
 
-- 🇬🇧 English
-- 🇧🇬 Bulgarian 
+| What you want to change | File to open |
+|-------------------------|-------------|
+| English page text (headlines, features, downloads) | `content/en/_index.md` |
+| Bulgarian page text | `content/bg/_index.md` |
+| English nav, footer, labels | `i18n/en.toml` |
+| Bulgarian nav, footer, labels | `i18n/bg.toml` |
+| Colors, fonts, spacing | `static/styles.css` |
+| Page structure | `layouts/` |
+| Site settings | `config/_default/hugo.toml` |
 
-### 🪄 Built With
+## Publishing
 
-[![Built with Material for MkDocs](https://img.shields.io/badge/Material_for_MkDocs-526CFE?style=for-the-badge&logo=MaterialForMkDocs&logoColor=white)](https://squidfunk.github.io/mkdocs-material/)
+Push to `main`. That's all.
+
+1. GitHub Actions (`.github/workflows/deploy.yml`) builds the site with
+   `hugo --minify` and checks it (`deploy/check-public.sh`).
+2. If the check passes, the output is pushed to the `site` branch.
+3. chatrix.one checks the `site` branch every 5 minutes and copies what
+   changed into `/var/www/chatrix.one/site/` (`deploy/chatrix-site-sync`).
+
+A failed build never reaches the server. Don't edit files on the server:
+the next push overwrites them. Folders the build doesn't have (`rules/`,
+`.well-known/`, `webchat/` and others made by the server) are never touched.
+
+## Server setup (once, on chatrix.one, as root)
+
+```
+install -m 755 deploy/chatrix-site-sync /usr/local/sbin/
+install -m 644 deploy/chatrix-site-sync.service deploy/chatrix-site-sync.timer /etc/systemd/system/
+systemctl daemon-reload
+chatrix-site-sync --dry-run
+systemctl enable --now chatrix-site-sync.timer
+```
+
+Log: `journalctl -u chatrix-site-sync`. Sync now: `systemctl start chatrix-site-sync`.

@@ -1,2 +1,0 @@
-mkdocs-static-i18n
-pymdown-extensions

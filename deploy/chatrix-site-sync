@@ -1,0 +1,60 @@
+#!/bin/bash
+# Installed on chatrix.one as /usr/local/sbin/chatrix-site-sync, run by
+# chatrix-site-sync.timer. Fetches the built site from the "site" branch and
+# copies it into the web root. Nothing from the repo is ever executed here.
+#
+#   chatrix-site-sync --dry-run   show what would change, change nothing
+#   chatrix-site-sync --force     sync even if this commit was synced before
+set -euo pipefail
+
+REPO_URL=${REPO_URL:-https://github.com/ChatrixOne/chatrix.one.git}
+BRANCH=${BRANCH:-site}
+STATE_DIR=${STATE_DIR:-/var/lib/chatrix-site}
+WEB_ROOT=${WEB_ROOT:-/var/www/chatrix.one/site}
+WEB_OWNER=${WEB_OWNER:-nginx:nginx}
+
+work="${STATE_DIR}/repo"
+stamp="${STATE_DIR}/deployed"
+dry="" force=""
+case "${1:-}" in
+    --dry-run) dry="--dry-run" ;;
+    --force)   force=1 ;;
+    "") ;;
+    *) echo "usage: $0 [--dry-run|--force]" >&2; exit 2 ;;
+esac
+
+[[ -d "$WEB_ROOT" ]] || { echo "web root ${WEB_ROOT} not found" >&2; exit 1; }
+if [[ ! -d "${work}/.git" ]]; then
+    git clone -q --depth 1 --single-branch --branch "$BRANCH" "$REPO_URL" "$work"
+fi
+git -C "$work" fetch -q --depth 1 origin "$BRANCH"
+new=$(git -C "$work" rev-parse FETCH_HEAD)
+old=$(cat "$stamp" 2>/dev/null || true)
+[[ "$new" == "$old" && -z "$dry" && -z "$force" ]] && exit 0
+
+git -C "$work" reset -q --hard FETCH_HEAD
+git -C "$work" clean -q -fdx
+
+# Same checks as the build, repeated here so a bad branch can't be synced
+# even if the workflow was changed.
+for f in index.html bg/index.html sitemap.xml styles.css app.js; do
+    [[ -s "${work}/${f}" ]] || { echo "refusing ${new:0:7}: ${f} missing" >&2; exit 1; }
+done
+if grep -rqE --exclude-dir=.git 'livereload|localhost:1313' "$work"; then
+    echo "refusing ${new:0:7}: dev-server leftovers in the build" >&2
+    exit 1
+fi
+
+# No -t: unchanged files keep their date (Last-Modified); checkout dates
+# would otherwise touch every file. "P /*" keeps every top-level entry that
+# isn't in the build (rules/, about/, .well-known/, the admin docs folder,
+# webchat/, ...): only files inside the build's own folders are ever deleted.
+rsync -rlpog --checksum --delete $dry --itemize-changes \
+    --exclude=/.git --filter='P /*' \
+    --chown="$WEB_OWNER" --chmod=D755,F644 \
+    "${work}/" "${WEB_ROOT}/"
+
+if [[ -z "$dry" ]]; then
+    echo "$new" > "$stamp"
+    echo "synced ${new:0:7}: $(git -C "$work" log -1 --format=%s)"
+fi

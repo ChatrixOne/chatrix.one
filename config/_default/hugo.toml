@@ -1,0 +1,30 @@
+baseURL = "https://chatrix.one/"
+title   = "Chatrix.One"
+
+defaultContentLanguage         = "en"
+defaultContentLanguageInSubdir = false
+enableMissingTranslationPlaceholders = true
+
+[languages]
+  [languages.en]
+    label = "English"
+    locale       = "en-us"
+    weight       = 1
+    contentDir   = "content/en"
+  [languages.bg]
+    label = "Български"
+    weight       = 2
+    contentDir   = "content/bg"
+
+[pagination]
+  pagerSize = 6
+
+# Empty taxonomies table — tells Hugo not to generate any
+# taxonomy or term pages at all. Tags in front matter still
+# display fine; Hugo just won't build /tags/xmpp/ pages.
+[taxonomies]
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
