@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ .Lang }}">
+<html lang="{{ .Lang }}" data-theme="dark">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -9,9 +9,9 @@
 <link rel="icon" type="image/svg+xml" href="{{ "favicon-light.svg" | relURL }}" media="(prefers-color-scheme: light)">
 <link rel="icon" type="image/svg+xml" href="{{ "favicon-dark.svg" | relURL }}" media="(prefers-color-scheme: dark)">
 <link rel="apple-touch-icon" href="{{ "favicon-light.svg" | relURL }}">
-<meta name="theme-color" media="(prefers-color-scheme: light)" content="#f0f4f8">
-<meta name="theme-color" media="(prefers-color-scheme: dark)"  content="#0a0e14">
+<meta name="theme-color" content="#0a0e14">
 <link rel="stylesheet" href="{{ "styles.css" | relURL }}">
+<script src="{{ "theme-init.js" | relURL }}"></script>
 </head>
 <body>
 
@@ -41,7 +41,7 @@
       <p class="hero-lede">{{ i18n "hero_lede" }}</p>
 
       <div class="hero-cta">
-        <a href="http://chatrix.one/join" class="btn btn-primary" rel="noopener noreferrer">
+        <a href="https://chatrix.one/join" class="btn btn-primary" rel="noopener noreferrer">
           <span>{{ i18n "hero_cta1" }}</span>
           <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
         </a>

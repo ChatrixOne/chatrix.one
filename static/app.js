@@ -399,6 +399,12 @@
     body.innerHTML = '';
     const script = makeChatScripts()[currentLang];
 
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      script.filter(step => !step.typing).forEach(step => body.appendChild(buildMessage(step)));
+      scrollChat(body);
+      return;
+    }
+
     const tokenAtStart = Symbol('run');
     runChatScript._currentToken = tokenAtStart;
 
@@ -707,9 +713,8 @@ function stopRingTone() {
 
   var THEME_KEY = 'chatrix:theme';
   var ROOT      = document.documentElement;
-  var mql = typeof window.matchMedia === 'function'
-              ? window.matchMedia('(prefers-color-scheme: dark)')
-              : null;
+  var REDUCE_MOTION = typeof window.matchMedia === 'function' &&
+                      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* ── helpers ─────────────────────────────────────────────── */
   function getStored() {
@@ -720,17 +725,19 @@ function stopRingTone() {
     try { if (v === 'light' || v === 'dark') localStorage.setItem(THEME_KEY, v); }
     catch (_) {}
   }
-  function systemDark() { return mql ? mql.matches : false; }
 
   /* ── apply theme ──────────────────────────────────────────── */
   function applyTheme(theme, persist) {
     ROOT.setAttribute('data-theme', theme);
     var btn = document.getElementById('themeToggle');
     if (btn) btn.setAttribute('aria-pressed', theme === 'dark' ? 'true' : 'false');
+    var meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.setAttribute('content', theme === 'dark' ? '#0a0e14' : '#f0f4f8');
     if (persist) setStored(theme);
   }
 
   /* ── init theme ───────────────────────────────────────────── */
+  /* Dark by default whatever the OS prefers; light only when chosen. */
   function initTheme() {
     var stored = getStored();
     applyTheme(stored || 'dark', false);
@@ -740,12 +747,6 @@ function stopRingTone() {
       btn.addEventListener('click', function () {
         var next = ROOT.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
         applyTheme(next, true);
-      });
-    }
-
-    if (mql && typeof mql.addEventListener === 'function') {
-      mql.addEventListener('change', function (e) {
-        if (!getStored()) applyTheme(e.matches ? 'dark' : 'light', false);
       });
     }
   }
@@ -1085,12 +1086,30 @@ function stopRingTone() {
         ctx.fill();
       }
       ctx.globalAlpha = 1;
-      requestAnimationFrame(draw);
+      if (running) requestAnimationFrame(draw);
     }
 
+    var running = false;
     init();
-    draw();
+    if (REDUCE_MOTION) {
+      draw();
+      window.addEventListener('resize', function () { init(); draw(); });
+      return;
+    }
     window.addEventListener('resize', init);
+    whileVisible(canvas, function (on) {
+      if (on && !running) { running = true; draw(); }
+      else if (!on) running = false;
+    });
+  }
+
+  /* Calls fn(true) when el scrolls into view and fn(false) when it leaves,
+     so canvas loops stop drawing off-screen. */
+  function whileVisible(el, fn) {
+    if (!('IntersectionObserver' in window)) { fn(true); return; }
+    new IntersectionObserver(function (entries) {
+      fn(entries[entries.length - 1].isIntersecting);
+    }).observe(el);
   }
 
   function initTechPlayPause() {
@@ -1166,9 +1185,14 @@ function stopRingTone() {
           particles[i] = newParticle();
         }
       }
-      requestAnimationFrame(draw);
+      if (running) requestAnimationFrame(draw);
     }
-    draw();
+    var running = false;
+    if (REDUCE_MOTION) return;  /* the two city names are enough */
+    whileVisible(canvas, function (on) {
+      if (on && !running) { running = true; draw(); }
+      else if (!on) running = false;
+    });
   }
 
   function init() {

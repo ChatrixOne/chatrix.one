@@ -4,7 +4,7 @@
 set -euo pipefail
 dir=${1:-public}
 fail=0
-for f in index.html bg/index.html en/index.html sitemap.xml styles.css app.js; do
+for f in index.html bg/index.html en/index.html sitemap.xml styles.css app.js theme-init.js; do
     [[ -s "${dir}/${f}" ]] || { echo "missing: ${f}"; fail=1; }
 done
 if grep -rlE 'livereload|localhost:1313' "$dir"; then
