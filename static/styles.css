@@ -226,10 +226,26 @@
     .nav-actions { gap: 8px; }
     .nav-cta { padding: 9px 14px; }
   }
-  /* Narrower still (and the longer Bulgarian label): the hero button and the
-     menu carry the same link */
-  @media (max-width: 400px) {
+  /* Phones get the short label so the button still fits next to the logo */
+  .nav-cta .cta-short { display: none; }
+  @media (max-width: 420px) {
+    .nav-cta .cta-long { display: none; }
+    .nav-cta .cta-short { display: inline; }
+  }
+  @media (max-width: 380px) {
+    .brand { font-size: 17px; gap: 6px; }
+    .brand-mark svg { width: 30px; height: 30px; }
+    .nav-actions { gap: 6px; }
+    .nav-cta { padding: 8px 12px; font-size: 13px; }
+  }
+  /* Below the smallest common phone width there is no room left; the hero
+     button and the menu carry the same link */
+  @media (max-width: 339px) {
     .nav-cta { display: none; }
+  }
+  /* The Bulgarian label has no shorter form and needs 360px */
+  @media (max-width: 359px) {
+    html[lang="bg"] .nav-cta { display: none; }
   }
 
   /* ── hamburger: hidden on desktop ─────────────────────────── */

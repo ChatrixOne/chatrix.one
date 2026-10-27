@@ -26,6 +26,9 @@ other = "Docs"
 [nav_join]
 other = "Join free"
 
+[nav_join_short]
+other = "Join"
+
 # ── HERO ─────────────────────────────────────────────────────
 [hero_eyebrow]
 other = "Service operational ·"
