@@ -1195,6 +1195,89 @@ function stopRingTone() {
     });
   }
 
+  /* "Start in just three steps": plays the sign-up once, when a third
+     of the section is on screen. Each step: one heartbeat, its own short
+     scene (download, human check, bot chat), a check mark; then the
+     line carries the message to the next step. Reduced motion or no
+     IntersectionObserver: the finished picture at once. */
+  function initStartSteps() {
+    var wrap = document.querySelector('.wire-wrap');
+    if (!wrap) return;
+    var items = wrap.querySelectorAll('.wire > li');
+    var pct = wrap.querySelector('.wire-pct');
+    var replay = wrap.querySelector('.wire-replay');
+    var BEAT = 700, ACT = 1650, SETTLE = 700, TRAVEL = 1000;
+    var timers = [];
+
+    function at(ms, fn) { timers.push(setTimeout(fn, ms)); }
+
+    function countUp() {
+      var start = null;
+      function step(ts) {
+        if (start === null) start = ts;
+        var k = Math.min(1, (ts - start) / 1200);
+        pct.textContent = Math.round(k * 100) + '%';
+        if (k < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+
+    function finished() {
+      wrap.classList.remove('anim', 'moving');
+      wrap.classList.add('complete');
+      wrap.style.removeProperty('--p');
+      items.forEach(function (li) { li.classList.add('on', 'done', 'sent'); });
+    }
+
+    if (REDUCE_MOTION || !('IntersectionObserver' in window)) { finished(); return; }
+
+    function play() {
+      timers.forEach(clearTimeout);
+      timers = [];
+      wrap.classList.remove('complete', 'moving', 'playing');
+      wrap.classList.add('anim');
+      wrap.style.setProperty('--p', 0);
+      if (replay) replay.hidden = true;
+      if (pct) pct.textContent = '0%';
+      items.forEach(function (li) { li.classList.remove('on', 'beat', 'act', 'done', 'sent'); });
+      void wrap.offsetWidth;  /* apply the reset before transitions switch on */
+      wrap.classList.add('playing');
+
+      var t = 400;
+      items.forEach(function (li, i) {
+        at(t, function () { li.classList.add('on', 'beat'); });
+        at(t + BEAT, function () {
+          li.classList.remove('beat');
+          li.classList.add('act');
+          if (i === 0 && pct) at(200, countUp);  /* once the icon is gone */
+        });
+        at(t + BEAT + ACT, function () { li.classList.remove('act'); li.classList.add('done'); });
+        t += BEAT + ACT + SETTLE;
+        if (i < items.length - 1) {
+          at(t, function () {
+            wrap.classList.add('moving');
+            wrap.style.setProperty('--p', (i + 1) / (items.length - 1));
+            li.classList.add('sent');
+          });
+          at(t + TRAVEL, function () { wrap.classList.remove('moving'); });
+          t += TRAVEL;
+        }
+      });
+      at(t, function () {
+        wrap.classList.add('complete');
+        if (replay) replay.hidden = false;
+      });
+    }
+
+    wrap.classList.add('anim');
+    wrap.style.setProperty('--p', 0);
+    var io = new IntersectionObserver(function (entries) {
+      if (entries[0].isIntersecting) { io.disconnect(); play(); }
+    }, { threshold: 0.35 });
+    io.observe(wrap);
+    if (replay) replay.addEventListener('click', play);
+  }
+
   function init() {
     initTheme();
     initMobileNav();
@@ -1206,6 +1289,7 @@ function stopRingTone() {
     initHeroParticles();
     initDataFlow();
     initXmrDonate();
+    initStartSteps();
   }
 
   if (document.readyState === 'loading') {

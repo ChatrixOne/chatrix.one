@@ -1,6 +1,8 @@
 # TODO
 
-- [ ] **"Start in just three steps": an animated story** (asked 2026-10-27)
+- [x] **"Start in just three steps": an animated story** (asked 2026-10-27,
+      done 2026-10-27; step 1 shows only the percentage, no ring, at the
+      user's request; about 12 s)
       The section on the home page (`#start`, `.wire` in styles.css)
       should act out the sign-up, step by step:
       - Start: the three circles faded.

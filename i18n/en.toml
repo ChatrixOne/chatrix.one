@@ -120,6 +120,9 @@ other = "Answer the welcome bot"
 [step3_body]
 other = "welcome@chatrix.one sends you one word. Reply with it within 24 hours to unlock file sharing and group chats."
 
+[steps_replay]
+other = "Replay"
+
 # ── TECH MARQUEE ─────────────────────────────────────────────
 [tech_label]
 other = "Powered by open, time-tested technologies"
