@@ -26,3 +26,4 @@ ALSO NEEDED for the logo mark:
   https://fonts.google.com/specimen/Atkinson+Hyperlegible
   Download the zip, extract:  AtkinsonHyperlegible-Bold.woff2
   Place it in this folder.
+Subset to Latin + Cyrillic (the ranges in fonts.css) and converted to woff2 with fontTools, 2026-10-27.

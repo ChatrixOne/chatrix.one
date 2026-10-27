@@ -309,3 +309,6 @@ other = "Looking for the server status? It's in the docs:"
 
 [err_hint_status]
 other = "Status"
+
+[og_image_alt]
+other = "chatrix.one: free, private chat. Encrypted XMPP, no ads, no tracking, since 2018."
