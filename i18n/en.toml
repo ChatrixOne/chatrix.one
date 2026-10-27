@@ -86,6 +86,40 @@ other = "All features"
 [feat_3_link]
 other = "Support Us"
 
+# ── GET STARTED (three steps) ────────────────────────────────
+[steps_eyebrow]
+other = "How it works"
+
+[steps_title]
+other = "Start in just three steps"
+
+[steps_sub]
+other = "No phone number, no email. Just a name and a password."
+
+[step1_title]
+other = "Get an app"
+
+[step1_body]
+other = "Pick a free XMPP app for your phone or computer from the list below."
+
+[step1_link]
+other = "See the apps"
+
+[step2_title]
+other = "Get your invite"
+
+[step2_body]
+other = "Pass a quick human check at chatrix.one/join. The invite takes you to your app, where you choose your name and password."
+
+[step2_link]
+other = "Join free"
+
+[step3_title]
+other = "Answer the welcome bot"
+
+[step3_body]
+other = "welcome@chatrix.one sends you one word. Reply with it within 24 hours to unlock file sharing and group chats."
+
 # ── TECH MARQUEE ─────────────────────────────────────────────
 [tech_label]
 other = "Powered by open, time-tested technologies"

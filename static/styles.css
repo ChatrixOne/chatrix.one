@@ -907,6 +907,95 @@
   @media (max-width: 880px) { .features-grid { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 560px) { .features-grid { grid-template-columns: 1fr; } }
 
+  /* ── Get started: three steps on one connecting line ───────── */
+  .steps-section { padding-bottom: 40px; }
+  .wire {
+    --dot: 68px;
+    list-style: none;
+    margin: 56px 0 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    position: relative;
+    text-align: center;
+  }
+  /* The line runs through the centres of the first and last dot */
+  .wire::before {
+    content: "";
+    position: absolute;
+    top: calc(var(--dot) / 2);
+    left: 16.6%; right: 16.6%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent) 45%, transparent), var(--accent));
+    opacity: .55;
+  }
+  /* A message travelling along the line */
+  .wire::after {
+    content: "";
+    position: absolute;
+    top: calc(var(--dot) / 2 - 4px);
+    left: 16.6%;
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 12px 3px color-mix(in srgb, var(--accent) 60%, transparent);
+    animation: wire-send 4.5s cubic-bezier(.6,0,.4,1) infinite;
+  }
+  @keyframes wire-send {
+    0%   { left: 16.6%; opacity: 0; }
+    10%  { opacity: 1; }
+    90%  { opacity: 1; }
+    100% { left: calc(83.4% - 10px); opacity: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .wire::after { display: none; }
+  }
+  .wire li { position: relative; display: flex; flex-direction: column; align-items: center; }
+  .wire-dot {
+    width: var(--dot); height: var(--dot);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: var(--bg);
+    border: 2px solid var(--accent);
+    color: var(--accent);
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 0 0 8px var(--bg), 0 0 28px color-mix(in srgb, var(--accent) 22%, transparent);
+    transition: transform .3s ease, box-shadow .3s ease;
+  }
+  .wire li:hover .wire-dot {
+    transform: scale(1.06);
+    box-shadow: 0 0 0 8px var(--bg), 0 0 36px color-mix(in srgb, var(--accent) 40%, transparent);
+  }
+  .wire-dot svg { width: 28px; height: 28px; }
+  .wire-num {
+    margin-top: 22px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: .14em;
+    color: var(--accent);
+  }
+  .wire h3 { font-size: 20px; font-weight: 600; margin: 6px 0 10px; letter-spacing: -0.01em; }
+  .wire p { color: var(--ink-soft); font-size: 15px; line-height: 1.6; margin: 0 auto 14px; max-width: 30ch; }
+  /* Links line up even when the texts above differ in length */
+  .wire li > a { margin-top: auto; }
+  @media (max-width: 880px) {
+    .wire { grid-template-columns: 1fr; gap: 0; margin-top: 40px; }
+    .wire::before, .wire::after { display: none; }
+    /* Phones: a short line from each step down to the next dot */
+    .wire li:not(:last-child) { padding-bottom: 64px; }
+    .wire li:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      bottom: 12px; left: 50%;
+      width: 2px; height: 40px;
+      background: var(--accent);
+      opacity: .45;
+    }
+  }
+
   .feature {
     background: var(--bg);
     padding: 36px 32px;
