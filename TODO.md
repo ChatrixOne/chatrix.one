@@ -21,17 +21,11 @@
       with reduced motion show the finished state at once; plain
       CSS/SVG and a little JS in app.js, no libraries.
 
-- [ ] **Account pages in the website's style** (asked 2026-10-29)
-      https://chatrix.one/user/change_password/ ("Change Password") and
-      https://chatrix.one/user/delete/ ("Unregister an XMPP account")
-      should look like the website: same fonts, colours, dark theme,
-      logo/nav and footer, in EN and BG.
-      Notes: these are not Hugo pages. nginx proxies /user/ to
-      ejabberd's mod_register_web (127.0.0.1:8444/register/), which
-      writes its own plain HTML, and the nginx config comes from the
-      xmpp-install script. So the fix lives in the installer (e.g. nginx
-      sub_filter adding the site's stylesheet, or our own pages that post
-      to ejabberd), not in this repo. A hand edit on the server would be
-      lost on the next script rebuild. Check the forms still work
-      afterwards (change a test account's password, delete a test
-      account).
+- [x] **Account pages in the website's style** (asked 2026-10-29, done)
+      Our own pages /account/password/ and /account/delete/ (BG under
+      /bg/), layout _default/account.html, static/account.js. The forms
+      still post to ejabberd's mod_register_web through nginx
+      (/user/change_password/, /user/delete/), which answers one line of
+      text (200 ok, 404 error) in the Accept-Language; the page shows it.
+      Left: docs links to the new pages; maybe an nginx redirect of the
+      old GET pages (xmpp-install).

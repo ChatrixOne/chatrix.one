@@ -399,3 +399,67 @@ other = "Ботът за добре дошли пише на английски.
 
 [dl_fluux]
 other = "Нов клиент от ProcessOne, създателите на ejabberd, сървъра зад chatrix.one. Криптира с OpenPGP; още няма OMEMO, затова не чете OMEMO съобщения."
+
+# ── Account pages: change password, delete account ──────────
+[acct_eyebrow]
+other = "Вашият профил"
+
+[acct_user]
+other = "Потребителско име"
+
+[acct_pw]
+other = "Парола"
+
+[acct_pw_old]
+other = "Сегашна парола"
+
+[acct_pw_new]
+other = "Нова парола"
+
+[acct_pw_again]
+other = "Новата парола отново"
+
+[acct_pw_hint]
+other = "Изберете дълга парола. Няколко случайни думи се помнят лесно и трудно се отгатват."
+
+[acct_show]
+other = "Покажи паролите"
+
+[acct_pw_submit]
+other = "Смени паролата"
+
+[acct_pw_ok]
+other = "Готово: паролата Ви е сменена. Въведете новата в приложенията си."
+
+[acct_pw_mismatch]
+other = "Двете нови пароли не съвпадат."
+
+[acct_del_warn_title]
+other = "Това действие е необратимо."
+
+[acct_del_warn]
+other = "Няма допълнителен въпрос и няма връщане назад: профилът се изтрива веднага щом натиснете бутона."
+
+[acct_del_confirm]
+other = "Разбирам, че профилът ми се изтрива завинаги."
+
+[acct_del_submit]
+other = "Изтрий профила ми"
+
+[acct_del_ok]
+other = "Профилът Ви е изтрит. Благодарим, че използвахте chatrix.one."
+
+[acct_busy]
+other = "Момент..."
+
+[acct_limit]
+other = "Твърде много опити. Изчакайте минута и опитайте отново."
+
+[acct_neterr]
+other = "Сървърът не отговори. Проверете връзката си и опитайте отново."
+
+[acct_to_pw]
+other = "Искате само нова парола? Сменете я."
+
+[acct_to_del]
+other = "Искате да напуснете chatrix.one? Изтрийте профила си."

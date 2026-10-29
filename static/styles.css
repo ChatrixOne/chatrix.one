@@ -3025,3 +3025,88 @@
 }
 .err404-hint { color: var(--ink-mute); font-size: 15px; }
 .err404-hint a { color: var(--accent); text-decoration: underline; }
+
+/* =====================================================================
+   ACCOUNT PAGES: change password, delete account (/account/...)
+   ===================================================================== */
+.acct { padding: 140px 0 110px; min-height: 70vh; }
+.acct-inner { max-width: 640px; }
+.acct-dot-danger { background: #e5484d; box-shadow: 0 0 0 4px rgba(229,72,77,0.25); animation: none; }
+.acct-title {
+  font-size: clamp(36px, 6vw, 56px);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: 0 0 20px;
+}
+.acct-lede { font-size: 18px; line-height: 1.6; color: var(--ink-soft); margin: 0 0 32px; }
+.acct-warn {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px 18px;
+  margin-bottom: 24px;
+  border-radius: 14px;
+  border: 1px solid rgba(229,72,77,0.45);
+  background: rgba(229,72,77,0.10);
+  color: var(--ink);
+  font-size: 15px;
+}
+.acct-warn strong { color: #e5484d; }
+.acct-card {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 28px;
+  border-radius: 20px;
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-md);
+}
+.acct-field { display: flex; flex-direction: column; gap: 8px; }
+.acct-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.acct-card input[type="text"],
+.acct-card input[type="password"] {
+  width: 100%;
+  min-width: 0;
+  padding: 13px 16px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  color: var(--ink);
+  font: inherit;
+  font-size: 16px;
+  transition: border-color .2s, box-shadow .2s;
+}
+.acct-card input[type="text"]:focus,
+.acct-card input[type="password"]:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+.acct-jid { display: flex; align-items: center; gap: 8px; }
+.acct-jid-domain { font-family: 'IBM Plex Mono', monospace; font-size: 14px; color: var(--ink-mute); white-space: nowrap; }
+.acct-hint { margin: -6px 0 0; font-size: 14px; color: var(--ink-mute); }
+.acct-check { display: flex; align-items: flex-start; gap: 10px; font-size: 15px; color: var(--ink-soft); cursor: pointer; }
+.acct-check input { margin-top: 3px; width: 17px; height: 17px; accent-color: var(--accent); flex-shrink: 0; }
+.acct-result { padding: 14px 16px; border-radius: 12px; font-size: 15px; line-height: 1.5; }
+.acct-ok  { background: var(--accent-soft); color: var(--ink); border: 1px solid var(--accent); }
+.acct-err { background: rgba(229,72,77,0.10); color: var(--ink); border: 1px solid rgba(229,72,77,0.45); }
+.acct-card .btn { align-self: flex-start; }
+.acct-card .btn:disabled { opacity: .6; cursor: wait; transform: none; }
+.acct-btn-danger { background: #e5484d; color: #ffffff; box-shadow: var(--shadow-md); }
+.acct-btn-danger:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+.acct-foot { margin-top: 24px; font-size: 15px; }
+.acct-foot a { color: var(--accent); text-decoration: underline; }
+@media (max-width: 600px) {
+  .acct { padding: 110px 0 80px; }
+  .acct-card { padding: 20px; }
+  .acct-jid { flex-direction: column; align-items: stretch; gap: 4px; }
+  .acct-card .btn { align-self: stretch; justify-content: center; }
+}

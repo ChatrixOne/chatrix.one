@@ -399,3 +399,67 @@ other = "The welcome bot writes in English."
 
 [dl_fluux]
 other = "New, from ProcessOne, the makers of ejabberd, the server behind chatrix.one. Encrypts with OpenPGP; no OMEMO yet, so it can't read OMEMO messages."
+
+# ── Account pages: change password, delete account ──────────
+[acct_eyebrow]
+other = "Your account"
+
+[acct_user]
+other = "Username"
+
+[acct_pw]
+other = "Password"
+
+[acct_pw_old]
+other = "Current password"
+
+[acct_pw_new]
+other = "New password"
+
+[acct_pw_again]
+other = "New password again"
+
+[acct_pw_hint]
+other = "Pick a long password. A few random words are easy to remember and hard to guess."
+
+[acct_show]
+other = "Show passwords"
+
+[acct_pw_submit]
+other = "Change password"
+
+[acct_pw_ok]
+other = "Done: your password is changed. Use the new one in your apps."
+
+[acct_pw_mismatch]
+other = "The two new passwords are not the same."
+
+[acct_del_warn_title]
+other = "This can't be undone."
+
+[acct_del_warn]
+other = "There is no second question and no way back: the account is deleted as soon as you press the button."
+
+[acct_del_confirm]
+other = "I understand that my account is deleted for good."
+
+[acct_del_submit]
+other = "Delete my account"
+
+[acct_del_ok]
+other = "Your account is deleted. Thank you for using chatrix.one."
+
+[acct_busy]
+other = "One moment..."
+
+[acct_limit]
+other = "Too many tries. Wait a minute and try again."
+
+[acct_neterr]
+other = "The server didn't answer. Check your connection and try again."
+
+[acct_to_pw]
+other = "Only want a new password? Change it instead."
+
+[acct_to_del]
+other = "Want to leave chatrix.one? Delete your account."
