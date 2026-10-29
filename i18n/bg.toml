@@ -352,3 +352,50 @@ other = "Статус"
 
 [og_image_alt]
 other = "chatrix.one: безплатен, поверителен чат. Криптиран XMPP, без реклами, без проследяване, от 2018."
+
+# ── "Start in three steps": the drawn phone (decoration, aria-hidden) ──
+
+[home_card_you]
+other = "вашетоиме"
+
+[ph_app]
+other = "Чат"
+
+[ph_join_title]
+other = "Регистрация в chatrix.one"
+
+[ph_join_text]
+other = "Потвърдете, че сте човек, за да получите покана."
+
+[ph_human]
+other = "Аз съм човек"
+
+[ph_open]
+other = "Отвори поканата в приложението"
+
+[ph_create_title]
+other = "Нов профил"
+
+[ph_user]
+other = "Потребителско име"
+
+[ph_pass]
+other = "Парола"
+
+[ph_create]
+other = "Създай"
+
+[ph_message]
+other = "Съобщение"
+
+[ph_ready]
+other = "Готови за чат"
+
+[ph_start]
+other = "Започни разговор"
+
+[ph_bot_note]
+other = "Ботът за добре дошли пише на английски."
+
+[dl_fluux]
+other = "Нов клиент от ProcessOne, създателите на ejabberd, сървъра зад chatrix.one. Криптира с OpenPGP; още няма OMEMO, затова не чете OMEMO съобщения."

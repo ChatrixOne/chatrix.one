@@ -1195,87 +1195,154 @@ function stopRingTone() {
     });
   }
 
-  /* "Start in just three steps": plays the sign-up once, when a third
-     of the section is on screen. Each step: one heartbeat, its own short
-     scene (download, human check, bot chat), a check mark; then the
-     line carries the message to the next step. Reduced motion or no
-     IntersectionObserver: the finished picture at once. */
-  function initStartSteps() {
-    var wrap = document.querySelector('.wire-wrap');
-    if (!wrap) return;
-    var items = wrap.querySelectorAll('.wire > li');
-    var pct = wrap.querySelector('.wire-pct');
-    var replay = wrap.querySelector('.wire-replay');
-    var BEAT = 700, ACT = 1650, SETTLE = 700, TRAVEL = 1000;
-    var timers = [];
-
+  /* Home page, "Start in just three steps": a drawn phone acts out the
+     sign-up, from nothing installed to ready to chat (about 15 s). Plays
+     once when half the phone is on screen; Replay plays it again, a
+     step's title plays it from that step. Reduced motion: the finished
+     phone, and a step's title shows that step's last picture, still. */
+  function initPhoneSteps() {
+    var ps = document.querySelector('.ps');
+    if (!ps) return;
+    var steps = ps.querySelectorAll('.ps-steps li');
+    var replay = ps.querySelector('.ps-replay');
+    var timers = [], raf = 0;
+    function q(sel) { return ps.querySelector(sel); }
+    function scene(name) { return q('.ps-scene[data-s="' + name + '"]'); }
     function at(ms, fn) { timers.push(setTimeout(fn, ms)); }
-
-    function countUp() {
-      var start = null;
-      function step(ts) {
-        if (start === null) start = ts;
-        var k = Math.min(1, (ts - start) / 1200);
-        pct.textContent = Math.round(k * 100) + '%';
-        if (k < 1) requestAnimationFrame(step);
+    function show(name) {
+      ps.querySelectorAll('.ps-scene').forEach(function (s) {
+        s.classList.toggle('on', s.dataset.s === name);
+        s.classList.toggle('off', s.dataset.s !== name);
+      });
+    }
+    function mark(n) {  /* n: the step now playing; 4 = all done */
+      steps.forEach(function (li, i) {
+        li.classList.toggle('is-active', i + 1 === n);
+        li.classList.toggle('is-done', i + 1 < n);
+      });
+    }
+    /* A finger tap on the centre of the target */
+    function tap(sel, target, ms) {
+      at(ms, function () {
+        var t = q(sel), el = q(target), box = t.parentNode.getBoundingClientRect(), r = el.getBoundingClientRect();
+        t.style.left = (r.left - box.left + r.width / 2) + 'px';
+        t.style.top = (r.top - box.top + r.height / 2) + 'px';
+        t.classList.remove('go'); void t.offsetWidth; t.classList.add('go');
+        el.classList.add('press');
+        setTimeout(function () { el.classList.remove('press'); }, 180);
+      });
+    }
+    function type(sel, ms, per) {
+      var el = q(sel), text = el.dataset.text;
+      for (var i = 1; i <= text.length; i++) {
+        (function (k) { at(ms + k * per, function () { el.textContent = text.slice(0, k); }); })(i);
       }
-      requestAnimationFrame(step);
+      return ms + text.length * per;
     }
-
-    function finished() {
-      wrap.classList.remove('anim', 'moving');
-      wrap.classList.add('complete');
-      wrap.style.removeProperty('--p');
-      items.forEach(function (li) { li.classList.add('on', 'done', 'sent'); });
+    function setDl(v) {
+      var home = scene('home');
+      home.style.setProperty('--dl', v);
+      q('.ps-pct').textContent = Math.round(v) + '%';
+      home.classList.toggle('installed', v >= 100);
     }
-
-    if (REDUCE_MOTION || !('IntersectionObserver' in window)) { finished(); return; }
-
-    function play() {
-      timers.forEach(clearTimeout);
-      timers = [];
-      wrap.classList.remove('complete', 'moving', 'playing');
-      wrap.classList.add('anim');
-      wrap.style.setProperty('--p', 0);
-      if (replay) replay.hidden = true;
-      if (pct) pct.textContent = '0%';
-      items.forEach(function (li) { li.classList.remove('on', 'beat', 'act', 'done', 'sent'); });
-      void wrap.offsetWidth;  /* apply the reset before transitions switch on */
-      wrap.classList.add('playing');
-
-      var t = 400;
-      items.forEach(function (li, i) {
-        at(t, function () { li.classList.add('on', 'beat'); });
-        at(t + BEAT, function () {
-          li.classList.remove('beat');
-          li.classList.add('act');
-          if (i === 0 && pct) at(200, countUp);  /* once the icon is gone */
+    /* Each step resets its scenes, schedules itself from t and returns its end */
+    var parts = [
+      function (t) {  /* 1: the app installs, a tap opens the invite page */
+        at(t, function () { setDl(0); show('home'); mark(1); });
+        at(t + 300, function () {
+          var start = null;
+          function step(ts) {
+            if (start === null) start = ts;
+            var k = Math.min(1, (ts - start) / 1500);
+            setDl(k * 100);
+            if (k < 1) raf = requestAnimationFrame(step);
+          }
+          raf = requestAnimationFrame(step);
         });
-        at(t + BEAT + ACT, function () { li.classList.remove('act'); li.classList.add('done'); });
-        t += BEAT + ACT + SETTLE;
-        if (i < items.length - 1) {
-          at(t, function () {
-            wrap.classList.add('moving');
-            wrap.style.setProperty('--p', (i + 1) / (items.length - 1));
-            li.classList.add('sent');
-          });
-          at(t + TRAVEL, function () { wrap.classList.remove('moving'); });
-          t += TRAVEL;
-        }
-      });
-      at(t, function () {
-        wrap.classList.add('complete');
-        if (replay) replay.hidden = false;
-      });
+        tap('.ps-tap-app', '.ps-ico-app', t + 2300);
+        return t + 2700;
+      },
+      function (t) {  /* 2: human check, the invite opens the app, name and password */
+        var check = q('.ps-check'), create = q('.ps-btn-create');
+        at(t, function () {
+          check.classList.remove('wait', 'ok');
+          q('.ps-user').textContent = ''; q('.ps-pass').textContent = '';
+          create.classList.remove('busy');
+          show('join'); mark(2);
+        });
+        at(t + 700, function () { check.classList.add('wait'); });
+        at(t + 1500, function () { check.classList.remove('wait'); check.classList.add('ok'); });
+        tap('.ps-tap-open', '.ps-btn-open', t + 2100);
+        at(t + 2500, function () { show('create'); });
+        var e = type('.ps-user', t + 2900, 90);
+        e = type('.ps-pass', e + 300, 50);
+        tap('.ps-tap-create', '.ps-btn-create', e + 400);
+        at(e + 550, function () { create.classList.add('busy'); });
+        return e + 1300;
+      },
+      function (t) {  /* 3: the bot's word, the reply, verified */
+        var typing = q('.ps-typing'), word = q('.ps-word');
+        at(t, function () {
+          ps.querySelectorAll('.ps-msg').forEach(function (m) { m.classList.remove('on'); });
+          typing.classList.remove('on'); word.textContent = '';
+          show('chat'); mark(3);
+        });
+        at(t + 400, function () { typing.classList.add('on'); });
+        at(t + 1400, function () { typing.classList.remove('on'); q('.ps-m1').classList.add('on'); });
+        var e = type('.ps-word', t + 2600, 110);
+        at(e + 350, function () { word.textContent = ''; q('.ps-m2').classList.add('on'); });
+        at(e + 800, function () { typing.classList.add('on'); });
+        at(e + 1700, function () { typing.classList.remove('on'); q('.ps-m3').classList.add('on'); });
+        return e + 3200;
+      }
+    ];
+    function stop() { timers.forEach(clearTimeout); timers = []; cancelAnimationFrame(raf); }
+    function finish() {
+      show('ready'); mark(4);
+      ps.classList.remove('playing');
+      if (replay) replay.hidden = false;
+    }
+    function play(from) {
+      stop();
+      ps.classList.add('anim', 'playing');
+      if (replay) replay.hidden = true;
+      var t = 0;
+      for (var i = from; i < parts.length; i++) t = parts[i](t);
+      at(t, finish);
+    }
+    function still(n) {
+      stop();
+      ps.classList.add('anim');
+      ps.querySelectorAll('.ps-msg').forEach(function (m) { m.classList.add('on'); });
+      q('.ps-typing').classList.remove('on');
+      if (n === 1) { setDl(100); show('home'); }
+      if (n === 2) {
+        q('.ps-check').classList.add('ok');
+        q('.ps-user').textContent = q('.ps-user').dataset.text;
+        q('.ps-pass').textContent = q('.ps-pass').dataset.text;
+        show('create');
+      }
+      if (n === 3) show('chat');
+      mark(n);
     }
 
-    wrap.classList.add('anim');
-    wrap.style.setProperty('--p', 0);
+    ps.querySelectorAll('.ps-go').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var n = +b.dataset.go;
+        if (REDUCE_MOTION) still(n); else play(n - 1);
+      });
+    });
+    if (REDUCE_MOTION || !('IntersectionObserver' in window)) return;
+    if (replay) replay.addEventListener('click', function () { play(0); });
+
+    /* The waiting phone, without fading from the finished one */
+    ps.classList.add('instant', 'anim');
+    setDl(0); show('home'); mark(0);
+    requestAnimationFrame(function () { requestAnimationFrame(function () { ps.classList.remove('instant'); }); });
     var io = new IntersectionObserver(function (entries) {
-      if (entries[0].isIntersecting) { io.disconnect(); play(); }
-    }, { threshold: 0.35 });
-    io.observe(wrap);
-    if (replay) replay.addEventListener('click', play);
+      if (entries[0].isIntersecting) { io.disconnect(); play(0); }
+    }, { threshold: 0.5 });
+    io.observe(q('.ps-phone'));
   }
 
   function init() {
@@ -1289,7 +1356,7 @@ function stopRingTone() {
     initHeroParticles();
     initDataFlow();
     initXmrDonate();
-    initStartSteps();
+    initPhoneSteps();
   }
 
   if (document.readyState === 'loading') {

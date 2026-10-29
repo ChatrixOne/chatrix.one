@@ -1,0 +1,92 @@
+{{/* "Start in just three steps", acted out on a drawn phone, from
+     nothing installed to ready to chat. The steps are the real content;
+     the phone is decoration (aria-hidden). initPhoneSteps in app.js plays
+     it once when it scrolls into view; without JS or with reduced motion
+     the phone shows the finished state. The scenes follow the real
+     sign-up: /join, human check, invite opens the app with the server
+     filled in, the welcome bot asks for a word (in English, unencrypted). */}}
+<div class="ps" data-step="done">
+  <ol class="ps-steps">
+    <li data-step="1">
+      <span class="ps-num" aria-hidden="true">01</span>
+      <h3><button type="button" class="ps-go" data-go="1">{{ i18n "step1_title" }}</button></h3>
+      <p>{{ i18n "step1_body" }}</p>
+      <a href="#downloads" class="feature-link">{{ i18n "step1_link" }}</a>
+    </li>
+    <li data-step="2">
+      <span class="ps-num" aria-hidden="true">02</span>
+      <h3><button type="button" class="ps-go" data-go="2">{{ i18n "step2_title" }}</button></h3>
+      <p>{{ i18n "step2_body" }}</p>
+      <a href="https://chatrix.one/join" class="feature-link" rel="noopener noreferrer">{{ i18n "step2_link" }}</a>
+    </li>
+    <li data-step="3">
+      <span class="ps-num" aria-hidden="true">03</span>
+      <h3><button type="button" class="ps-go" data-go="3">{{ i18n "step3_title" }}</button></h3>
+      <p>{{ i18n "step3_body" }}</p>
+    </li>
+  </ol>
+
+  <div class="ps-device">
+    <div class="ps-phone" aria-hidden="true">
+      <div class="ps-screen">
+        <div class="ps-bar"><span>9:41</span><span class="ps-bar-icons"><i></i><i></i><i></i></span></div>
+
+        {{/* 1: the home screen, the app installs */}}
+        <div class="ps-scene" data-s="home">
+          <div class="ps-grid">
+            {{ range seq 11 }}<span class="ps-ico"></span>{{ end }}
+            <span class="ps-ico ps-ico-app" style="grid-row:2;grid-column:3">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg>
+              <span class="ps-dl"></span>
+              <span class="ps-ico-label"><span class="ps-pct">0%</span><span class="ps-app-name">{{ i18n "ph_app" }}</span></span>
+            </span>
+          </div>
+          <span class="ps-tap ps-tap-app"></span>
+        </div>
+
+        {{/* 2a: chatrix.one/join, the human check */}}
+        <div class="ps-scene" data-s="join">
+          <div class="ps-url"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>chatrix.one/join</div>
+          <div class="ps-page">
+            <p class="ps-page-title">{{ i18n "ph_join_title" }}</p>
+            <p class="ps-page-text">{{ i18n "ph_join_text" }}</p>
+            <div class="ps-check"><span class="ps-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>{{ i18n "ph_human" }}</div>
+            <span class="ps-btn ps-btn-open">{{ i18n "ph_open" }}</span>
+          </div>
+          <span class="ps-tap ps-tap-open"></span>
+        </div>
+
+        {{/* 2b: the app, server filled in by the invite */}}
+        <div class="ps-scene" data-s="create">
+          <p class="ps-app-title">{{ i18n "ph_create_title" }}</p>
+          <label class="ps-field"><span>{{ i18n "ph_user" }}</span><b><em class="ps-type ps-user" data-text="{{ i18n "home_card_you" }}"></em><i class="ps-caret"></i><u>@chatrix.one</u></b></label>
+          <label class="ps-field"><span>{{ i18n "ph_pass" }}</span><b><em class="ps-type ps-pass" data-text="••••••••••"></em></b></label>
+          <span class="ps-btn ps-btn-create"><span class="ps-btn-text">{{ i18n "ph_create" }}</span><span class="ps-spin"></span></span>
+          <span class="ps-tap ps-tap-create"></span>
+        </div>
+
+        {{/* 3: the welcome bot's word (its real wording, shortened) */}}
+        <div class="ps-scene" data-s="chat">
+          <div class="ps-chat-head"><span class="ps-avatar">W</span><span><b>welcome@chatrix.one</b><small>bot</small></span></div>
+          <div class="ps-msgs">
+            <p class="ps-msg ps-in ps-m1">Hi {{ i18n "home_card_you" }}, welcome to chatrix.one! Quick check that you're a person: reply with the word <strong>lantern</strong></p>
+            <p class="ps-msg ps-out ps-m2">lantern</p>
+            <p class="ps-msg ps-in ps-m3">Thanks, you're verified! Group chats and file sharing are now unlocked.</p>
+            <p class="ps-typing"><i></i><i></i><i></i></p>
+          </div>
+          <div class="ps-compose"><em class="ps-type ps-word" data-text="lantern"></em><span class="ps-ph">{{ i18n "ph_message" }}</span><span class="ps-send"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 20l18-8L3 4v6l12 2-12 2z"/></svg></span></div>
+        </div>
+
+        {{/* Ready */}}
+        <div class="ps-scene" data-s="ready">
+          <span class="ps-done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+          <p class="ps-ready">{{ i18n "ph_ready" }}</p>
+          <p class="ps-jid">{{ i18n "home_card_you" }}@chatrix.one</p>
+          <span class="ps-btn">{{ i18n "ph_start" }}</span>
+        </div>
+      </div>
+    </div>
+    {{ if eq .Lang "bg" }}<p class="ps-note">{{ i18n "ph_bot_note" }}</p>{{ end }}
+    <button type="button" class="ps-replay" hidden>{{ i18n "steps_replay" }}</button>
+  </div>
+</div>

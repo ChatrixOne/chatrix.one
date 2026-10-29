@@ -96,12 +96,26 @@ downloads:
     links:
       - label: "App Store"
         url:   "https://apps.apple.com/us/app/monal-xmpp-chatting/id1637078500?mt=12"
+  - platform: "Windows · macOS · Linux"
+    icon:     "Desktop"
+    name:     "Fluux Messenger"
+    desc_key: "dl_fluux"
+    links:
+      - label: "Download"
+        url:   "https://github.com/processone/fluux-messenger/releases/latest"
   - platform: "CLI"
     name:     "Profanity"
     desc_key: "dl_cli"
     links:
       - label: "Download"
         url:   "https://profanity-im.github.io/"
+  - platform: "In the browser"
+    icon:     "Browser"
+    name:     "Converse.js"
+    desc_key: "dl_webchat_note"
+    links:
+      - label: "Open"
+        url:   "https://chatrix.one/webchat/"
 
 # ── PRIVACY / KNOW BEFORE YOU GO ──────────────────────────────
 kb_title: "Privacy is a practice, not a slogan"

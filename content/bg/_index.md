@@ -77,13 +77,13 @@ downloads:
     name:     "Gajim"
     desc_key: "dl_windows"
     links:
-      - label: "Download"
+      - label: "Изтегли"
         url:   "https://gajim.org/download/"
   - platform: "Linux"
     name:     "Dino"
     desc_key: "dl_linux"
     links:
-      - label: "Download"
+      - label: "Изтегли"
         url:   "https://dino.im/#download"
   - platform: "macOS"
     name:     "Monal"
@@ -91,12 +91,26 @@ downloads:
     links:
       - label: "App Store"
         url:   "https://apps.apple.com/us/app/monal-xmpp-chatting/id1637078500?mt=12"
+  - platform: "Windows · macOS · Linux"
+    icon:     "Desktop"
+    name:     "Fluux Messenger"
+    desc_key: "dl_fluux"
+    links:
+      - label: "Изтегли"
+        url:   "https://github.com/processone/fluux-messenger/releases/latest"
   - platform: "CLI"
     name:     "Profanity"
     desc_key: "dl_cli"
     links:
-      - label: "Download"
+      - label: "Изтегли"
         url:   "https://profanity-im.github.io/"
+  - platform: "В браузъра"
+    icon:     "Browser"
+    name:     "Converse.js"
+    desc_key: "dl_webchat_note"
+    links:
+      - label: "Отвори"
+        url:   "https://chatrix.one/webchat/"
 
 # ── PRIVACY / KNOW BEFORE YOU GO ──────────────────────────────
 kb_title: "Поверителността е практика, не лозунг"

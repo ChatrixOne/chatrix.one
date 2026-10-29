@@ -352,3 +352,50 @@ other = "Status"
 
 [og_image_alt]
 other = "chatrix.one: free, private chat. Encrypted XMPP, no ads, no tracking, since 2018."
+
+# ── "Start in three steps": the drawn phone (decoration, aria-hidden) ──
+
+[home_card_you]
+other = "yourname"
+
+[ph_app]
+other = "Chat app"
+
+[ph_join_title]
+other = "Join chatrix.one"
+
+[ph_join_text]
+other = "Confirm you're a person to get your invite."
+
+[ph_human]
+other = "I'm human"
+
+[ph_open]
+other = "Open the invite in my app"
+
+[ph_create_title]
+other = "Create account"
+
+[ph_user]
+other = "Username"
+
+[ph_pass]
+other = "Password"
+
+[ph_create]
+other = "Create"
+
+[ph_message]
+other = "Message"
+
+[ph_ready]
+other = "Ready to chat"
+
+[ph_start]
+other = "Start a chat"
+
+[ph_bot_note]
+other = "The welcome bot writes in English."
+
+[dl_fluux]
+other = "New, from ProcessOne, the makers of ejabberd, the server behind chatrix.one. Encrypts with OpenPGP; no OMEMO yet, so it can't read OMEMO messages."
