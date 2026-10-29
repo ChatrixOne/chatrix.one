@@ -20,3 +20,18 @@
       the same story on phones, the dot moving down the vertical lines;
       with reduced motion show the finished state at once; plain
       CSS/SVG and a little JS in app.js, no libraries.
+
+- [ ] **Account pages in the website's style** (asked 2026-10-29)
+      https://chatrix.one/user/change_password/ ("Change Password") and
+      https://chatrix.one/user/delete/ ("Unregister an XMPP account")
+      should look like the website: same fonts, colours, dark theme,
+      logo/nav and footer, in EN and BG.
+      Notes: these are not Hugo pages. nginx proxies /user/ to
+      ejabberd's mod_register_web (127.0.0.1:8444/register/), which
+      writes its own plain HTML, and the nginx config comes from the
+      xmpp-install script. So the fix lives in the installer (e.g. nginx
+      sub_filter adding the site's stylesheet, or our own pages that post
+      to ejabberd), not in this repo. A hand edit on the server would be
+      lost on the next script rebuild. Check the forms still work
+      afterwards (change a test account's password, delete a test
+      account).
