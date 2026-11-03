@@ -238,6 +238,9 @@ other = "Контакти"
 [foot_status]
 other = "Статус"
 
+[foot_live_status]
+other = "Текущ статус"
+
 [foot_terms]
 other = "Условия"
 

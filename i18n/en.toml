@@ -238,6 +238,9 @@ other = "Contact"
 [foot_status]
 other = "Status"
 
+[foot_live_status]
+other = "Current status"
+
 [foot_terms]
 other = "Terms"
 
