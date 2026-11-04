@@ -65,6 +65,15 @@ dl_title: "Bring it to every device"
 
 downloads:
   - platform: "Android"
+    icon:     "Chatrix"
+    name:     "Chatrix.One"
+    desc_key: "dl_chatrix"
+    badge_key: "dl_test_badge"
+    obtainium: true
+    links:
+      - label: "GitHub"
+        url:   "https://github.com/ChatrixOne/Chatrix.One-android/releases/latest"
+  - platform: "Android"
     name:     "Conversations"
     desc_key: "dl_android"
     links:

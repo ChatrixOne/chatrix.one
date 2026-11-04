@@ -1409,6 +1409,30 @@ function stopRingTone() {
     io.observe(q('.ps-phone'));
   }
 
+  /* The Obtainium steps for Chatrix.One: the card's button opens the dialog */
+  function initObtainium() {
+    var dlg = document.getElementById('obtainium');
+    if (!dlg || typeof dlg.showModal !== 'function') return;
+    document.querySelectorAll('[data-open="obtainium"]').forEach(function (b) {
+      b.hidden = false;
+      b.addEventListener('click', function () { dlg.showModal(); });
+    });
+    /* A click on the backdrop closes it too */
+    dlg.addEventListener('click', function (e) {
+      var r = dlg.getBoundingClientRect();
+      if (e.target === dlg && (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom)) dlg.close();
+    });
+    var copy = dlg.querySelector('.obt-copy');
+    if (copy && navigator.clipboard) copy.addEventListener('click', function () {
+      var label = copy.textContent;
+      navigator.clipboard.writeText(dlg.querySelector('.obt-url code').textContent).then(function () {
+        copy.textContent = copy.dataset.copied;
+        setTimeout(function () { copy.textContent = label; }, 1600);
+      });
+    });
+    else if (copy) copy.hidden = true;
+  }
+
   function init() {
     initTheme();
     initMobileNav();
@@ -1421,6 +1445,7 @@ function stopRingTone() {
     initDataFlow();
     initXmrDonate();
     initPhoneSteps();
+    initObtainium();
   }
 
   if (document.readyState === 'loading') {

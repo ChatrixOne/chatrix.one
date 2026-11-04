@@ -304,6 +304,9 @@
         <div class="download-os">
           {{ $icon := .icon | default .platform }}
           <span class="download-platform-icon" title="{{ .platform }}" aria-label="{{ .platform }}">
+            {{ if eq $icon "Chatrix" }}
+            <img class="download-app-icon" src="{{ "images/chatrix-one-app.svg" | relURL }}" alt="" width="28" height="28">
+            {{ end }}
             {{ if eq $icon "Android" }}
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.6 9.48l1.84-3.18a.39.39 0 00-.14-.53.4.4 0 00-.54.14l-1.86 3.22a11.55 11.55 0 00-9.8 0L5.24 5.91a.39.39 0 10-.68.39L6.4 9.48A10.9 10.9 0 001 18.41h22A10.9 10.9 0 0017.6 9.48zM7 15.5a.85.85 0 11.85-.85.85.85 0 01-.85.85zm10 0a.85.85 0 11.85-.85.85.85 0 01-.85.85z"/></svg>
             {{ end }}
@@ -333,23 +336,34 @@
             {{ end }}
           </span>
         </div>
-        <h3>{{ .name }}</h3>
+        <h3>{{ .name }}{{ with .badge_key }} <span class="download-badge">{{ i18n . }}</span>{{ end }}</h3>
         <p>{{ i18n .desc_key }}</p>
         <div class="download-links">
           {{ range .links }}
           <a href="{{ .url }}" class="download-pill" rel="noopener noreferrer">{{ .label }}</a>
           {{ end }}
+          {{ if .obtainium }}<button type="button" class="download-pill download-pill-accent" data-open="obtainium" hidden>{{ i18n "dl_obt_link" }}</button>{{ end }}
         </div>
       </article>
       {{ end }}
     </div>
 
-    {{/* Our own app is a test build for now (F-Droid later): a quiet
-         note, no download button */}}
-    <p class="dl-test reveal">
-      <img src="{{ "images/chatrix-one-app.svg" | relURL }}" alt="" width="28" height="28">
-      <span>{{ i18n "dl_test_note" }} <a href="https://github.com/ChatrixOne/Chatrix.One-android/releases/latest" rel="noopener noreferrer">{{ i18n "dl_test_link" }}</a></span>
-    </p>
+    {{/* Chatrix.One through Obtainium: short steps in a dialog, opened by
+         the card's button (initObtainium in app.js). A longer page with
+         screenshots belongs in the docs. */}}
+    <dialog id="obtainium" class="obt" aria-labelledby="obt-title">
+      <h3 id="obt-title">{{ i18n "obt_title" }}</h3>
+      <p class="obt-intro">{{ i18n "obt_intro" }}</p>
+      <ol class="obt-steps">
+        <li>{{ i18n "obt_s1" }}
+          <span class="obt-links"><a href="https://f-droid.org/packages/dev.imranr.obtainium.fdroid/" rel="noopener noreferrer">F-Droid</a><a href="https://github.com/ImranR98/Obtainium/releases/latest" rel="noopener noreferrer">GitHub</a></span></li>
+        <li>{{ i18n "obt_s2" | safeHTML }}
+          <span class="obt-url"><code>https://github.com/ChatrixOne/Chatrix.One-android</code><button type="button" class="obt-copy" data-copied="{{ i18n "obt_copied" }}">{{ i18n "obt_copy" }}</button></span></li>
+        <li>{{ i18n "obt_s3" | safeHTML }}</li>
+        <li>{{ i18n "obt_s4" | safeHTML }}</li>
+      </ol>
+      <form method="dialog"><button class="obt-close" value="close">{{ i18n "obt_close" }}</button></form>
+    </dialog>
 
   </div>
 </section>

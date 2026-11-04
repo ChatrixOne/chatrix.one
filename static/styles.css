@@ -1302,19 +1302,55 @@
 @media (prefers-reduced-motion: reduce) { .ps-caret, .ps-typing i { animation: none; } }
 
   /* =====  DOWNLOADS  ===== */
-  /* Our own app, a test build for now: one quiet line under the cards */
-  .dl-test { display: flex; align-items: center; justify-content: center; gap: 12px; margin: 28px auto 0; max-width: 720px; font-size: 14.5px; line-height: 1.5; color: var(--ink-soft); text-align: left; }
-  .dl-test img { flex-shrink: 0; width: 28px; height: 28px; border-radius: 7px; }
-  .dl-test a { color: var(--accent); white-space: nowrap; }
-  [data-theme="light"] .dl-test a { color: #00755a; }
   .downloads-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 16px;
   }
-  /* 8 cards: 4×2, then 2×4, then one column, so no row is half empty */
-  @media (max-width: 1100px) { .downloads-grid { grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width: 560px) { .downloads-grid { grid-template-columns: 1fr; } }
+  /* 9 cards: 3×3, then one column (two columns would leave a half row) */
+  @media (max-width: 760px) { .downloads-grid { grid-template-columns: 1fr; } }
+  /* Our own app: its icon, a "test version" tag, the Obtainium button */
+  .download-app-icon { width: 28px; height: 28px; border-radius: 7px; }
+  .download-badge {
+    display: inline-block; margin-left: 6px; padding: 2px 8px; border-radius: 999px; vertical-align: middle;
+    font: 500 10.5px 'IBM Plex Mono', monospace; letter-spacing: .04em; text-transform: uppercase;
+    color: var(--accent); background: color-mix(in srgb, var(--accent) 14%, transparent);
+  }
+  [data-theme="light"] .download-badge { color: #00755a; }
+  button.download-pill { font-family: inherit; cursor: pointer; }
+  .download-pill-accent { border-color: color-mix(in srgb, var(--accent) 50%, var(--line)); color: var(--accent); }
+  [data-theme="light"] .download-pill-accent { color: #00755a; }
+
+  /* The Obtainium steps */
+  .obt {
+    width: min(520px, calc(100vw - 32px)); max-height: calc(100vh - 48px); box-sizing: border-box; padding: 28px;
+    border: 1px solid var(--line); border-radius: 18px; background: var(--bg-card); color: var(--ink);
+    box-shadow: 0 30px 80px rgba(0,0,0,.45);
+  }
+  .obt::backdrop { background: rgba(5,8,12,.65); }
+  .obt h3 { margin: 0 0 8px; font-size: 20px; font-weight: 500; }
+  .obt-intro { margin: 0 0 18px; color: var(--ink-soft); font-size: 14.5px; line-height: 1.55; }
+  .obt-steps { margin: 0 0 20px; padding: 0; list-style: none; counter-reset: obt; }
+  .obt-steps li {
+    position: relative; padding: 0 0 14px 40px; counter-increment: obt;
+    font-size: 14.5px; line-height: 1.55; color: var(--ink-soft);
+  }
+  .obt-steps li::before {
+    content: counter(obt); position: absolute; left: 0; top: -2px; width: 26px; height: 26px; box-sizing: border-box;
+    display: grid; place-items: center; border-radius: 50%; border: 1px solid var(--accent);
+    font: 500 12px 'IBM Plex Mono', monospace; color: var(--accent);
+  }
+  .obt-steps b { color: var(--ink); font-weight: 600; }
+  .obt-links { display: flex; gap: 8px; margin-top: 8px; }
+  .obt-links a, .obt-copy, .obt-close {
+    font: 500 12px inherit; font-family: inherit; padding: 6px 12px; border-radius: 999px;
+    border: 1px solid var(--line); background: var(--bg); color: var(--ink-soft); cursor: pointer; text-decoration: none;
+  }
+  .obt-links a:hover, .obt-copy:hover, .obt-close:hover { border-color: var(--accent); color: var(--accent); }
+  .obt-url { display: flex; align-items: center; gap: 8px; margin-top: 8px; padding: 6px 6px 6px 12px; border-radius: 10px; background: var(--bg); border: 1px solid var(--line); }
+  .obt-url code { flex: 1; min-width: 0; overflow-wrap: anywhere; font: 12px 'IBM Plex Mono', monospace; color: var(--ink); }
+  .obt-copy { flex-shrink: 0; }
+  .obt form { display: flex; justify-content: flex-end; margin: 0; }
 
   .download {
     background: var(--bg-card);

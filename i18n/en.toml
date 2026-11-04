@@ -149,6 +149,42 @@ other = "Get the apps"
 [dl_sub]
 other = "Open clients, your choice. Use one of the recommended apps below, or any XMPP client that follows the standard."
 
+[dl_chatrix]
+other = "The app made for chatrix.one: a friendly, private XMPP messenger for Android with quick message gestures and custom backgrounds."
+
+[dl_test_badge]
+other = "Test version"
+
+[dl_obt_link]
+other = "Install with Obtainium"
+
+[obt_title]
+other = "Install Chatrix.One with Obtainium"
+
+[obt_intro]
+other = "Obtainium installs the app straight from its GitHub releases and tells you when a new version is out. No account, no app store."
+
+[obt_s1]
+other = "Install Obtainium, from F-Droid or from GitHub."
+
+[obt_s2]
+other = "In Obtainium, press the <b>+</b> at the bottom right. Paste this address into the address field, then press the <b>+</b> on the right of it:"
+
+[obt_s3]
+other = "When it asks which file, pick the one ending in <b>arm64</b>."
+
+[obt_s4]
+other = "Press <b>Install</b>. Obtainium then tells you when a new version is out."
+
+[obt_copy]
+other = "Copy"
+
+[obt_copied]
+other = "Copied"
+
+[obt_close]
+other = "Close"
+
 [dl_android]
 other = "A Jabber/XMPP client optimized for a unique mobile experience on Android 5.0+."
 
@@ -375,12 +411,6 @@ other = "chatrix.one: free, private chat. Encrypted XMPP, no ads, no tracking, s
 
 [home_card_you]
 other = "yourname"
-
-[dl_test_note]
-other = "A test version of our own Android app, Chatrix.One, is on GitHub for enthusiasts."
-
-[dl_test_link]
-other = "Test version on GitHub →"
 
 [ph_enc_off]
 other = "Encryption off"
