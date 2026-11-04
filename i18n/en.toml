@@ -168,13 +168,13 @@ other = "Obtainium installs the app straight from its GitHub releases and tells 
 other = "Install Obtainium, from F-Droid or from GitHub."
 
 [obt_s2]
-other = "In Obtainium, press the <b>+</b> at the bottom right. Paste this address into the address field, then press the <b>+</b> on the right of it:"
+other = "In Obtainium, press <b>+ Add</b> at the bottom right. Paste this address into <b>App source URL</b>, then press the <b>+</b> on the right of it:"
 
 [obt_s3]
-other = "When it asks which file, pick the one ending in <b>arm64</b>."
+other = "In <b>Pick an APK</b>, choose the file ending in <b>arm64.apk</b> (Obtainium usually selects it already), then press <b>Continue</b>."
 
 [obt_s4]
-other = "Press <b>Install</b>. Obtainium then tells you when a new version is out."
+other = "Confirm the install when Android asks (the first time, it also asks you to allow installs from Obtainium). From then on, Obtainium tells you when a new version is out."
 
 [obt_copy]
 other = "Copy"
