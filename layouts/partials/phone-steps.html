@@ -6,7 +6,9 @@
      scenes follow its real sign-up (screenshots 2026-11-04): its welcome
      screen, the human check and the sign-up form in the browser, "Open
      Chatrix.One", the app's login with the address filled in (only the
-     password is typed), then the welcome bot's word, sent unencrypted. */}}
+     password is typed, "Next"), the avatar (skipped), the chat list, then
+     the welcome bot's word, sent unencrypted ("Clear text" in the lock's
+     menu). */}}
 <div class="ps" data-step="done">
   <ol class="ps-steps">
     <li data-step="1">
@@ -51,72 +53,109 @@
           <span class="ps-tap ps-tap-app"></span>
         </div>
 
+        {{/* The app and web screens below copy the real ones (English, as
+             in the app and on the server's pages), shortened to fit. */}}
+
         {{/* 1b: the app's welcome screen */}}
         <div class="ps-scene" data-s="welcome">
+          <span class="ps-lang">English</span>
           <svg class="ps-welcome-logo" viewBox="0 0 1108 1100"><use href="#ps-mark"/></svg>
-          <p class="ps-welcome-title">{{ i18n "ph_welcome_title" }}</p>
-          <p class="ps-welcome-text">{{ i18n "ph_welcome_text" }}</p>
-          <span class="ps-btn ps-btn-new">{{ i18n "ph_new_account" }}</span>
-          <span class="ps-btn ps-btn-line">{{ i18n "ph_have_account" }}</span>
+          <p class="ps-welcome-title">Welcome to Chatrix.One</p>
+          <p class="ps-welcome-text">Free and private messaging on chatrix.one or any other XMPP server. No ads, no tracking.</p>
+          <span class="ps-btn ps-btn-new">Create a Chatrix.One account</span>
+          <span class="ps-btn ps-btn-line">I already have an account</span>
+          <span class="ps-link">Use another XMPP provider</span>
           <span class="ps-tap ps-tap-new"></span>
         </div>
 
-        {{/* 2a: the human check in the browser */}}
-        <div class="ps-scene" data-s="join">
-          <div class="ps-url"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>chatrix.one/join</div>
-          <div class="ps-page">
-            <p class="ps-page-title">{{ i18n "ph_join_title" }}</p>
-            <p class="ps-page-text">{{ i18n "ph_join_text" }}</p>
-            <div class="ps-check"><span class="ps-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>{{ i18n "ph_human" }}</div>
-            <span class="ps-btn ps-btn-open">{{ i18n "ph_continue" }}</span>
+        {{/* 2a: the human check in the browser (a light page) */}}
+        <div class="ps-scene ps-web ps-light" data-s="join">
+          <div class="ps-url"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 3l7 3v5c0 4.5-3 8.3-7 10-4-1.7-7-5.5-7-10V6z"/></svg>chatrix.one/invites/_challenge</div>
+          <div class="ps-card">
+            <p class="ps-card-title">Please verify you are human</p>
+            <p class="ps-card-text">Complete the challenge to continue.</p>
+            <div class="ps-check"><span class="ps-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>I am human</div>
+            <span class="ps-wbtn ps-btn-open">Continue</span>
+            <p class="ps-card-small">By continuing you agree to the <u>house rules</u>.</p>
           </div>
           <span class="ps-tap ps-tap-open"></span>
         </div>
 
         {{/* 2b: the sign-up form on the invite page: name and password */}}
-        <div class="ps-scene" data-s="register">
-          <div class="ps-url"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>chatrix.one/invites</div>
-          <p class="ps-page-title">{{ i18n "ph_register_title" }}</p>
-          <label class="ps-field"><span>{{ i18n "ph_user" }}</span><b><em class="ps-type ps-user" data-text="{{ i18n "home_card_you" }}"></em><i class="ps-caret"></i><u>@chatrix.one</u></b></label>
-          <label class="ps-field"><span>{{ i18n "ph_pass" }}</span><b><em class="ps-type ps-pass" data-text="••••••••••"></em></b></label>
-          <span class="ps-btn ps-btn-submit">{{ i18n "ph_create" }}</span>
+        <div class="ps-scene ps-web" data-s="register">
+          <div class="ps-url"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 3l7 3v5c0 4.5-3 8.3-7 10-4-1.7-7-5.5-7-10V6z"/></svg>chatrix.one/invites/…/register</div>
+          <div class="ps-wcard">
+            <p class="ps-wtitle">Register on chatrix.one</p>
+            <p class="ps-wsub">Create an account</p>
+            <label class="ps-wfield"><span>Username:</span><b><em class="ps-type ps-user" data-text="{{ i18n "home_card_you" }}"></em><i class="ps-caret"></i></b><u>@chatrix.one</u></label>
+            <label class="ps-wfield"><span>Password:</span><b><em class="ps-type ps-pass" data-text="••••••••••"></em></b></label>
+            <div class="ps-wrow"><span class="ps-wbtn ps-wbtn-line">« Previous</span><span class="ps-wbtn ps-btn-submit">Submit</span></div>
+          </div>
           <span class="ps-tap ps-tap-submit"></span>
         </div>
 
         {{/* 2c: account made, back to the app */}}
-        <div class="ps-scene" data-s="made">
-          <div class="ps-url"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>chatrix.one/invites</div>
-          <p class="ps-page-title">{{ i18n "ph_made_title" }}</p>
-          <p class="ps-page-text">{{ i18n "ph_made_text" }} <b class="ps-mono">{{ i18n "home_card_you" }}@chatrix.one</b></p>
-          <span class="ps-btn ps-btn-back">{{ i18n "ph_open_app" }}</span>
-          <p class="ps-small">{{ i18n "ph_open_app_note" }}</p>
+        <div class="ps-scene ps-web" data-s="made">
+          <div class="ps-url"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 3l7 3v5c0 4.5-3 8.3-7 10-4-1.7-7-5.5-7-10V6z"/></svg>chatrix.one/invites/…</div>
+          <div class="ps-wcard">
+            <p class="ps-wtitle">chatrix.one</p>
+            <p class="ps-wsub">Congratulations!</p>
+            <p class="ps-wtext">You have created an account on <b>chatrix.one</b>.</p>
+            <span class="ps-wbtn ps-wbtn-green ps-btn-back">Open Chatrix.One</span>
+            <p class="ps-wsmall">For the Chatrix.One app on Android: opens it with your new address filled in. Just enter your password.</p>
+          </div>
           <span class="ps-tap ps-tap-back"></span>
         </div>
 
         {{/* 2d: the app, address filled in: only the password */}}
         <div class="ps-scene" data-s="login">
-          <p class="ps-appbar"><svg viewBox="0 0 1108 1100"><use href="#ps-mark"/></svg>Chatrix.One</p>
-          <p class="ps-app-title">{{ i18n "ph_login_title" }}</p>
-          <label class="ps-field"><span>{{ i18n "ph_address" }}</span><b class="ps-filled">{{ i18n "home_card_you" }}@chatrix.one</b></label>
-          <label class="ps-field"><span>{{ i18n "ph_pass" }}</span><b><em class="ps-type ps-pass2" data-text="••••••••••"></em><i class="ps-caret"></i></b></label>
-          <span class="ps-btn ps-btn-login"><span class="ps-btn-text">{{ i18n "ph_login" }}</span><span class="ps-spin"></span></span>
+          <p class="ps-apptop"><svg class="ps-back" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>Add existing account</p>
+          <div class="ps-obox">
+            <label class="ps-ofield"><span>XMPP address</span><b>{{ i18n "home_card_you" }}@chatrix.one</b></label>
+            <label class="ps-ofield ps-ofocus"><span>Password</span><b><em class="ps-type ps-pass2" data-text="•••••••••••••"></em><i class="ps-caret"></i></b></label>
+          </div>
+          <div class="ps-appfoot"><span class="ps-link">Cancel</span><span class="ps-btn ps-pill ps-btn-login"><span class="ps-btn-text">Next</span><span class="ps-spin"></span></span></div>
           <span class="ps-tap ps-tap-login"></span>
         </div>
 
+        {{/* 2e: the app asks for an avatar; skipped here */}}
+        <div class="ps-scene" data-s="avatar">
+          <p class="ps-apptop">Publish avatar</p>
+          <span class="ps-avatar-big">{{ substr (i18n "home_card_you") 0 1 | upper }}</span>
+          <p class="ps-small">Tap avatar to select picture from gallery</p>
+          <p class="ps-toggle">Show to contacts only<i></i></p>
+          <div class="ps-appfoot"><span class="ps-link ps-btn-skip">Skip</span><span class="ps-btn ps-pill ps-pill-off">Publish</span></div>
+          <span class="ps-tap ps-tap-skip"></span>
+        </div>
+
+        {{/* 2f: the chat list, the bot has written */}}
+        <div class="ps-scene" data-s="list">
+          <p class="ps-search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5"/></svg>Search in chats</p>
+          <div class="ps-row"><img class="ps-bot" src="{{ "images/welcome-bot.png" | relURL }}" alt="" width="32" height="32"><span><b>chatrix.one Welcome</b><small>Hi {{ i18n "home_card_you" }}, welcome to chatrix.one! Quick check…</small></span><em>1</em></div>
+          <span class="ps-btn ps-fab">Start chat</span>
+          <span class="ps-tap ps-tap-row"></span>
+        </div>
+
         {{/* 3: the welcome bot's word (its real wording, shortened). The bot
-             can't read encrypted messages, so the lock goes off first. */}}
+             can't read encrypted messages: the lock opens a menu, Clear
+             text is picked, under a magnifier so it isn't missed. */}}
         <div class="ps-scene" data-s="chat">
-          <div class="ps-chat-head"><span class="ps-avatar">W</span><span><b>chatrix.one Welcome</b><small>welcome@chatrix.one</small></span><span class="ps-lock"><svg class="ps-lock-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><svg class="ps-lock-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 7.6-1.7"/></svg></span></div>
-          {{/* A magnifier on the lock, so the switch-off isn't missed */}}
-          <div class="ps-zoom"><span class="ps-zoom-lens"><span class="ps-zoom-lock"><svg class="ps-lock-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><svg class="ps-lock-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 7.6-1.7"/></svg></span></span><i class="ps-zoom-handle"></i><em class="ps-zoom-label">{{ i18n "ph_enc_off" }}</em></div>
+          <div class="ps-chat-head"><svg class="ps-back" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg><b>chatrix.one Welcome</b><span class="ps-lock"><svg class="ps-lock-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><svg class="ps-lock-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 7.6-1.7"/></svg></span></div>
+          <div class="ps-menu">
+            <p class="ps-opt ps-opt-clear">Clear text<i></i></p>
+            <p class="ps-opt ps-opt-omemo">OMEMO<i></i></p>
+            <p class="ps-opt">OpenPGP<i></i></p>
+          </div>
+          <div class="ps-zoom"><span class="ps-zoom-lens"><span class="ps-zoom-opt">Clear text<i></i></span></span><i class="ps-zoom-handle"></i><em class="ps-zoom-label">{{ i18n "ph_enc_off" }}</em></div>
+          <span class="ps-tap ps-tap-lock"></span>
           <span class="ps-tap ps-tap-zoom"></span>
           <div class="ps-msgs">
-            <p class="ps-msg ps-in ps-m1">Hi {{ i18n "home_card_you" }}, welcome to chatrix.one! Quick check that you're a person: reply with the word <strong>magnet</strong>. Please send the reply unencrypted.</p>
-            <p class="ps-msg ps-out ps-m2">magnet</p>
-            <p class="ps-msg ps-in ps-m3">Thanks, you're verified! Full speed and this server's group chats are now unlocked.</p>
+            <div class="ps-msg ps-in ps-m1"><img class="ps-bot" src="{{ "images/welcome-bot.png" | relURL }}" alt="" width="32" height="32"><p>Hi {{ i18n "home_card_you" }}, welcome to chatrix.one!<br><br>Quick check that you're a person and not a spam bot: reply to this message with the word<br><br>&nbsp;&nbsp;<strong>magnet</strong><br><br>Please send the reply unencrypted: if your app shows a lock or OMEMO for this chat, turn it off here. …</p></div>
+            <div class="ps-msg ps-out ps-m2"><span class="ps-me">{{ substr (i18n "home_card_you") 0 1 | upper }}</span><p>Magnet</p></div>
+            <div class="ps-msg ps-in ps-m3"><img class="ps-bot" src="{{ "images/welcome-bot.png" | relURL }}" alt="" width="32" height="32"><p>Thanks, you're verified! Full speed and this server's group chats are now unlocked. Your app will reconnect in a moment to apply that. I'll remove myself from your contacts now. Enjoy!</p></div>
             <p class="ps-typing"><i></i><i></i><i></i></p>
           </div>
-          <div class="ps-compose"><em class="ps-type ps-word" data-text="magnet"></em><span class="ps-ph"><span class="ps-ph-enc">{{ i18n "ph_msg_enc" }}</span><span class="ps-ph-clear">{{ i18n "ph_msg_clear" }}</span></span><span class="ps-send"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 20l18-8L3 4v6l12 2-12 2z"/></svg></span></div>
+          <div class="ps-compose"><em class="ps-type ps-word" data-text="Magnet"></em><span class="ps-ph"><span class="ps-ph-enc">Send encrypted message</span><span class="ps-ph-clear">Send clear text message</span></span><span class="ps-send"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 20l18-8L3 4v6l12 2-12 2z"/></svg></span></div>
         </div>
 
         {{/* Ready */}}
@@ -129,6 +168,13 @@
       </div>
     </div>
     {{ if eq .Lang "bg" }}<p class="ps-note">{{ i18n "ph_bot_note" }}</p>{{ end }}
-    <button type="button" class="ps-replay" hidden>{{ i18n "steps_replay" }}</button>
+    {{/* Step through the screens: back, one dot per screen, next, play/pause.
+         Hidden without JS; app.js (initPhoneSteps) turns it on. */}}
+    <div class="ps-ctl" hidden>
+      <button type="button" class="ps-arrow ps-prev" aria-label="{{ i18n "ps_prev" }}" title="{{ i18n "ps_prev" }}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <span class="ps-dots">{{ range $i, $_ := seq 12 }}<button type="button" class="ps-dot" aria-label="{{ i18n "ps_screen" }} {{ add $i 1 }} / 12"></button>{{ end }}</span>
+      <button type="button" class="ps-arrow ps-next" aria-label="{{ i18n "ps_next" }}" title="{{ i18n "ps_next" }}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+      <button type="button" class="ps-arrow ps-toggle-play" data-mode="paused" data-play="{{ i18n "ps_play" }}" data-pause="{{ i18n "ps_pause" }}" data-replay="{{ i18n "steps_replay" }}" aria-label="{{ i18n "ps_play" }}" title="{{ i18n "ps_play" }}"><svg class="ps-i-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg><svg class="ps-i-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg><svg class="ps-i-replay" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.4-5.7M4 4v5h5"/></svg></button>
+    </div>
   </div>
 </div>

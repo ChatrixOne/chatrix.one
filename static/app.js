@@ -1204,8 +1204,10 @@ function stopRingTone() {
     var ps = document.querySelector('.ps');
     if (!ps) return;
     var steps = ps.querySelectorAll('.ps-steps li');
-    var replay = ps.querySelector('.ps-replay');
-    var timers = [], raf = 0;
+    var ctl = ps.querySelector('.ps-ctl');
+    var dots = ps.querySelectorAll('.ps-dot');
+    var toggle = ps.querySelector('.ps-toggle-play');
+    var timers = [], raf = 0, cur = 0, mode = 'paused';  /* mode: playing, paused, ended */
     function q(sel) { return ps.querySelector(sel); }
     function scene(name) { return q('.ps-scene[data-s="' + name + '"]'); }
     function at(ms, fn) { timers.push(setTimeout(fn, ms)); }
@@ -1215,7 +1217,7 @@ function stopRingTone() {
         s.classList.toggle('off', s.dataset.s !== name);
       });
     }
-    function mark(n) {  /* n: the step now playing; 4 = all done */
+    function mark(n) {  /* n: the step on screen; 4 = all done */
       steps.forEach(function (li, i) {
         li.classList.toggle('is-active', i + 1 === n);
         li.classList.toggle('is-done', i + 1 < n);
@@ -1239,120 +1241,170 @@ function stopRingTone() {
       }
       return ms + text.length * per;
     }
+    function fill(sel, on) { var el = q(sel); el.textContent = on ? el.dataset.text : ''; }
     function setDl(v) {
       var home = scene('home');
       home.style.setProperty('--dl', v);
       q('.ps-pct').textContent = Math.round(v) + '%';
       home.classList.toggle('installed', v >= 100);
     }
-    /* Each step resets its scenes, schedules itself from t and returns its end */
-    var parts = [
-      function (t) {  /* 1: the app installs and opens on its welcome screen */
-        at(t, function () { setDl(0); show('home'); mark(1); });
-        at(t + 300, function () {
-          var start = null;
-          function step(ts) {
-            if (start === null) start = ts;
-            var k = Math.min(1, (ts - start) / 1300);
-            setDl(k * 100);
-            if (k < 1) raf = requestAnimationFrame(step);
-          }
-          raf = requestAnimationFrame(step);
-        });
-        tap('.ps-tap-app', '.ps-ico-app', t + 2000);
-        at(t + 2350, function () { show('welcome'); });
-        return t + 3300;
-      },
-      function (t) {  /* 2: human check, name and password on the web, back to the app, password */
-        var check = q('.ps-check'), login = q('.ps-btn-login');
-        at(t, function () {
-          check.classList.remove('wait', 'ok');
-          q('.ps-user').textContent = ''; q('.ps-pass').textContent = ''; q('.ps-pass2').textContent = '';
-          login.classList.remove('busy');
-          mark(2);
-        });
-        tap('.ps-tap-new', '.ps-btn-new', t);
-        at(t + 350, function () { show('join'); });
-        at(t + 900, function () { check.classList.add('wait'); });
-        at(t + 1600, function () { check.classList.remove('wait'); check.classList.add('ok'); });
-        tap('.ps-tap-open', '.ps-btn-open', t + 2100);
-        at(t + 2450, function () { show('register'); });
-        var e = type('.ps-user', t + 2800, 80);
-        e = type('.ps-pass', e + 250, 45);
-        tap('.ps-tap-submit', '.ps-btn-submit', e + 350);
-        at(e + 700, function () { show('made'); });
-        tap('.ps-tap-back', '.ps-btn-back', e + 1900);
-        at(e + 2250, function () { show('login'); });
-        e = type('.ps-pass2', e + 2750, 45);
-        tap('.ps-tap-login', '.ps-btn-login', e + 350);
-        at(e + 500, function () { login.classList.add('busy'); });
-        return e + 1200;
-      },
-      function (t) {  /* 3: the bot's word, encryption off, the reply, verified */
-        var typing = q('.ps-typing'), word = q('.ps-word'), chat = scene('chat');
-        at(t, function () {
-          ps.querySelectorAll('.ps-msg').forEach(function (m) { m.classList.remove('on'); });
-          typing.classList.remove('on'); word.textContent = ''; chat.classList.remove('clear', 'zoom');
-          show('chat'); mark(3);
-        });
-        at(t + 400, function () { typing.classList.add('on'); });
-        at(t + 1400, function () { typing.classList.remove('on'); q('.ps-m1').classList.add('on'); });
-        /* The magnifier comes out of the lock, a tap inside turns it off */
-        at(t + 2300, function () { chat.classList.add('zoom'); });
-        tap('.ps-tap-zoom', '.ps-zoom-lock', t + 3100);
-        at(t + 3250, function () { chat.classList.add('clear'); });
-        at(t + 4700, function () { chat.classList.remove('zoom'); });
-        var e = type('.ps-word', t + 5100, 110);
-        at(e + 350, function () { word.textContent = ''; q('.ps-m2').classList.add('on'); });
-        at(e + 800, function () { typing.classList.add('on'); });
-        at(e + 1700, function () { typing.classList.remove('on'); q('.ps-m3').classList.add('on'); });
-        return e + 3200;
-      }
-    ];
-    function stop() { timers.forEach(clearTimeout); timers = []; cancelAnimationFrame(raf); }
-    function finish() {
-      show('ready'); mark(4);
-      ps.classList.remove('playing');
-      if (replay) replay.hidden = false;
-    }
-    function play(from) {
-      stop();
-      ps.classList.add('anim', 'playing');
-      if (replay) replay.hidden = true;
-      var t = 0;
-      for (var i = from; i < parts.length; i++) t = parts[i](t);
-      at(t, finish);
-    }
-    function still(n) {
-      stop();
-      ps.classList.add('anim');
-      ps.querySelectorAll('.ps-msg').forEach(function (m) { m.classList.add('on'); });
+    function msgs(n) {  /* the first n chat messages shown */
+      ['.ps-m1', '.ps-m2', '.ps-m3'].forEach(function (m, i) { q(m).classList.toggle('on', i < n); });
       q('.ps-typing').classList.remove('on');
-      scene('chat').classList.add('clear'); scene('chat').classList.remove('zoom');
-      if (n === 1) { setDl(100); show('welcome'); }
-      if (n === 2) {
-        q('.ps-pass2').textContent = q('.ps-pass2').dataset.text;
-        show('login');
-      }
-      if (n === 3) show('chat');
-      mark(n);
+    }
+    function chatState(cls) {
+      var c = scene('chat');
+      ['clear', 'menu', 'zoom'].forEach(function (k) { c.classList.toggle(k, cls.indexOf(k) >= 0); });
     }
 
+    /* The screens, one dot each. step: the step it belongs to. set(done):
+       the screen as it starts (done false) or as it ends (done true), so
+       any screen can be shown or played on its own. play(t) schedules the
+       screen from t and returns its end. */
+    var check = q('.ps-check'), login = q('.ps-btn-login'), word = q('.ps-word'), typing = q('.ps-typing');
+    var screens = [
+      { step: 1, set: function (d) { setDl(d ? 100 : 0); show('home'); },
+        play: function (t) {
+          at(t + 300, function () {
+            var start = null;
+            function step(ts) {
+              if (start === null) start = ts;
+              var k = Math.min(1, (ts - start) / 1300);
+              setDl(k * 100);
+              if (k < 1) raf = requestAnimationFrame(step);
+            }
+            raf = requestAnimationFrame(step);
+          });
+          tap('.ps-tap-app', '.ps-ico-app', t + 2000);
+          return t + 2350;
+        } },
+      { step: 1, set: function () { show('welcome'); },
+        play: function (t) { tap('.ps-tap-new', '.ps-btn-new', t + 900); return t + 1250; } },
+      { step: 2, set: function (d) { check.classList.remove('wait'); check.classList.toggle('ok', d); show('join'); },
+        play: function (t) {
+          at(t + 550, function () { check.classList.add('wait'); });
+          at(t + 1250, function () { check.classList.remove('wait'); check.classList.add('ok'); });
+          tap('.ps-tap-open', '.ps-btn-open', t + 1750);
+          return t + 2100;
+        } },
+      { step: 2, set: function (d) { fill('.ps-user', d); fill('.ps-pass', d); show('register'); },
+        play: function (t) {
+          var e = type('.ps-user', t + 350, 80);
+          e = type('.ps-pass', e + 250, 45);
+          tap('.ps-tap-submit', '.ps-btn-submit', e + 350);
+          return e + 700;
+        } },
+      { step: 2, set: function () { show('made'); },
+        play: function (t) { tap('.ps-tap-back', '.ps-btn-back', t + 1300); return t + 1650; } },
+      { step: 2, set: function (d) { fill('.ps-pass2', d); login.classList.remove('busy'); show('login'); },
+        play: function (t) {
+          var e = type('.ps-pass2', t + 500, 40);
+          tap('.ps-tap-login', '.ps-btn-login', e + 350);
+          at(e + 500, function () { login.classList.add('busy'); });
+          return e + 1300;
+        } },
+      { step: 2, set: function () { show('avatar'); },
+        play: function (t) { tap('.ps-tap-skip', '.ps-btn-skip', t + 1000); return t + 1350; } },
+      { step: 2, set: function () { show('list'); },
+        play: function (t) { tap('.ps-tap-row', '.ps-row', t + 850); return t + 1200; } },
+      { step: 3, set: function (d) { msgs(d ? 1 : 0); word.textContent = ''; chatState(''); show('chat'); },
+        play: function (t) {
+          at(t + 350, function () { typing.classList.add('on'); });
+          at(t + 1150, function () { typing.classList.remove('on'); q('.ps-m1').classList.add('on'); });
+          tap('.ps-tap-lock', '.ps-lock', t + 2550);
+          return t + 2750;
+        } },
+      /* The lock's menu, a magnifier over "Clear text", a tap there */
+      { step: 3, set: function (d) { msgs(1); word.textContent = ''; chatState(d ? 'menu zoom clear' : 'menu'); show('chat'); },
+        play: function (t) {
+          at(t + 400, function () { chatState('menu zoom'); });
+          tap('.ps-tap-zoom', '.ps-zoom-opt', t + 1200);
+          at(t + 1350, function () { chatState('menu zoom clear'); });
+          return t + 2700;
+        } },
+      { step: 3, set: function (d) { msgs(d ? 3 : 1); word.textContent = ''; chatState('clear'); show('chat'); },
+        play: function (t) {
+          var e = type('.ps-word', t + 400, 110);
+          at(e + 350, function () { word.textContent = ''; q('.ps-m2').classList.add('on'); });
+          at(e + 800, function () { typing.classList.add('on'); });
+          at(e + 1700, function () { typing.classList.remove('on'); q('.ps-m3').classList.add('on'); });
+          return e + 3400;
+        } },
+      { step: 4, set: function () { show('ready'); }, play: function (t) { return t; } }
+    ];
+    var LAST = screens.length - 1;
+
+    function stop() { timers.forEach(clearTimeout); timers = []; cancelAnimationFrame(raf); }
+    function dot(i) {
+      cur = i;
+      dots.forEach(function (d, k) {
+        d.classList.toggle('is-on', k === i);
+        d.classList.toggle('is-past', k < i);
+        if (k === i) d.setAttribute('aria-current', 'step'); else d.removeAttribute('aria-current');
+      });
+      ps.classList.toggle('playing', screens[i].step < 4);
+      mark(screens[i].step);
+    }
+    function setMode(m) {
+      mode = m;
+      if (!toggle) return;
+      toggle.dataset.mode = m;
+      var label = toggle.dataset[m === 'playing' ? 'pause' : m === 'ended' ? 'replay' : 'play'];
+      toggle.setAttribute('aria-label', label); toggle.title = label;
+    }
+    /* Play from screen i to the end */
+    function play(i) {
+      stop();
+      ps.classList.add('anim');
+      setMode('playing');
+      var t = 0;
+      for (var k = i; k <= LAST; k++) {
+        (function (k, t) { at(t, function () { screens[k].set(false); dot(k); }); })(k, t);
+        t = screens[k].play(t);
+      }
+      at(t, function () { setMode('ended'); });
+    }
+    /* Show screen i, finished, and stay there */
+    function still(i) {
+      stop();
+      ps.classList.add('anim');
+      i = Math.max(0, Math.min(LAST, i));
+      screens[i].set(true); dot(i);
+      setMode(i === LAST ? 'ended' : 'paused');
+    }
+    var MOTION = !REDUCE_MOTION && 'IntersectionObserver' in window;
+
+    /* The steps' titles start their first screen */
     ps.querySelectorAll('.ps-go').forEach(function (b) {
       b.addEventListener('click', function () {
-        var n = +b.dataset.go;
-        if (REDUCE_MOTION) still(n); else play(n - 1);
+        var n = +b.dataset.go, i = 0;
+        while (screens[i].step < n) i++;
+        if (MOTION) play(i); else still(i);
       });
     });
-    if (REDUCE_MOTION || !('IntersectionObserver' in window)) return;
-    if (replay) replay.addEventListener('click', function () { play(0); });
+    if (ctl) {
+      ctl.hidden = false;
+      if (!MOTION && toggle) toggle.hidden = true;
+      ctl.querySelector('.ps-prev').addEventListener('click', function () { still(cur - 1); });
+      ctl.querySelector('.ps-next').addEventListener('click', function () { still(cur + 1); });
+      dots.forEach(function (d, k) { d.addEventListener('click', function () { still(k); }); });
+      if (toggle) toggle.addEventListener('click', function () {
+        if (mode === 'playing') still(cur);
+        else play(mode === 'ended' ? 0 : cur);
+      });
+      ctl.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowLeft') { still(cur - 1); e.preventDefault(); }
+        if (e.key === 'ArrowRight') { still(cur + 1); e.preventDefault(); }
+      });
+    }
+    if (!MOTION) { still(LAST); return; }
 
     /* The waiting phone, without fading from the finished one */
     ps.classList.add('instant', 'anim');
-    setDl(0); show('home'); mark(0);
+    screens[0].set(false); dot(0); ps.classList.remove('playing'); mark(0);
     requestAnimationFrame(function () { requestAnimationFrame(function () { ps.classList.remove('instant'); }); });
     var io = new IntersectionObserver(function (entries) {
-      if (entries[0].isIntersecting) { io.disconnect(); play(0); }
+      if (entries[0].isIntersecting) { io.disconnect(); if (mode === 'paused' && cur === 0) play(0); }
     }, { threshold: 0.5 });
     io.observe(q('.ps-phone'));
   }

@@ -120,6 +120,21 @@ other = "Answer the welcome bot"
 [step3_body]
 other = "welcome@chatrix.one sends you one word. Reply with it within 24 hours to unlock file sharing and group chats."
 
+[ps_prev]
+other = "Previous screen"
+
+[ps_next]
+other = "Next screen"
+
+[ps_play]
+other = "Play"
+
+[ps_pause]
+other = "Pause"
+
+[ps_screen]
+other = "Screen"
+
 [steps_replay]
 other = "Replay"
 
@@ -361,77 +376,14 @@ other = "chatrix.one: free, private chat. Encrypted XMPP, no ads, no tracking, s
 [home_card_you]
 other = "yourname"
 
-[ph_open_app]
-other = "Open Chatrix.One"
-
 [dl_test_note]
 other = "A test version of our own Android app, Chatrix.One, is on GitHub for enthusiasts."
 
 [dl_test_link]
 other = "Test version on GitHub →"
 
-[ph_welcome_title]
-other = "Welcome to Chatrix.One"
-
-[ph_welcome_text]
-other = "Free and private messaging. No ads, no tracking."
-
-[ph_new_account]
-other = "Create a Chatrix.One account"
-
-[ph_have_account]
-other = "I already have an account"
-
-[ph_continue]
-other = "Continue"
-
-[ph_register_title]
-other = "Register on chatrix.one"
-
-[ph_made_title]
-other = "Congratulations!"
-
-[ph_made_text]
-other = "Your new address:"
-
-[ph_open_app_note]
-other = "Opens the app with your address filled in."
-
-[ph_login_title]
-other = "Add existing account"
-
-[ph_address]
-other = "XMPP address"
-
-[ph_login]
-other = "Log in"
-
 [ph_enc_off]
 other = "Encryption off"
-
-[ph_msg_enc]
-other = "Send encrypted message"
-
-[ph_msg_clear]
-other = "Send clear text message"
-
-[ph_join_title]
-other = "Please verify you're human"
-
-[ph_join_text]
-other = "Complete the check to continue."
-
-[ph_human]
-other = "I'm human"
-
-[ph_user]
-other = "Username"
-
-[ph_pass]
-other = "Password"
-
-[ph_create]
-other = "Create"
 
 [ph_ready]
 other = "Ready to chat"
