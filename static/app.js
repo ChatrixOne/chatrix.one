@@ -1247,49 +1247,62 @@ function stopRingTone() {
     }
     /* Each step resets its scenes, schedules itself from t and returns its end */
     var parts = [
-      function (t) {  /* 1: the app installs, a tap opens the invite page */
+      function (t) {  /* 1: the app installs and opens on its welcome screen */
         at(t, function () { setDl(0); show('home'); mark(1); });
         at(t + 300, function () {
           var start = null;
           function step(ts) {
             if (start === null) start = ts;
-            var k = Math.min(1, (ts - start) / 1500);
+            var k = Math.min(1, (ts - start) / 1300);
             setDl(k * 100);
             if (k < 1) raf = requestAnimationFrame(step);
           }
           raf = requestAnimationFrame(step);
         });
-        tap('.ps-tap-app', '.ps-ico-app', t + 2300);
-        return t + 2700;
+        tap('.ps-tap-app', '.ps-ico-app', t + 2000);
+        at(t + 2350, function () { show('welcome'); });
+        return t + 3300;
       },
-      function (t) {  /* 2: human check, the invite opens the app, name and password */
-        var check = q('.ps-check'), create = q('.ps-btn-create');
+      function (t) {  /* 2: human check, name and password on the web, back to the app, password */
+        var check = q('.ps-check'), login = q('.ps-btn-login');
         at(t, function () {
           check.classList.remove('wait', 'ok');
-          q('.ps-user').textContent = ''; q('.ps-pass').textContent = '';
-          create.classList.remove('busy');
-          show('join'); mark(2);
+          q('.ps-user').textContent = ''; q('.ps-pass').textContent = ''; q('.ps-pass2').textContent = '';
+          login.classList.remove('busy');
+          mark(2);
         });
-        at(t + 700, function () { check.classList.add('wait'); });
-        at(t + 1500, function () { check.classList.remove('wait'); check.classList.add('ok'); });
+        tap('.ps-tap-new', '.ps-btn-new', t);
+        at(t + 350, function () { show('join'); });
+        at(t + 900, function () { check.classList.add('wait'); });
+        at(t + 1600, function () { check.classList.remove('wait'); check.classList.add('ok'); });
         tap('.ps-tap-open', '.ps-btn-open', t + 2100);
-        at(t + 2500, function () { show('create'); });
-        var e = type('.ps-user', t + 2900, 90);
-        e = type('.ps-pass', e + 300, 50);
-        tap('.ps-tap-create', '.ps-btn-create', e + 400);
-        at(e + 550, function () { create.classList.add('busy'); });
-        return e + 1300;
+        at(t + 2450, function () { show('register'); });
+        var e = type('.ps-user', t + 2800, 80);
+        e = type('.ps-pass', e + 250, 45);
+        tap('.ps-tap-submit', '.ps-btn-submit', e + 350);
+        at(e + 700, function () { show('made'); });
+        tap('.ps-tap-back', '.ps-btn-back', e + 1900);
+        at(e + 2250, function () { show('login'); });
+        e = type('.ps-pass2', e + 2750, 45);
+        tap('.ps-tap-login', '.ps-btn-login', e + 350);
+        at(e + 500, function () { login.classList.add('busy'); });
+        return e + 1200;
       },
-      function (t) {  /* 3: the bot's word, the reply, verified */
-        var typing = q('.ps-typing'), word = q('.ps-word');
+      function (t) {  /* 3: the bot's word, encryption off, the reply, verified */
+        var typing = q('.ps-typing'), word = q('.ps-word'), chat = scene('chat');
         at(t, function () {
           ps.querySelectorAll('.ps-msg').forEach(function (m) { m.classList.remove('on'); });
-          typing.classList.remove('on'); word.textContent = '';
+          typing.classList.remove('on'); word.textContent = ''; chat.classList.remove('clear', 'zoom');
           show('chat'); mark(3);
         });
         at(t + 400, function () { typing.classList.add('on'); });
         at(t + 1400, function () { typing.classList.remove('on'); q('.ps-m1').classList.add('on'); });
-        var e = type('.ps-word', t + 2600, 110);
+        /* The magnifier comes out of the lock, a tap inside turns it off */
+        at(t + 2300, function () { chat.classList.add('zoom'); });
+        tap('.ps-tap-zoom', '.ps-zoom-lock', t + 3100);
+        at(t + 3250, function () { chat.classList.add('clear'); });
+        at(t + 4700, function () { chat.classList.remove('zoom'); });
+        var e = type('.ps-word', t + 5100, 110);
         at(e + 350, function () { word.textContent = ''; q('.ps-m2').classList.add('on'); });
         at(e + 800, function () { typing.classList.add('on'); });
         at(e + 1700, function () { typing.classList.remove('on'); q('.ps-m3').classList.add('on'); });
@@ -1315,12 +1328,11 @@ function stopRingTone() {
       ps.classList.add('anim');
       ps.querySelectorAll('.ps-msg').forEach(function (m) { m.classList.add('on'); });
       q('.ps-typing').classList.remove('on');
-      if (n === 1) { setDl(100); show('home'); }
+      scene('chat').classList.add('clear'); scene('chat').classList.remove('zoom');
+      if (n === 1) { setDl(100); show('welcome'); }
       if (n === 2) {
-        q('.ps-check').classList.add('ok');
-        q('.ps-user').textContent = q('.ps-user').dataset.text;
-        q('.ps-pass').textContent = q('.ps-pass').dataset.text;
-        show('create');
+        q('.ps-pass2').textContent = q('.ps-pass2').dataset.text;
+        show('login');
       }
       if (n === 3) show('chat');
       mark(n);

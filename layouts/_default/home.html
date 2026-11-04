@@ -344,6 +344,13 @@
       {{ end }}
     </div>
 
+    {{/* Our own app is a test build for now (F-Droid later): a quiet
+         note, no download button */}}
+    <p class="dl-test reveal">
+      <img src="{{ "images/chatrix-one-app.svg" | relURL }}" alt="" width="28" height="28">
+      <span>{{ i18n "dl_test_note" }} <a href="https://github.com/ChatrixOne/Chatrix.One-android/releases/latest" rel="noopener noreferrer">{{ i18n "dl_test_link" }}</a></span>
+    </p>
+
   </div>
 </section>
 <section id="privacy">

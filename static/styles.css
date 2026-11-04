@@ -1062,8 +1062,10 @@
 /* 1: home screen */
 .ps-grid { display: grid; grid-template-columns: repeat(4, 44px); justify-content: space-between; gap: 22px 0; margin-top: 30px; }
 .ps-ico { width: 44px; height: 44px; border-radius: 12px; background: var(--p-card); }
-.ps-ico-app { position: relative; display: grid; place-items: center; background: var(--p-acc); color: var(--p-acc-ink); }
-.ps-ico-app svg { width: 24px; height: 24px; }
+.ps-defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+/* Chatrix.One's icon (the one on the invite pages) */
+.ps-ico-app { position: relative; display: grid; place-items: center; background: none; box-shadow: 0 0 0 1px var(--p-line); }
+.ps-ico-app > svg { width: 44px; height: 44px; max-width: none; border-radius: inherit; }
 .ps-dl { /* the part still downloading, as a shrinking pie */
   position: absolute; inset: 0; border-radius: inherit;
   background: conic-gradient(transparent calc(var(--dl, 100) * 1%), rgba(16,22,31,.78) 0);
@@ -1103,12 +1105,31 @@
   transition: opacity .3s ease, transform .15s ease;
 }
 .ps-btn.press, .ps-ico-app.press { transform: scale(.94); }
+
+/* 1b: the app's welcome screen */
+.ps-scene[data-s="welcome"] { align-items: center; justify-content: center; text-align: center; padding-bottom: 40px; }
+.ps-welcome-logo { width: 64px; height: 64px; margin-bottom: 18px; }
+.ps-welcome-title { margin: 0 0 6px; font-size: 18px; font-weight: 400; letter-spacing: -0.01em; }
+.ps-welcome-text { margin: 0 0 22px; font-size: 12px; color: var(--p-soft); }
+.ps-scene[data-s="welcome"] .ps-btn { align-self: stretch; min-height: 38px; padding: 0 8px; border-radius: 999px; font-size: 11.5px; white-space: nowrap; }
+.ps-btn-line { margin-top: 10px; background: none; color: var(--p-acc); box-shadow: inset 0 0 0 1px var(--p-line); }
+
+/* 2b-2c: the sign-up form and its result, in the browser */
+.ps-scene[data-s="register"] .ps-page-title, .ps-scene[data-s="made"] .ps-page-title { margin-bottom: 16px; }
+.ps-btn-submit { margin-top: 8px; }
+.ps-mono { display: block; margin-top: 4px; font: 600 12.5px var(--h-mono); color: var(--p-ink); }
+.ps-small { margin: 10px 0 0; font-size: 11px; color: var(--p-soft); text-align: center; }
+/* 2d: the app's login, the address filled in */
+.ps-field b.ps-filled { color: var(--p-soft); }
+
+.ps-appbar { display: flex; align-items: center; gap: 8px; margin: 0 0 4px; font-size: 12px; font-weight: 600; color: var(--p-soft); }
+.ps-appbar svg { width: 16px; height: 16px; }
 .ps-ico-app { transition: transform .15s ease; }
 .ps-btn-open { opacity: .35; }
 .ps-check.ok ~ .ps-btn-open, .ps-scene[data-s="join"].end .ps-btn-open { opacity: 1; }
 
-/* 2b: create the account */
-.ps-app-title { margin: 6px 0 22px; font-size: 20px; font-weight: 300; letter-spacing: -0.02em; }
+/* Form fields: the sign-up form and the app login */
+.ps-app-title { margin: 6px 0 18px; font-size: 20px; font-weight: 300; letter-spacing: -0.02em; }
 .ps-field { display: block; margin-bottom: 14px; }
 .ps-field > span { display: block; margin-bottom: 6px; font-size: 11px; color: var(--p-soft); }
 .ps-field b {
@@ -1117,20 +1138,63 @@
   font: 400 13px var(--h-mono); white-space: nowrap; overflow: hidden;
 }
 .ps-field em { font-style: normal; color: var(--p-ink); }
-.ps-field u { text-decoration: none; color: var(--p-soft); }
-.ps-scene:has(.ps-pass:not(:empty)) .ps-caret { display: none; }
+.ps-field u { display: inline-flex; align-items: center; gap: 3px; margin-left: auto; padding-left: 2px; text-decoration: none; color: var(--p-soft); }
+.ps-field u svg { width: 10px; height: 10px; }
+.ps-field > small { display: block; margin-top: 5px; font-size: 10.5px; color: var(--p-acc); }
+.ps-scene[data-s="register"]:has(.ps-pass:not(:empty)) .ps-caret { display: none; }
 .ps-caret { display: inline-block; width: 1.5px; height: 16px; margin: 0 1px; background: var(--p-acc); animation: h-caret 1s steps(1) infinite; }
-.ps-btn-create { margin-top: 8px; }
+.ps-btn-login { margin-top: 8px; }
 .ps-spin { display: none; width: 16px; height: 16px; box-sizing: border-box; border: 2px solid var(--p-acc-ink); border-right-color: transparent; border-radius: 50%; animation: ps-spin .7s linear infinite; }
-.ps-btn-create.busy .ps-btn-text { display: none; }
-.ps-btn-create.busy .ps-spin { display: block; }
+.ps-btn-login.busy .ps-btn-text { display: none; }
+.ps-btn-login.busy .ps-spin { display: block; }
 @keyframes ps-spin { to { transform: rotate(360deg); } }
 
 /* 3: the bot chat */
 .ps-scene[data-s="chat"] { padding: 0; }
 .ps-chat-head { display: flex; align-items: center; gap: 10px; padding: 8px 16px 12px; border-bottom: 1px solid var(--p-line); }
-.ps-chat-head b { display: block; font-size: 13px; font-weight: 600; }
+.ps-chat-head > span:nth-child(2) { min-width: 0; }
+.ps-chat-head b { display: block; font-size: 13px; font-weight: 600; white-space: nowrap; }
 .ps-chat-head small { display: block; font-size: 11px; color: var(--p-soft); }
+/* The lock: on (OMEMO) until a tap turns it off for the bot */
+.ps-chat-head { position: relative; }
+.ps-lock { margin-left: auto; width: 30px; height: 30px; display: grid; place-items: center; border-radius: 50%; color: var(--p-ink); transition: transform .15s ease; }
+.ps-lock.press { transform: scale(.9); }
+.ps-lock svg { width: 17px; height: 17px; grid-area: 1 / 1; }
+.ps-lock-off, .ps-scene.clear .ps-lock-on { display: none; }
+.ps-scene.clear .ps-lock-off { display: block; color: var(--p-soft); }
+.ps-ph-clear, .ps-scene.clear .ps-ph-enc { display: none; }
+.ps-scene.clear .ps-ph-clear { display: inline; }
+.ps:not(.anim) .ps-scene[data-s="chat"] .ps-lock-on { display: none; }
+/* The magnifier over the lock: pops out of it, the tap turns it off inside */
+.ps-zoom {
+  position: absolute; top: 44px; right: 12px; z-index: 4; width: 104px; height: 140px;
+  opacity: 0; transform: scale(.25); transform-origin: 86% 0; pointer-events: none;
+  transition: opacity .3s ease, transform .35s cubic-bezier(.2, 1.4, .4, 1);
+}
+.ps-scene.zoom .ps-zoom { opacity: 1; transform: none; }
+.ps-zoom-lens {
+  position: absolute; top: 0; right: 0; width: 92px; height: 92px; box-sizing: border-box;
+  display: grid; place-items: center; border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #223047, var(--p-bg) 70%);
+  border: 4px solid var(--p-acc); box-shadow: 0 10px 30px rgba(0,0,0,.55), 0 0 0 6px rgba(0,200,150,.18);
+}
+.ps-zoom-lock { display: grid; width: 46px; height: 46px; color: var(--p-ink); transition: transform .15s ease; }
+.ps-zoom-lock.press { transform: scale(.88); }
+.ps-zoom-lock svg { width: 46px; height: 46px; grid-area: 1 / 1; }
+.ps-scene.clear .ps-zoom-lock, .ps-scene.clear .ps-zoom-lock svg { color: var(--p-acc); }
+.ps-zoom-handle { /* the glass's handle, down to the left */
+  position: absolute; top: 78px; right: 76px; width: 30px; height: 9px; border-radius: 5px;
+  background: var(--p-acc); transform: rotate(-45deg); transform-origin: right center;
+}
+.ps-zoom-label {
+  position: absolute; top: 114px; right: 0; padding: 3px 8px; border-radius: 999px; white-space: nowrap;
+  background: var(--p-acc); color: var(--p-acc-ink); font: 600 10.5px 'IBM Plex Sans', sans-serif; font-style: normal;
+  opacity: 0; transform: translateY(-4px); transition: opacity .25s ease, transform .25s ease;
+}
+.ps-scene.clear .ps-zoom-label { opacity: 1; transform: none; }
+.ps-msgs, .ps-compose { transition: opacity .3s ease; }
+.ps-scene.zoom .ps-msgs, .ps-scene.zoom .ps-compose { opacity: .35; }
+.ps:not(.anim) .ps-scene[data-s="chat"] .ps-lock-off { display: block; }
 .ps-avatar { width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; background: #3b4a63; font-weight: 600; }
 .ps-msgs { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; gap: 8px; padding: 12px 14px; overflow: hidden; }
 .ps-msg { max-width: 82%; margin: 0; padding: 8px 12px; border-radius: 14px; font-size: 12.5px; line-height: 1.45; display: none; }
@@ -1150,15 +1214,20 @@
   min-height: 40px; border-radius: 20px; background: var(--p-card); font-size: 13px;
 }
 .ps-compose em { font-style: normal; }
-.ps-ph { color: var(--p-soft); }
+.ps-ph { min-width: 0; color: var(--p-soft); font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .ps-compose em:not(:empty) + .ps-ph { display: none; }
 .ps-send { margin-left: auto; width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; background: var(--p-acc); color: var(--p-acc-ink); }
 .ps-send svg { width: 15px; height: 15px; }
 
 /* Ready */
 .ps-scene[data-s="ready"] { align-items: center; justify-content: center; text-align: center; padding-bottom: 60px; }
-.ps-done { width: 76px; height: 76px; border-radius: 50%; display: grid; place-items: center; background: var(--p-acc); color: var(--p-acc-ink); margin-bottom: 18px; }
-.ps-done svg { width: 40px; height: 40px; }
+.ps-done { position: relative; width: 84px; height: 84px; margin-bottom: 18px; }
+.ps-done > svg { width: 84px; height: 84px; border-radius: 19px; box-shadow: 0 0 0 1px var(--p-line); }
+.ps-done i { /* a small check on the icon's corner */
+  position: absolute; right: -6px; bottom: -6px; width: 28px; height: 28px; border-radius: 50%;
+  display: grid; place-items: center; background: var(--p-acc); color: var(--p-acc-ink); box-shadow: 0 0 0 3px var(--p-bg);
+}
+.ps-done i svg { width: 16px; height: 16px; }
 .ps-scene.on .ps-done { animation: ps-pop .4s ease-out; }
 .ps-ready { margin: 0 0 4px; font-size: 22px; font-weight: 300; letter-spacing: -0.02em; }
 .ps-jid { margin: 0 0 24px; font: 12px var(--h-mono); color: var(--p-soft); }
@@ -1167,6 +1236,11 @@
 @media (prefers-reduced-motion: reduce) { .ps-caret, .ps-typing i { animation: none; } }
 
   /* =====  DOWNLOADS  ===== */
+  /* Our own app, a test build for now: one quiet line under the cards */
+  .dl-test { display: flex; align-items: center; justify-content: center; gap: 12px; margin: 28px auto 0; max-width: 720px; font-size: 14.5px; line-height: 1.5; color: var(--ink-soft); text-align: left; }
+  .dl-test img { flex-shrink: 0; width: 28px; height: 28px; border-radius: 7px; }
+  .dl-test a { color: var(--accent); white-space: nowrap; }
+  [data-theme="light"] .dl-test a { color: #00755a; }
   .downloads-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);

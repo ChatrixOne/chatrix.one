@@ -109,7 +109,7 @@ other = "Виж приложенията"
 other = "Вземете покана"
 
 [step2_body]
-other = "Минете кратка проверка на chatrix.one/join. Поканата ви отвежда в приложението, където избирате име и парола."
+other = "Минете кратка проверка на chatrix.one/join, след това изберете име и парола."
 
 [step2_link]
 other = "Регистрация"
@@ -361,23 +361,68 @@ other = "chatrix.one: безплатен, поверителен чат. Кри�
 [home_card_you]
 other = "вашетоиме"
 
-[ph_app]
-other = "Чат"
+[ph_open_app]
+other = "Отвори Chatrix.One"
 
-[ph_join_title]
+[dl_test_note]
+other = "Тестова версия на нашето приложение за Android, Chatrix.One, има в GitHub за ентусиасти."
+
+[dl_test_link]
+other = "Тестовата версия в GitHub →"
+
+[ph_welcome_title]
+other = "Добре дошли в Chatrix.One"
+
+[ph_welcome_text]
+other = "Безплатни и лични съобщения. Без реклами и проследяване."
+
+[ph_new_account]
+other = "Създай профил в Chatrix.One"
+
+[ph_have_account]
+other = "Вече имам профил"
+
+[ph_continue]
+other = "Продължи"
+
+[ph_register_title]
 other = "Регистрация в chatrix.one"
 
+[ph_made_title]
+other = "Поздравления!"
+
+[ph_made_text]
+other = "Новият ви адрес:"
+
+[ph_open_app_note]
+other = "Отваря приложението с попълнен адрес."
+
+[ph_login_title]
+other = "Добавяне на профил"
+
+[ph_address]
+other = "XMPP адрес"
+
+[ph_login]
+other = "Вход"
+
+[ph_enc_off]
+other = "Шифроването е изключено"
+
+[ph_msg_enc]
+other = "Шифровано съобщение"
+
+[ph_msg_clear]
+other = "Без шифроване"
+
+[ph_join_title]
+other = "Потвърдете, че сте човек"
+
 [ph_join_text]
-other = "Потвърдете, че сте човек, за да получите покана."
+other = "Минете проверката, за да продължите."
 
 [ph_human]
 other = "Аз съм човек"
-
-[ph_open]
-other = "Отвори поканата в приложението"
-
-[ph_create_title]
-other = "Нов профил"
 
 [ph_user]
 other = "Потребителско име"
@@ -387,9 +432,6 @@ other = "Парола"
 
 [ph_create]
 other = "Създай"
-
-[ph_message]
-other = "Съобщение"
 
 [ph_ready]
 other = "Готови за чат"
