@@ -730,6 +730,10 @@ function stopRingTone() {
       ['.ps-m1', '.ps-m2', '.ps-m3'].forEach(function (m, i) { q(m).classList.toggle('on', i < n); });
       q('.ps-typing').classList.remove('on');
     }
+    function avatar(pic, busy) {  /* the avatar screen: with the photo yet, publishing */
+      scene('avatar').classList.toggle('pic', pic);
+      q('.ps-btn-pub').classList.toggle('busy', busy);
+    }
     function chatState(cls) {
       var c = scene('chat');
       ['clear', 'menu', 'zoom'].forEach(function (k) { c.classList.toggle(k, cls.indexOf(k) >= 0); });
@@ -781,8 +785,23 @@ function stopRingTone() {
           at(e + 500, function () { login.classList.add('busy'); });
           return e + 1300;
         } },
-      { step: 2, set: function () { show('avatar'); },
-        play: function (t) { tap('.ps-tap-skip', '.ps-btn-skip', t + 1000); return t + 1350; } },
+      /* The avatar: tap it, pick the photo, crop, Publish */
+      { step: 2, set: function () { avatar(false, false); show('avatar'); },
+        play: function (t) { tap('.ps-tap-av', '.ps-avatar-big', t + 1000); return t + 1350; } },
+      { step: 2, set: function () { show('picker'); },
+        play: function (t) { tap('.ps-tap-pick', '.ps-pick-me', t + 1000); return t + 1350; } },
+      { step: 2, set: function (d) { scene('crop').classList.toggle('adj', d); show('crop'); },
+        play: function (t) {
+          at(t + 500, function () { scene('crop').classList.add('adj'); });
+          tap('.ps-tap-crop', '.ps-cr-btn', t + 1700);
+          return t + 2050;
+        } },
+      { step: 2, set: function (d) { avatar(true, d); show('avatar'); },
+        play: function (t) {
+          tap('.ps-tap-pub', '.ps-btn-pub', t + 1100);
+          at(t + 1200, function () { q('.ps-btn-pub').classList.add('busy'); });
+          return t + 2000;
+        } },
       { step: 2, set: function () { show('list'); },
         play: function (t) { tap('.ps-tap-row', '.ps-row', t + 850); return t + 1200; } },
       { step: 3, set: function (d) { msgs(d ? 1 : 0); word.textContent = ''; chatState(''); show('chat'); },
@@ -1057,12 +1076,14 @@ function stopRingTone() {
       mode = mo;
       if (!toggle) return;
       toggle.dataset.mode = mo;
-      var label = toggle.dataset[mo === 'playing' ? 'pause' : 'play'];
+      var label = toggle.dataset[mo === 'playing' ? 'pause' : mo === 'ended' ? 'replay' : 'play'];
       toggle.setAttribute('aria-label', label); toggle.title = label;
     }
-    /* Play from feature i to the end, then again from the start */
+    /* Play from feature i to the end, once: it ends back in the chat after
+       the call, with the Replay button */
     function play(i) {
       stop();
+      held = false;
       hp.classList.add('anim');
       setMode('playing');
       var t = 0;
@@ -1070,11 +1091,12 @@ function stopRingTone() {
         (function (k, t) { at(t, function () { set(k, false); dot(k); }); })(k, t);
         t = plays[k](t);
       }
-      at(t, function () { play(0); });
+      at(t, function () { setMode('ended'); });
     }
     /* Show feature i, finished, and stay there */
     function still(i) {
       stop();
+      held = false;
       hp.classList.add('anim');
       i = (i + plays.length) % plays.length;
       set(i, true); dot(i);
@@ -1088,7 +1110,7 @@ function stopRingTone() {
       ctl.querySelector('.ps-next').addEventListener('click', function () { still(cur + 1); });
       dots.forEach(function (d, k) { d.addEventListener('click', function () { if (MOTION) play(k); else still(k); }); });
       if (toggle) toggle.addEventListener('click', function () {
-        if (mode === 'playing') still(cur); else play(cur);
+        if (mode === 'playing') still(cur); else play(mode === 'ended' ? 0 : cur);
       });
       ctl.addEventListener('keydown', function (e) {
         if (e.key === 'ArrowLeft') { still(cur - 1); e.preventDefault(); }
@@ -1096,7 +1118,21 @@ function stopRingTone() {
       });
     }
     if (!MOTION) { still(LAST); return; }
-    play(0);
+
+    /* Off screen or in a hidden tab it holds (no motion, no sound) and goes
+       on from the same feature when it is back. It starts when first seen. */
+    var held = false, seen = false, inView = false;
+    function check() {
+      var on = inView && !document.hidden;
+      if (on && !seen) { seen = true; play(0); return; }
+      if (!on && mode === 'playing') { still(cur); held = true; }
+      else if (on && held) { play(cur); }
+    }
+    document.addEventListener('visibilitychange', check);
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) { inView = entries[0].isIntersecting; check(); }, { threshold: 0.25 })
+        .observe(q('.hp-phone'));
+    } else { inView = true; check(); }
   }
 
   /* The Obtainium steps for Chatrix.One: the card's button opens the dialog */

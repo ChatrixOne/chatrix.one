@@ -6,7 +6,8 @@
      Chatrix.One-android 2.21.3-cx1.1: chatrix_colors.xml, colors-themed.xml
      dark, chatrix.xml, QuickActions.MENU_EMOJIS, AudioPlayer.SPEEDS). The app
      texts stay English in both languages, as on the three-step phone; the
-     chat itself is in the page language. initHeroPhone in app.js plays it;
+     chat itself is in the page language. initHeroPhone in app.js plays it
+     once (paused while off screen), then waits on the chat with Replay;
      without JS or with reduced motion the phone shows the last state. */}}
 {{ $av := "images/hero-maria.svg" | relURL }}
 <div class="hp" data-f="6">
@@ -89,6 +90,6 @@
     <button type="button" class="ps-arrow ps-prev" aria-label="{{ i18n "ps_prev" }}" title="{{ i18n "ps_prev" }}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
     <span class="ps-dots">{{ range $i, $_ := seq 8 }}{{ $n := add $i 1 }}<button type="button" class="ps-dot" data-t="{{ i18n (printf "hp_f%d" $n) }}" data-s="{{ i18n (printf "hp_f%d_sub" $n) }}" aria-label="{{ i18n (printf "hp_f%d" $n) }}"></button>{{ end }}</span>
     <button type="button" class="ps-arrow ps-next" aria-label="{{ i18n "ps_next" }}" title="{{ i18n "ps_next" }}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
-    <button type="button" class="ps-arrow ps-toggle-play" data-mode="paused" data-play="{{ i18n "ps_play" }}" data-pause="{{ i18n "ps_pause" }}" aria-label="{{ i18n "ps_play" }}" title="{{ i18n "ps_play" }}"><svg class="ps-i-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg><svg class="ps-i-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg></button>
+    <button type="button" class="ps-arrow ps-toggle-play" data-mode="paused" data-play="{{ i18n "ps_play" }}" data-pause="{{ i18n "ps_pause" }}" data-replay="{{ i18n "steps_replay" }}" aria-label="{{ i18n "ps_play" }}" title="{{ i18n "ps_play" }}"><svg class="ps-i-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg><svg class="ps-i-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg><svg class="ps-i-replay" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.4-5.7M4 4v5h5"/></svg></button>
   </div>
 </div>

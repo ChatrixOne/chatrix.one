@@ -6,7 +6,7 @@
      scenes follow its real sign-up (screenshots 2026-11-04): its welcome
      screen, the human check and the sign-up form in the browser, "Open
      Chatrix.One", the app's login with the address filled in (only the
-     password is typed, "Next"), the avatar (skipped), the chat list, then
+     password is typed, "Next"), the avatar (picked, cropped, published), the chat list, then
      the welcome bot's word, sent unencrypted ("Clear text" in the lock's
      menu). */}}
 <div class="ps" data-step="done">
@@ -87,7 +87,7 @@
           <div class="ps-wcard">
             <p class="ps-wtitle">Register on chatrix.one</p>
             <p class="ps-wsub">Create an account</p>
-            <label class="ps-wfield"><span>Username:</span><b><em class="ps-type ps-user" data-text="{{ i18n "home_card_you" }}"></em><i class="ps-caret"></i></b><u>@chatrix.one</u></label>
+            <label class="ps-wfield"><span>Username:</span><b><em class="ps-type ps-user" data-text="maria"></em><i class="ps-caret"></i></b><u>@chatrix.one</u></label>
             <label class="ps-wfield"><span>Password:</span><b><em class="ps-type ps-pass" data-text="••••••••••"></em></b></label>
             <div class="ps-wrow"><span class="ps-wbtn ps-wbtn-line">« Previous</span><span class="ps-wbtn ps-btn-submit">Submit</span></div>
           </div>
@@ -111,27 +111,50 @@
         <div class="ps-scene" data-s="login">
           <p class="ps-apptop"><svg class="ps-back" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>Add existing account</p>
           <div class="ps-obox">
-            <label class="ps-ofield"><span>XMPP address</span><b>{{ i18n "home_card_you" }}@chatrix.one</b></label>
+            <label class="ps-ofield"><span>XMPP address</span><b>maria@chatrix.one</b></label>
             <label class="ps-ofield ps-ofocus"><span>Password</span><b><em class="ps-type ps-pass2" data-text="•••••••••••••"></em><i class="ps-caret"></i></b></label>
           </div>
           <div class="ps-appfoot"><span class="ps-link">Cancel</span><span class="ps-btn ps-pill ps-btn-login"><span class="ps-btn-text">Next</span><span class="ps-spin"></span></span></div>
           <span class="ps-tap ps-tap-login"></span>
         </div>
 
-        {{/* 2e: the app asks for an avatar; skipped here */}}
+        {{/* 2e: the app asks for an avatar: tap it, pick a photo, crop it,
+             Publish (the app's PublishProfilePictureActivity; the picker
+             is Android's, the crop screen the app's cropper with "Crop").
+             The photo is the drawn Maria from the hero phone. */}}
         <div class="ps-scene" data-s="avatar">
           <p class="ps-apptop">Publish avatar</p>
-          <span class="ps-avatar-big">{{ substr (i18n "home_card_you") 0 1 | upper }}</span>
+          <span class="ps-avatar-big">M<img class="ps-av-pic" src="{{ "images/hero-maria.svg" | relURL }}" alt="" width="88" height="88"></span>
           <p class="ps-small">Tap avatar to select picture from gallery</p>
           <p class="ps-toggle">Show to contacts only<i></i></p>
-          <div class="ps-appfoot"><span class="ps-link ps-btn-skip">Skip</span><span class="ps-btn ps-pill ps-pill-off">Publish</span></div>
-          <span class="ps-tap ps-tap-skip"></span>
+          <div class="ps-appfoot"><span class="ps-link">Skip</span><span class="ps-btn ps-pill ps-btn-pub"><span class="ps-pub-a">Publish</span><span class="ps-pub-b">Publishing…</span></span></div>
+          <span class="ps-tap ps-tap-av"></span>
+          <span class="ps-tap ps-tap-pub"></span>
+        </div>
+
+        {{/* 2e': Android's photo picker */}}
+        <div class="ps-scene ps-picker" data-s="picker">
+          <p class="ps-pk-top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg><span class="ps-pk-tabs"><b>Photos</b><span>Albums</span></span></p>
+          <div class="ps-pk-grid">
+            <i style="--g:#3d5a80,#98c1d9"></i><i style="--g:#6d597a,#e56b6f"></i><i style="--g:#2a9d8f,#e9c46a"></i>
+            <i style="--g:#264653,#8ab17d"></i><img class="ps-pick-me" src="{{ "images/hero-maria.svg" | relURL }}" alt="" width="70" height="70"><i style="--g:#bc6c25,#fefae0"></i>
+            <i style="--g:#1d3557,#a8dadc"></i><i style="--g:#7f5539,#e6ccb2"></i><i style="--g:#5e548e,#be95c4"></i>
+            <i style="--g:#335c67,#e09f3e"></i><i style="--g:#4a4e69,#c9ada7"></i><i style="--g:#2b2d42,#8d99ae"></i>
+          </div>
+          <span class="ps-tap ps-tap-pick"></span>
+        </div>
+
+        {{/* 2e'': the app's crop screen: a square frame over the photo */}}
+        <div class="ps-scene ps-crop" data-s="crop">
+          <p class="ps-cr-top"><svg class="ps-back" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg><svg class="ps-cr-rot" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 1 0 2.4-5.7M4 4v5h5"/></svg><span class="ps-cr-btn">CROP</span></p>
+          <div class="ps-cr-img"><img src="{{ "images/hero-maria.svg" | relURL }}" alt="" width="240" height="240"><span class="ps-cr-frame"><i></i></span></div>
+          <span class="ps-tap ps-tap-crop"></span>
         </div>
 
         {{/* 2f: the chat list, the bot has written */}}
         <div class="ps-scene" data-s="list">
           <p class="ps-search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5"/></svg>Search in chats</p>
-          <div class="ps-row"><img class="ps-bot" src="{{ "images/welcome-bot.png" | relURL }}" alt="" width="32" height="32"><span><b>chatrix.one Welcome</b><small>Hi {{ i18n "home_card_you" }}, welcome to chatrix.one! Quick check…</small></span><em>1</em></div>
+          <div class="ps-row"><img class="ps-bot" src="{{ "images/welcome-bot.png" | relURL }}" alt="" width="32" height="32"><span><b>chatrix.one Welcome</b><small>Hi maria, welcome to chatrix.one! Quick check…</small></span><em>1</em></div>
           <span class="ps-btn ps-fab">Start chat</span>
           <span class="ps-tap ps-tap-row"></span>
         </div>
@@ -150,8 +173,8 @@
           <span class="ps-tap ps-tap-lock"></span>
           <span class="ps-tap ps-tap-zoom"></span>
           <div class="ps-msgs">
-            <div class="ps-msg ps-in ps-m1"><img class="ps-bot" src="{{ "images/welcome-bot.png" | relURL }}" alt="" width="32" height="32"><p>Hi {{ i18n "home_card_you" }}, welcome to chatrix.one!<br><br>Quick check that you're a person and not a spam bot: reply to this message with the word<br><br>&nbsp;&nbsp;<strong>magnet</strong><br><br>Please send the reply unencrypted: if your app shows a lock or OMEMO for this chat, turn it off here. …</p></div>
-            <div class="ps-msg ps-out ps-m2"><span class="ps-me">{{ substr (i18n "home_card_you") 0 1 | upper }}</span><p>Magnet</p></div>
+            <div class="ps-msg ps-in ps-m1"><img class="ps-bot" src="{{ "images/welcome-bot.png" | relURL }}" alt="" width="32" height="32"><p>Hi maria, welcome to chatrix.one!<br><br>Quick check that you're a person and not a spam bot: reply to this message with the word<br><br>&nbsp;&nbsp;<strong>magnet</strong><br><br>Please send the reply unencrypted: if your app shows a lock or OMEMO for this chat, turn it off here. …</p></div>
+            <div class="ps-msg ps-out ps-m2"><img class="ps-me" src="{{ "images/hero-maria.svg" | relURL }}" alt="" width="28" height="28"><p>Magnet</p></div>
             <div class="ps-msg ps-in ps-m3"><img class="ps-bot" src="{{ "images/welcome-bot.png" | relURL }}" alt="" width="32" height="32"><p>Thanks, you're verified! Full speed and this server's group chats are now unlocked. Your app will reconnect in a moment to apply that. I'll remove myself from your contacts now. Enjoy!</p></div>
             <p class="ps-typing"><i></i><i></i><i></i></p>
           </div>
@@ -162,7 +185,7 @@
         <div class="ps-scene" data-s="ready">
           <span class="ps-done"><svg viewBox="0 0 192 192"><use href="#ps-logo"/></svg><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i></span>
           <p class="ps-ready">{{ i18n "ph_ready" }}</p>
-          <p class="ps-jid">{{ i18n "home_card_you" }}@chatrix.one</p>
+          <p class="ps-jid">maria@chatrix.one</p>
           <span class="ps-btn">{{ i18n "ph_start" }}</span>
         </div>
       </div>
@@ -172,7 +195,7 @@
          Hidden without JS; app.js (initPhoneSteps) turns it on. */}}
     <div class="ps-ctl" hidden>
       <button type="button" class="ps-arrow ps-prev" aria-label="{{ i18n "ps_prev" }}" title="{{ i18n "ps_prev" }}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
-      <span class="ps-dots">{{ range $i, $_ := seq 12 }}<button type="button" class="ps-dot" aria-label="{{ i18n "ps_screen" }} {{ add $i 1 }} / 12"></button>{{ end }}</span>
+      <span class="ps-dots">{{ range $i, $_ := seq 15 }}<button type="button" class="ps-dot" aria-label="{{ i18n "ps_screen" }} {{ add $i 1 }} / 15"></button>{{ end }}</span>
       <button type="button" class="ps-arrow ps-next" aria-label="{{ i18n "ps_next" }}" title="{{ i18n "ps_next" }}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
       <button type="button" class="ps-arrow ps-toggle-play" data-mode="paused" data-play="{{ i18n "ps_play" }}" data-pause="{{ i18n "ps_pause" }}" data-replay="{{ i18n "steps_replay" }}" aria-label="{{ i18n "ps_play" }}" title="{{ i18n "ps_play" }}"><svg class="ps-i-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg><svg class="ps-i-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg><svg class="ps-i-replay" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.4-5.7M4 4v5h5"/></svg></button>
     </div>
