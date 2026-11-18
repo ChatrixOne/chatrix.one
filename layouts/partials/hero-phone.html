@@ -1,0 +1,94 @@
+{{/* The hero phone: the Chatrix.One app for Android in a chat, showing what
+     it adds to Conversations, one feature per dot: swipe right to react,
+     swipe left to quote, voice messages at 1x/1.5x/2x, link previews, the
+     long-press menu and chat backgrounds. Same frame as the three-step
+     phone (.ps-phone). Colours, texts and menus are the app's own (source:
+     Chatrix.One-android 2.21.3-cx1.1: chatrix_colors.xml, colors-themed.xml
+     dark, chatrix.xml, QuickActions.MENU_EMOJIS, AudioPlayer.SPEEDS). The app
+     texts stay English in both languages, as on the three-step phone; the
+     chat itself is in the page language. initHeroPhone in app.js plays it;
+     without JS or with reduced motion the phone shows the last state. */}}
+{{ $av := "images/hero-maria.svg" | relURL }}
+<div class="hp" data-f="6">
+  <div class="hp-phone" aria-hidden="true">
+    <div class="hp-screen">
+      <div class="hp-bg"><i class="hp-bg-pic"></i></div>
+      <div class="hp-bar"><span>9:41</span><span class="hp-bar-icons"><i></i><i></i><i></i></span></div>
+
+      <div class="hp-head">
+        <svg class="hp-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+        <img class="hp-av" src="{{ $av }}" alt="" width="26" height="26">
+        <b>{{ i18n "hp_name" }}</b>
+        <svg class="hp-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+        <svg class="hp-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>
+        <svg class="hp-ic hp-more" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="12" cy="19" r="2"/></svg>
+      </div>
+
+      <div class="hp-msgs">
+        <div class="hp-m hp-in" data-m="1"><img class="hp-av" src="{{ $av }}" alt="" width="26" height="26"><div class="hp-b"><p>{{ i18n "hp_m1" }}</p><small>9:36 <i class="hp-lk"></i></small></div></div>
+        <div class="hp-m hp-out" data-m="2"><div class="hp-b"><p>{{ i18n "hp_m2" }}</p><small>9:37 <i class="hp-lk"></i><i class="hp-ok"></i></small></div></div>
+        <div class="hp-m hp-in" data-m="3"><img class="hp-av" src="{{ $av }}" alt="" width="26" height="26"><div class="hp-b"><p>{{ i18n "hp_m3" }}</p><small>9:38 <i class="hp-lk"></i></small><span class="hp-react hp-r3">👍</span></div><i class="hp-swipe hp-swipe-r">👍</i><i class="hp-swipe hp-swipe-l"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M10 9V5l-7 7 7 7v-4.1c5 0 8.5 1.6 11 5.1-1-5-4-10-11-11z"/></svg></i></div>
+        <div class="hp-m hp-out" data-m="4"><div class="hp-b"><blockquote>{{ i18n "hp_m3" }}</blockquote><p>{{ i18n "hp_m4" }}</p><small>9:39 <i class="hp-lk"></i><i class="hp-ok"></i></small></div></div>
+        <div class="hp-m hp-in" data-m="5"><img class="hp-av" src="{{ $av }}" alt="" width="26" height="26"><div class="hp-b hp-voice">
+          <span class="hp-play"><svg class="hp-i-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg><svg class="hp-i-pause" viewBox="0 0 24 24" fill="currentColor"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg></span>
+          <span class="hp-wave">{{ range slice 6 10 14 9 18 12 20 15 8 13 19 11 16 7 12 17 9 14 10 6 8 5 }}<i style="height:{{ . }}px"></i>{{ end }}</span>
+          <small><span class="hp-rt">0:07</span> <span class="hp-speed">1×</span> 9:40 <i class="hp-lk"></i></small></div></div>
+        <div class="hp-m hp-in" data-m="6"><img class="hp-av" src="{{ $av }}" alt="" width="26" height="26"><div class="hp-b hp-link">
+          <span class="hp-card"><img src="{{ printf "images/og-%s.png" .Lang | relURL }}" alt="" width="1200" height="630" loading="lazy"><b>{{ .Title }}</b><em>chatrix.one</em></span>
+          <p>{{ i18n "hp_m6" }} <u>{{ .Permalink | strings.TrimSuffix "/" }}</u></p><small>9:41 <i class="hp-lk"></i></small><span class="hp-react hp-r6">❤️</span></div></div>
+      </div>
+
+      <div class="hp-compose">
+        <div class="hp-quote">{{ i18n "hp_m3" }}</div>
+        <div class="hp-field"><em class="hp-type" data-text="{{ i18n "hp_m4" }}"></em><em class="hp-type2" data-text="{{ i18n "hp_m2" }}"></em><span class="hp-ph">Send encrypted message</span><span class="hp-send"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 20l18-8L3 4v6l12 2-12 2z"/></svg></span></div>
+      </div>
+
+      {{/* A voice call, as on the app's call screen (activity_rtp_session.xml):
+           the state, the name, the address, the photo; Decline / Accept,
+           then the duration with mic, end call and speaker. */}}
+      <div class="hp-call">
+        <p class="hp-call-state"><span class="hp-cs-in">Incoming call</span><span class="hp-cs-conn">Connecting</span><span class="hp-cs-on">Connected</span><span class="hp-cs-end">Ending call</span></p>
+        <p class="hp-call-with">{{ i18n "hp_name" }}</p>
+        <p class="hp-call-jid">maria@chatrix.one</p>
+        <p class="hp-call-dur">00:00</p>
+        <span class="hp-call-photo"><img src="{{ $av }}" alt="" width="150" height="150"></span>
+        <svg class="hp-call-ok" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1 3 5v6c0 5.6 3.8 10.7 9 12 5.2-1.3 9-6.4 9-12V5zm-2 16-4-4 1.4-1.4 2.6 2.6 6.6-6.6L18 9z"/></svg>
+        <div class="hp-call-ring">
+          <span class="hp-cb hp-cb-red"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 9c-1.6 0-3.2.3-4.6.7v3.1c0 .4-.2.7-.6.9-1 .5-1.9 1.1-2.7 1.8-.2.2-.4.3-.7.3s-.5-.1-.7-.3L.3 13.1c-.2-.2-.3-.4-.3-.7s.1-.5.3-.7C3.3 8.9 7.4 7 12 7s8.7 1.9 11.7 4.7c.2.2.3.4.3.7s-.1.5-.3.7l-2.5 2.5c-.2.2-.4.3-.7.3s-.5-.1-.7-.3c-.8-.7-1.7-1.3-2.7-1.8-.3-.2-.6-.5-.6-.9V9.7C15.2 9.3 13.6 9 12 9z"/></svg></span>
+          <span class="hp-cb hp-cb-green hp-accept"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg></span>
+        </div>
+        <div class="hp-call-in">
+          <span class="hp-cb hp-cb-small"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 14a3 3 0 0 0 3-3V5a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3zm5.3-3c0 3-2.5 5.1-5.3 5.1S6.7 14 6.7 11H5c0 3.4 2.7 6.2 6 6.7V21h2v-3.3c3.3-.5 6-3.3 6-6.7z"/></svg></span>
+          <span class="hp-cb hp-cb-red hp-hangup"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 9c-1.6 0-3.2.3-4.6.7v3.1c0 .4-.2.7-.6.9-1 .5-1.9 1.1-2.7 1.8-.2.2-.4.3-.7.3s-.5-.1-.7-.3L.3 13.1c-.2-.2-.3-.4-.3-.7s.1-.5.3-.7C3.3 8.9 7.4 7 12 7s8.7 1.9 11.7 4.7c.2.2.3.4.3.7s-.1.5-.3.7l-2.5 2.5c-.2.2-.4.3-.7.3s-.5-.1-.7-.3c-.8-.7-1.7-1.3-2.7-1.8-.3-.2-.6-.5-.6-.9V9.7C15.2 9.3 13.6 9 12 9z"/></svg></span>
+          <span class="hp-cb hp-cb-small"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9zm13.5 3A4.5 4.5 0 0 0 14 8v8a4.5 4.5 0 0 0 2.5-4zM14 3.2v2.1a7 7 0 0 1 0 13.4v2.1a9 9 0 0 0 0-17.6z"/></svg></span>
+        </div>
+      </div>
+
+      {{/* Long-press menu: the app's emoji row (QuickActions.MENU_EMOJIS) and some of its items */}}
+      <div class="hp-pop">
+        <p class="hp-emo"><span>👍</span><span>👎</span><span class="hp-heart">❤️</span><span>😂</span><span>😮</span><span>😢</span><span>🙏</span><span class="hp-plus">+</span></p>
+        <p class="hp-item">Share with…</p><p class="hp-item">Copy</p><p class="hp-item">Copy web address</p><p class="hp-item">Quote</p>
+      </div>
+      {{/* The chat's menu and its "Chat background" dialog */}}
+      <div class="hp-over"><p class="hp-item">Notify on reactions</p><p class="hp-item hp-item-bg">Chat background</p></div>
+      <div class="hp-dlg"><div>
+        <p class="hp-dlg-title">Chat background</p>
+        <p class="hp-opt hp-opt-on">Default (from settings)<i></i></p>
+        <p class="hp-opt">Chatrix.One glow<i></i></p>
+        <p class="hp-opt">Plain<i></i></p>
+        <p class="hp-opt hp-opt-pic">My own picture…<i></i></p>
+      </div></div>
+      <span class="hp-tap"></span>
+    </div>
+  </div>
+
+  <p class="hp-cap" aria-live="polite"><b>{{ i18n "hp_f1" }}</b><span>{{ i18n "hp_f1_sub" }}</span></p>
+  {{/* One dot per feature. Hidden without JS; app.js turns it on. The
+       captions travel in data-* so the JS has them in the page language. */}}
+  <div class="ps-ctl hp-ctl" hidden>
+    <button type="button" class="ps-arrow ps-prev" aria-label="{{ i18n "ps_prev" }}" title="{{ i18n "ps_prev" }}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <span class="ps-dots">{{ range $i, $_ := seq 8 }}{{ $n := add $i 1 }}<button type="button" class="ps-dot" data-t="{{ i18n (printf "hp_f%d" $n) }}" data-s="{{ i18n (printf "hp_f%d_sub" $n) }}" aria-label="{{ i18n (printf "hp_f%d" $n) }}"></button>{{ end }}</span>
+    <button type="button" class="ps-arrow ps-next" aria-label="{{ i18n "ps_next" }}" title="{{ i18n "ps_next" }}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+    <button type="button" class="ps-arrow ps-toggle-play" data-mode="paused" data-play="{{ i18n "ps_play" }}" data-pause="{{ i18n "ps_pause" }}" aria-label="{{ i18n "ps_play" }}" title="{{ i18n "ps_play" }}"><svg class="ps-i-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg><svg class="ps-i-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg></button>
+  </div>
+</div>

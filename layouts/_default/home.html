@@ -71,66 +71,7 @@
     <!-- DEVICE MOCKUP -->
     <div class="device-stage">
       <div class="device-bg-shapes"></div>
-      <div class="phone">
-        <div class="phone-screen">
-          <div class="phone-notch"></div>
-
-          <div class="chat-header">
-            <div class="chat-avatar">M</div>
-            <div class="chat-meta">
-              <div class="chat-name" id="chatName">{{ i18n "chat_name" }}</div>
-              <div class="chat-status" id="chatStatus">{{ i18n "chat_status" }}</div>
-            </div>
-            <button type="button" class="chat-icon-btn" aria-label="call">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
-            </button>
-            <button type="button" class="chat-icon-btn" aria-label="more">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg>
-            </button>
-          </div>
-
-          <div class="chat-body" id="chatBody" role="log" aria-live="polite" aria-atomic="false"></div>
-
-          <div class="chat-input">
-            <button type="button" class="chat-icon-btn" aria-label="attach">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.44 11.05l-9.19 9.19a6 6 0 01-8.49-8.49l9.19-9.19a4 4 0 015.66 5.66l-9.2 9.19a2 2 0 01-2.83-2.83l8.49-8.48"/></svg>
-            </button>
-            <div class="chat-input-field" id="chatInputField"><span class="chat-input-cursor"></span></div>
-            <button type="button" class="chat-input-btn" id="chatSendBtn" aria-label="send">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
-            </button>
-          </div>
-
-          <!-- CALL SCREEN OVERLAY — shown after chat sequence -->
-          <div class="call-screen" id="callScreen" aria-hidden="true">
-            <div class="call-screen-bg"></div>
-            <div class="call-screen-content">
-              <div class="call-avatar-ring">
-                <div class="call-avatar-pulse"></div>
-                <div class="call-avatar">M</div>
-              </div>
-              <div class="call-name">{{ i18n "chat_name" }}</div>
-              <div class="call-status" id="callStatus">{{ i18n "call_incoming" }}</div>
-              <div class="call-duration" id="callDuration"></div>
-              <div class="call-actions">
-                <div class="call-action-wrap">
-                  <button type="button" class="call-btn call-btn-decline" id="callDecline" aria-label="Decline">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/><line x1="4" y1="4" x2="20" y2="20"/></svg>
-                  </button>
-                  <span class="call-btn-label">{{ i18n "call_decline" }}</span>
-                </div>
-                <div class="call-action-wrap">
-                  <button type="button" class="call-btn call-btn-accept" id="callAccept" aria-label="Accept">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-                  </button>
-                  <span class="call-btn-label">{{ i18n "call_accept" }}</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
+      {{ partial "hero-phone.html" . }}
 
       <div class="float-card float-card-1">
         <div class="float-icon lock">

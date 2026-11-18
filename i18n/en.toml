@@ -52,14 +52,8 @@ other = "Trackers · Ads · Cookies"
 other = "Running since"
 
 # ── CHAT MOCKUP ───────────────────────────────────────────────
-[chat_name]
-other = "Maria · Sofia"
 
-[chat_status]
-other = "end-to-end encrypted"
 
-[chat_placeholder]
-other = "Type a message…"
 
 [float_encrypted]
 other = "OMEMO active"
@@ -352,17 +346,9 @@ other = "No posts yet. Check back soon."
 other = "no logs · no ads"
 
 # ── CALL SCREEN ───────────────────────────────────────────────
-[call_incoming]
-other = "Incoming encrypted call…"
 
-[call_accept]
-other = "Accept"
 
-[call_decline]
-other = "Decline"
 
-[call_active]
-other = "Encrypted call"
 
 [sound_off]
 other = "Sound off"
@@ -490,3 +476,49 @@ other = "Only want a new password? Change it instead."
 
 [acct_to_del]
 other = "Want to leave chatrix.one? Delete your account."
+
+# ── HERO PHONE (partials/hero-phone.html): the chat, then one caption per feature
+[hp_name]
+other = "Maria"
+[hp_m1]
+other = "Hey! Just landed in Zurich ✈️"
+[hp_m2]
+other = "Welcome! How was the flight?"
+[hp_m3]
+other = "Smooth. Coffee at the lake tomorrow?"
+[hp_m4]
+other = "Always. 10am at the usual spot ☕"
+[hp_m6]
+other = "Found it:"
+[hp_f1]
+other = "End-to-end encrypted chats"
+[hp_f1_sub]
+other = "The Chatrix.One app for Android, built on Conversations"
+[hp_f2]
+other = "Swipe right to react"
+[hp_f2_sub]
+other = "With your quick emoji. Settings › Interface › Message gestures"
+[hp_f3]
+other = "Swipe left to quote"
+[hp_f3_sub]
+other = "Double-tap copies. Each gesture can also be Share with…"
+[hp_f4]
+other = "Voice messages at 1×, 1.5× or 2×"
+[hp_f4_sub]
+other = "Tap the speed in the message. The app remembers it"
+[hp_f5]
+other = "Link previews"
+[hp_f5_sub]
+other = "Off by default, never with Tor. Settings › Privacy"
+[hp_f6]
+other = "Long-press for reactions"
+[hp_f6_sub]
+other = "A row of reactions, the full emoji picker or the keyboard"
+[hp_f7]
+other = "Chat backgrounds, also per chat"
+[hp_f7_sub]
+other = "Chatrix.One glow, plain, or your own picture"
+[hp_f8]
+other = "Encrypted voice and video calls"
+[hp_f8_sub]
+other = "End-to-end encrypted, like your messages"
