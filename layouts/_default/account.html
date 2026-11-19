@@ -25,6 +25,34 @@
      the form and shows the bare text. */}}
 {{ $domain := (urls.Parse site.BaseURL).Host }}
 {{ $delete := eq .Params.form "delete" }}
+{{ if eq .Params.form "index" }}
+<section class="acct">
+  <div class="container acct-inner">
+    <div class="eyebrow">
+      <span class="eyebrow-dot"></span>
+      <span>{{ i18n "acct_eyebrow" }}</span>
+    </div>
+
+    <h1 class="acct-title">{{ .Title }}</h1>
+    <p class="acct-lede">{{ .Params.lede }}</p>
+
+    <div class="acct-links">
+      {{ with site.GetPage "/account/password" }}
+      <a class="acct-link" href="{{ .RelPermalink }}">
+        <span class="acct-link-title">{{ .Title }}</span>
+        <span class="acct-link-text">{{ .Description }}</span>
+      </a>
+      {{ end }}
+      {{ with site.GetPage "/account/delete" }}
+      <a class="acct-link acct-link-danger" href="{{ .RelPermalink }}">
+        <span class="acct-link-title">{{ .Title }}</span>
+        <span class="acct-link-text">{{ .Description }}</span>
+      </a>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ else }}
 <section class="acct">
   <div class="container acct-inner">
     <div class="eyebrow">
@@ -106,10 +134,11 @@
     </p>
   </div>
 </section>
+{{ end }}
 
 {{ partial "footer.html" . }}
 
 <script src="{{ "app.js" | relURL }}"></script>
-<script src="{{ "account.js" | relURL }}"></script>
+{{ if ne .Params.form "index" }}<script src="{{ "account.js" | relURL }}"></script>{{ end }}
 </body>
 </html>
