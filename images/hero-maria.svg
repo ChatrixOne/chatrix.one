@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="11 9 74 74">
+  <!-- "Maria", the contact on the hero phone: a drawn portrait, not a real person -->
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#16223a"/><stop offset=".6" stop-color="#1d4148"/><stop offset="1" stop-color="#2c6a62"/></linearGradient>
+    <linearGradient id="hair" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5a2f22"/><stop offset=".6" stop-color="#2a1512"/><stop offset="1" stop-color="#1a0d0b"/></linearGradient>
+    <linearGradient id="skin" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#f0c2a2"/><stop offset="1" stop-color="#d79a7b"/></linearGradient>
+    <linearGradient id="top" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#101826"/><stop offset="1" stop-color="#0a0e14"/></linearGradient>
+    <radialGradient id="glow" cx=".72" cy=".3" r=".42"><stop offset="0" stop-color="#ffcf9e" stop-opacity=".32"/><stop offset="1" stop-color="#ffd2a8" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="96" height="96" fill="url(#bg)"/>
+  <rect width="96" height="96" fill="url(#glow)"/>
+  <!-- hair, back layer: long, falls past the right shoulder -->
+  <path d="M30 40c0-15 8-24 20-24 13 0 21 10 21 25 0 9 2 15 6 21 4 6 3 14-3 18-6 3-12 1-15-4l-4-30z" fill="url(#hair)"/>
+  <!-- turtleneck -->
+  <path d="M10 96c3-14 14-21 26-23h24c12 2 23 9 26 23z" fill="url(#top)"/>
+  <path d="M38 64h20v10c0 3-4 5-10 5s-10-2-10-5z" fill="#141c2e"/>
+  <path d="M38 69c3 2 6 3 10 3s7-1 10-3" fill="none" stroke="#24304a" stroke-width="1"/>
+  <!-- neck, a shadow under the jaw -->
+  <path d="M42 54h12v12c-2 2-4 3-6 3s-4-1-6-3z" fill="#d6977a"/>
+  <path d="M42 56c2 3 4 4 6 4s4-1 6-4v-2H42z" fill="#b97a62"/>
+  <!-- face, slim, lit from the left -->
+  <path d="M35 40c0-9 6-15 13-15s13 6 13 15c0 10-5 18-13 18s-13-8-13-18z" fill="url(#skin)"/>
+  <!-- brows, closed eyes as fine lines, nose and lips -->
+  <path d="M39.5 38.5q3-1.6 6 0M50.5 38.5q3-1.6 6 0" fill="none" stroke="#3a211b" stroke-width="1.1" stroke-linecap="round"/>
+  <path d="M40.5 42.5q2.5 1.2 5 0M51 42.5q2.5 1.2 5 0" fill="none" stroke="#3a211b" stroke-width="1" stroke-linecap="round"/>
+  <path d="M48.6 43.5l-1.2 5.2h2.4" fill="none" stroke="#b77a62" stroke-width=".9" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M44.6 52.4q3.4 1.8 6.8 0q-3.4 1.2-6.8 0z" fill="#a8505a" stroke="#a8505a" stroke-width="1.2" stroke-linejoin="round"/>
+  <!-- hair, front: side part, a sweep over the left of the forehead -->
+  <path d="M34 44c-2-14 5-22 15-22 6 0 10 3 12 7-7-1-13 1-17 5-3 3-5 7-6 11-1 6 0 13 2 18-5-4-6-12-6-19z" fill="url(#hair)"/>
+  <path d="M60 30c2 3 3 7 2 12" fill="none" stroke="#1a0d0b" stroke-width="2" stroke-linecap="round"/>
+  <!-- a fine highlight in the hair -->
+  <path d="M41 28c4-3 10-4 15-2" fill="none" stroke="#8a4f3c" stroke-width="1" stroke-linecap="round" opacity=".8"/>
+  <!-- gold hoop earring on the visible ear side -->
+  <circle cx="60.6" cy="52.4" r="2.4" fill="none" stroke="#e8c070" stroke-width="1.1"/>
+</svg>
