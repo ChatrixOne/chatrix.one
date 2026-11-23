@@ -927,6 +927,18 @@
      Markup: partials/phone-steps.html; motion: initPhoneSteps in app.js.
      The --h-* names are local tokens, kept from the design it was drawn in. */
   .steps-section { padding-bottom: 40px; }
+
+  /* =====  VIDEO  ===== */
+  /* 16:9 box keeps its height before the poster loads, so the page doesn't jump */
+  .video-frame {
+    max-width: 1176px;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    overflow: hidden;
+    background: #05080c;
+  }
+  .video-frame video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; }
+  .video-section { padding-bottom: 40px; }
   .ps {
     --h-mono:   'IBM Plex Mono', ui-monospace, monospace;
     --h-link:   var(--accent);

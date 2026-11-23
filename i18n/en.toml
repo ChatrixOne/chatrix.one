@@ -136,6 +136,22 @@ other = "Replay"
 [tech_label]
 other = "Powered by open, time-tested technologies"
 
+# ── VIDEO SECTION ────────────────────────────────────────────
+[video_eyebrow]
+other = "Video"
+
+[video_title]
+other = "See it in action"
+
+[video_sub]
+other = "Reactions, voice messages, encrypted calls and what Chatrix.One stands for, in under a minute. Best with the sound on."
+
+[video_label]
+other = "Chatrix.One intro video"
+
+[video_fallback]
+other = "Download the video (MP4)"
+
 # ── DOWNLOADS SECTION ────────────────────────────────────────
 [dl_eyebrow]
 other = "Get the apps"

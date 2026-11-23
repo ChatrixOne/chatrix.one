@@ -230,6 +230,31 @@
   </div>
 </div>
 
+<!-- VIDEO: web copy made by the video project's tools/web-copy.sh.
+     Fingerprinted names, so a new render is never served from an old cache.
+     preload="none": nothing but the poster loads until the visitor presses play. -->
+{{- $vid := resources.Get "video/chatrix-one-intro.mp4" -}}
+{{- $poster := resources.Get "video/chatrix-one-intro.webp" -}}
+{{- if not (and $vid $poster) }}{{ errorf "home.html: assets/video/chatrix-one-intro.mp4 or .webp missing" }}{{ end -}}
+{{- $vid = $vid | fingerprint -}}
+{{- $poster = $poster | fingerprint }}
+<section id="video" class="video-section">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-eyebrow">{{ i18n "video_eyebrow" }}</div>
+      <h2 class="section-title"><em>{{ i18n "video_title" }}</em></h2>
+      <p class="section-sub">{{ i18n "video_sub" }}</p>
+    </div>
+    <div class="video-frame reveal">
+      <video controls preload="none" playsinline width="1280" height="720"
+             poster="{{ $poster.RelPermalink }}" aria-label="{{ i18n "video_label" }}">
+        <source src="{{ $vid.RelPermalink }}" type="video/mp4">
+        <a href="{{ $vid.RelPermalink }}">{{ i18n "video_fallback" }}</a>
+      </video>
+    </div>
+  </div>
+</section>
+
 <!-- DOWNLOADS -->
 <section id="downloads">
   <div class="container">
