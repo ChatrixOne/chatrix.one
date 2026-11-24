@@ -1159,6 +1159,17 @@ function stopRingTone() {
     else if (copy) copy.hidden = true;
   }
 
+  /* Video: styles.css shows one of two cuts (16:9 or upright). When the
+     phone turns, the playing one may get hidden: pause it, so its sound
+     doesn't go on. Asks the layout, so the media query lives only in CSS. */
+  function initVideo() {
+    var vids = document.querySelectorAll('.video-frame video');
+    if (vids.length < 2) return;
+    window.addEventListener('resize', function () {
+      vids.forEach(function (v) { if (!v.paused && v.getClientRects().length === 0) v.pause(); });
+    });
+  }
+
   function init() {
     initTheme();
     initMobileNav();
@@ -1173,6 +1184,7 @@ function stopRingTone() {
     initHeroPhone();
     initPhoneSteps();
     initObtainium();
+    initVideo();
   }
 
   if (document.readyState === 'loading') {

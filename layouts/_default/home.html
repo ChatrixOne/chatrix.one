@@ -232,12 +232,18 @@
 
 <!-- VIDEO: web copy made by the video project's tools/web-copy.sh.
      Fingerprinted names, so a new render is never served from an old cache.
-     preload="none": nothing but the poster loads until the visitor presses play. -->
+     preload="none": nothing but the poster loads until the visitor presses play.
+     Two cuts of the same edit: 16:9, and upright (9:16) for phones held
+     upright; styles.css shows one of them, initVideo pauses a hidden one. -->
 {{- $vid := resources.Get "video/chatrix-one-intro.mp4" -}}
 {{- $poster := resources.Get "video/chatrix-one-intro.webp" -}}
-{{- if not (and $vid $poster) }}{{ errorf "home.html: assets/video/chatrix-one-intro.mp4 or .webp missing" }}{{ end -}}
+{{- $vidP := resources.Get "video/chatrix-one-intro-portrait.mp4" -}}
+{{- $posterP := resources.Get "video/chatrix-one-intro-portrait.webp" -}}
+{{- if not (and $vid $poster $vidP $posterP) }}{{ errorf "home.html: assets/video/chatrix-one-intro[-portrait].mp4 or .webp missing" }}{{ end -}}
 {{- $vid = $vid | fingerprint -}}
-{{- $poster = $poster | fingerprint }}
+{{- $poster = $poster | fingerprint -}}
+{{- $vidP = $vidP | fingerprint -}}
+{{- $posterP = $posterP | fingerprint }}
 <section id="video" class="video-section">
   <div class="container">
     <div class="section-head reveal">
@@ -246,10 +252,15 @@
       <p class="section-sub">{{ i18n "video_sub" }}</p>
     </div>
     <div class="video-frame reveal">
-      <video controls preload="none" playsinline width="1280" height="720"
+      <video class="video-wide" controls preload="none" playsinline width="1280" height="720"
              poster="{{ $poster.RelPermalink }}" aria-label="{{ i18n "video_label" }}">
         <source src="{{ $vid.RelPermalink }}" type="video/mp4">
         <a href="{{ $vid.RelPermalink }}">{{ i18n "video_fallback" }}</a>
+      </video>
+      <video class="video-tall" controls preload="none" playsinline width="720" height="1280"
+             poster="{{ $posterP.RelPermalink }}" aria-label="{{ i18n "video_label" }}">
+        <source src="{{ $vidP.RelPermalink }}" type="video/mp4">
+        <a href="{{ $vidP.RelPermalink }}">{{ i18n "video_fallback" }}</a>
       </video>
     </div>
   </div>

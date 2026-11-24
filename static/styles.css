@@ -938,6 +938,13 @@
     background: #05080c;
   }
   .video-frame video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; }
+  /* Phones held upright get the upright cut (9:16), no taller than the screen */
+  .video-frame .video-tall { display: none; aspect-ratio: 9 / 16; }
+  @media (orientation: portrait) and (max-width: 760px) {
+    .video-frame { max-width: min(100%, calc(85svh * 9 / 16)); margin-inline: auto; }
+    .video-frame .video-wide { display: none; }
+    .video-frame .video-tall { display: block; }
+  }
   .video-section { padding-bottom: 40px; }
   .ps {
     --h-mono:   'IBM Plex Mono', ui-monospace, monospace;
